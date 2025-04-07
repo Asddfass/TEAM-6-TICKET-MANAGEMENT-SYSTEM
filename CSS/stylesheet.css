@@ -2,4 +2,83 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: white;
+    color: #484848;
+    overflow-x: hidden;
+}
+
+header {
+    background: #AA0022;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-family: 'Port Lligat Slab', serif;
+    font-size: 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+}
+
+.login-btn {
+    background-color: #00448B;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+#home {
+    position: relative;
+    background-image: url('/IMG/landing_front.png');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+}
+
+#home::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(213, 16, 16, 0.4);
+}
+
+.home-content {
+    position: relative;
+    max-width: 400px;
+    z-index: 1;
+}
+
+#home h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    z-index: 1;
+    position: relative;
+}
+
+#home p {
+    font-size: 1.2rem;
+    z-index: 1;
+    position: relative;
 }
