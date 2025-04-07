@@ -47,7 +47,7 @@ nav a {
 
 #home {
     position: relative;
-    background-image: url('IMG/landing_front.png');
+    background-image: url('/IMG/landing_front.png');
     background-size: cover;
     background-position: center;
     height: 90vh;
@@ -145,4 +145,26 @@ nav a {
     margin: auto;
     font-size: 1.2rem;
     text-align: justify;
+}
+
+footer {
+    background-color: #550011;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+    #home h2 {
+      font-size: 2rem;
+    }
+    
+    .section {
+      flex-direction: column;
+    }
+
+    #home {
+      padding: 2rem;
+    }
 }
