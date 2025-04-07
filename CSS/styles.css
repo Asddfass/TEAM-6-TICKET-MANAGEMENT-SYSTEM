@@ -1,0 +1,165 @@
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    background: url('building-bg.jpg.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+        rgba(140, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.6)
+    );
+    z-index: 1;
+}
+
+
+.auth-container {
+    position: relative;
+    z-index: 2;
+    width: 350px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    color: white;
+    text-align: center;
+}
+
+
+.auth-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: white;
+}
+
+
+.auth-container input,
+.auth-container select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
+    appearance: none;
+}
+
+
+.auth-container input::placeholder {
+    color: #eee;
+}
+
+
+.auth-container select {
+    padding-right: 30px;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='white'%20class='bi%20bi-caret-down-fill'%20viewBox='0%200%2016%2016'%3E%3Cpath%20d='M7.247%2011.14%202.451%205.658c-.566-.66-.106-1.658.753-1.658h9.592c.86%200%201.32.998.753%201.658l-4.796%205.482a1%201%200%200%201-1.506%200z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+}
+
+
+.auth-container select option {
+    color: black;
+}
+
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: crimson;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.auth-btn:hover {
+    background-color: darkred;
+}
+
+
+.auth-container p {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.auth-container a {
+    color: #ffcdd2;
+    text-decoration: underline;
+}
+
+
+.error-message {
+    color: #ff8a80;
+    font-size: 0.9rem;
+}
+
+
+
+@media (max-width: 599px) {
+    .auth-container {
+      width: 90%;
+      padding: 1.5rem;
+    }
+  
+    .auth-container h2 {
+      font-size: 1.5rem;
+    }
+  
+    .auth-btn {
+      padding: 10px;
+    }
+  
+    .auth-container input,
+    .auth-container select {
+      padding: 10px;
+      font-size: 0.95rem;
+    }
+  }
+  
+
+  @media (min-width: 600px) and (max-width: 1023px) {
+    .auth-container {
+      width: 70%;
+      max-width: 450px;
+      padding: 2rem;
+    }
+  
+    .auth-container h2 {
+      font-size: 1.7rem;
+    }
+  
+    .auth-container input,
+    .auth-container select {
+      font-size: 1rem;
+    }
+  }
+  
+  
+  @media (min-width: 1024px) {
+    .auth-container {
+      width: 350px;
+    }
+  }
+  
