@@ -82,3 +82,67 @@ nav a {
     z-index: 1;
     position: relative;
 }
+
+.section {
+    padding: 4rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    background: rgba(123, 6, 29, 0.7);
+}   
+
+.section.reverse {
+    flex-direction: row-reverse;
+}
+
+.section img {
+    width: 300px;
+}
+
+.text-content {
+    max-width: 600px;
+    color: #fdfdfd;
+    z-index: 1;
+}
+
+.text-content h3 {
+    color: #550011;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.text-content p {
+    font-size: 1.1rem;
+}
+
+.section-content {
+    z-index: 1;
+    position: relative;
+}
+
+.divider {
+    border-top: 3px solid #550011;
+    margin: 2rem 0;
+    width: 60%;
+}
+
+#about {
+    background-color: #f8f8f8;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 3rem;
+    color: #CF2C4D;
+    margin-bottom: 2rem;
+}
+
+#about p {
+    max-width: 900px;
+    margin: auto;
+    font-size: 1.2rem;
+    text-align: justify;
+}
