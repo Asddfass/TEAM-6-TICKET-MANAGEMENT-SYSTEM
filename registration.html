@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+    <div class="container">
+      <h2>Registration</h2>
+      <form>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="middleName">Middle Name (optional)</label>
+          <input type="text" id="middleName" name="middleName">
+        </div>
+        <div class="form-group">
+          <label for="suffix">Suffix (optional)</label>
+          <input type="text" id="suffix" name="suffix">
+        </div>
+        <div class="form-group">
+          <label for="employeeId">Employee ID Number</label>
+          <input type="text" id="employeeId" name="employeeId" required>
+        </div>
+        <div class="form-group">
+            <label for="department">Department</label>
+            <select id="department" name="department" placeholder="Select Department" required>
+              <option value="">Select Department</option>
+              <option value="IT">Information Technology</option>
+              <option value="CS">Computer Science</option>
+              <option value="Math">Mathematics</option>
+              <option value="Math">Mathematics</option>
+              <option value="Math">Mathematics</option>
+              <option value="Math">Mathematics</option>
+              <option value="Math">Mathematics</option>
+            </select>
+          </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact Number (optional)</label>
+          <input type="text" id="contact" name="contact">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required see password>
+        </div>
+        <div class="form-group-full terms">
+          <input type="checkbox" id="terms" name="terms">
+          <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+        </div>
+        <button type="submit" class="submit-button">Create Account</button>
+      </form>
+    </div>
+  </body>
+  </html>
+  
