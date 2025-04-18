@@ -49,6 +49,7 @@ body {
   
 .sidebar .logo {
     padding: 20px;
+    margin-bottom: 10px;
     font-size: 1.2rem;
     font-weight: bold;
     background-color: #AA0022;
