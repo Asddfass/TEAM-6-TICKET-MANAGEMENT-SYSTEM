@@ -12,8 +12,19 @@ body {
     background-color: rgba(220, 20, 60);
     color: white;
 }
+
+.logout {
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+}
   
-.sidebar a {
+.sidebar a, .sidebar button {
     color: white;
     text-decoration: none;
     display: block;
@@ -21,7 +32,7 @@ body {
     transition: background-color 0.3s ease, padding-left 0.3s ease;
 }
 
-.sidebar a:hover {
+.sidebar a:hover, .sidebar button:hover {
     background-color: #AA0022;
     padding-left: 30px;
 }
