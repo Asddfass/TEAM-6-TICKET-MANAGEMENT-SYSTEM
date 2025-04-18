@@ -22,14 +22,14 @@
       <a href="#resolved">Resolved Tickets</a>
       <a href="#settings">Settings</a>
       <button class="logout mt-auto" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</button>
-    </div>    
+    </div>
 
-    <div class="dashboard-content w-100 container">
+    <div class="dashboard-content w-100">
       <div class="container-fluid">
 
         <section id="dashboard" class="content-section">
           <h1 class="mb-4">Agent Overview</h1>
-        
+
           <div class="row g-4">
             <div class="col-md-6 col-lg-3">
               <div class="card text-bg-primary">
@@ -39,7 +39,7 @@
                 </div>
               </div>
             </div>
-        
+
             <div class="col-md-6 col-lg-3">
               <div class="card text-bg-success">
                 <div class="card-body">
@@ -48,7 +48,7 @@
                 </div>
               </div>
             </div>
-        
+
             <div class="col-md-6 col-lg-3">
               <div class="card text-bg-warning">
                 <div class="card-body">
@@ -57,7 +57,7 @@
                 </div>
               </div>
             </div>
-        
+
             <div class="col-md-6 col-lg-3">
               <div class="card text-bg-danger">
                 <div class="card-body">
@@ -67,7 +67,7 @@
               </div>
             </div>
           </div>
-        
+
           <div class="mt-5">
             <h2>Assigned Tickets</h2>
             <table class="table table-striped">
@@ -116,14 +116,14 @@
                 </tr>
               </tbody>
             </table>
-  
+
             <div class="mt-5">
               <h2>Performance Chart</h2>
               <canvas id="agentChart" height="100"></canvas>
             </div>
           </div>
         </section>
-        
+
 
         <section id="assigned" class="content-section d-none">
           <h2>Assigned Tickets</h2>
@@ -146,17 +146,11 @@
                 <td>Low</td>
                 <td>John Doe</td>
                 <td>
-                  <button class="btn btn-sm btn-primary" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#ticketModal" 
-                  data-id="223" 
-                  data-title="Email not sending" 
-                  data-priority="Low" 
-                  data-status="Pending" 
-                  data-description="The user is having trouble sending an email (Probably a Crim Student)." 
-                  data-submitted-by="John Doe" 
-                  data-submitted-on="2025-04-15">
-                  View
+                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
+                    data-id="223" data-title="Email not sending" data-priority="Low" data-status="Pending"
+                    data-description="The user is having trouble sending an email (Probably a Crim Student)."
+                    data-submitted-by="John Doe" data-submitted-on="2025-04-15">
+                    View
                   </button>
                 </td>
               </tr>
@@ -167,17 +161,11 @@
                 <td>High</td>
                 <td>Bob Joe</td>
                 <td>
-                  <button class="btn btn-sm btn-primary" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#ticketModal" 
-                  data-id="224" 
-                  data-title="System crash on save" 
-                  data-priority="High" 
-                  data-status="Escalated" 
-                  data-description="When saving the user's code the system crashes." 
-                  data-submitted-by="Bob Joe" 
-                  data-submitted-on="2025-04-16">
-                  View
+                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
+                    data-id="224" data-title="System crash on save" data-priority="High" data-status="Escalated"
+                    data-description="When saving the user's code the system crashes." data-submitted-by="Bob Joe"
+                    data-submitted-on="2025-04-16">
+                    View
                   </button>
                 </td>
               </tr>
@@ -188,17 +176,11 @@
                 <td>High</td>
                 <td>Marie Cruz</td>
                 <td>
-                  <button class="btn btn-sm btn-primary" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#ticketModal" 
-                  data-id="301" 
-                  data-title="Email not syncing" 
-                  data-priority="High" 
-                  data-status="Pending" 
-                  data-description="The user's Outlook is not syncing emails from the server. Tried restarting the app, but the issue persists." 
-                  data-submitted-by="Marie Cruz" 
-                  data-submitted-on="2025-04-17">
-                  View
+                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
+                    data-id="301" data-title="Email not syncing" data-priority="High" data-status="Pending"
+                    data-description="The user's Outlook is not syncing emails from the server. Tried restarting the app, but the issue persists."
+                    data-submitted-by="Marie Cruz" data-submitted-on="2025-04-17">
+                    View
                   </button>
                 </td>
               </tr>
@@ -209,17 +191,11 @@
                 <td>Medium</td>
                 <td>Carlos Diaz</td>
                 <td>
-                  <button class="btn btn-sm btn-primary" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#ticketModal" 
-                  data-id="302" 
-                  data-title="VPN not connecting" 
-                  data-priority="Medium" 
-                  data-status="In Progress" 
-                  data-description="The user's device is unable to connect to a VPN." 
-                  data-submitted-by="Carlos Diaz" 
-                  data-submitted-on="2025-04-18">
-                  View
+                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
+                    data-id="302" data-title="VPN not connecting" data-priority="Medium" data-status="In Progress"
+                    data-description="The user's device is unable to connect to a VPN." data-submitted-by="Carlos Diaz"
+                    data-submitted-on="2025-04-18">
+                    View
                   </button>
                 </td>
               </tr>
@@ -302,7 +278,7 @@
   <div class="modal fade" id="ticketModal" tabindex="-1" aria-labelledby="ticketModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-      
+
         <div class="modal-header">
           <h5 class="modal-title" id="ticketModalLabel">Ticket Details</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -323,7 +299,8 @@
 
           <div class="mb-3">
             <label for="agentResponse" class="form-label">Agent Response</label>
-            <textarea id="agentResponse" class="form-control" rows="4" placeholder="Write your response here..."></textarea>
+            <textarea id="agentResponse" class="form-control" rows="4"
+              placeholder="Write your response here..."></textarea>
           </div>
         </div>
 
@@ -392,7 +369,7 @@
   <script>
     const modal = document.getElementById('ticketModal');
     modal.addEventListener('show.bs.modal', function (event) {
-      const button = event.relatedTarget; 
+      const button = event.relatedTarget;
       const ticketId = button.getAttribute('data-id');
       const ticketTitle = button.getAttribute('data-title');
       const ticketPriority = button.getAttribute('data-priority');
@@ -400,14 +377,14 @@
       const ticketDescription = button.getAttribute('data-description');
       const submittedBy = button.getAttribute('data-submitted-by');
       const submittedOn = button.getAttribute('data-submitted-on');
-  
+
       document.getElementById('ticketModalLabel').textContent = `Ticket #${ticketId} - ${ticketTitle}`;
       document.getElementById('modalPriority').textContent = ticketPriority;
       document.getElementById('modalStatus').textContent = ticketStatus;
       document.getElementById('modalDescription').textContent = ticketDescription;
       document.getElementById('modalSubmittedBy').textContent = submittedBy;
       document.getElementById('modalSubmittedOn').textContent = submittedOn;
-  
+
       const statusBadge = document.getElementById('modalStatus');
       if (ticketStatus === 'Pending') {
         statusBadge.classList.add('bg-warning');
@@ -420,7 +397,7 @@
         statusBadge.classList.remove('bg-warning', 'bg-success');
       }
     });
-  </script>  
+  </script>
   <script>
     const links = document.querySelectorAll('.sidebar a');
     const sections = document.querySelectorAll('.content-section');
@@ -440,17 +417,10 @@
     });
   </script>
   <script>
-    document.getElementById('confirmLogout').addEventListener('click', function () 
-    {
-      window.location.href = 'index.html'; 
+    document.getElementById('confirmLogout').addEventListener('click', function () {
+      window.location.href = 'index.html';
     });
   </script>
-  <script>
-  window.addEventListener('load', () => {
-    const container = document.querySelector('.container');
-    container.classList.add('loaded');
-  });
-</script>
 
 </body>
 
