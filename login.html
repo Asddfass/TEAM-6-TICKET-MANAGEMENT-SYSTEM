@@ -21,5 +21,37 @@
       <p id="loginError" class="error-message"></p>
     </form>
   </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#loginForm').on('submit', function (e) 
+      {
+        e.preventDefault();
+  
+        const username = $('input[name="username"]').val().trim();
+        const password = $('input[name="password"]').val().trim();
+  
+        if (username === 'admin' && password === 'admin123') 
+        {
+          window.location.href = 'admin-dashboard.html';
+        } 
+        else if (username === 'support' && password === 'support123') 
+        {
+          window.location.href = 'agentdash.html';
+        } 
+        else if (username === 'user' && password === 'user123') 
+        {
+          window.location.href = 'user-dashboard.html';
+        } 
+        else 
+        {
+          $('#loginError').text('Invalid username or password');
+        }
+      });
+    });
+  </script>
+  
 </body>
 </html>
