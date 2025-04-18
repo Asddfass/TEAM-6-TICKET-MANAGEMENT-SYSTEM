@@ -65,7 +65,6 @@ select {
   font-size: 14px;
 }
 
-
 .terms {
   display: flex;
   align-items: center;
@@ -81,7 +80,6 @@ select {
 .terms a:hover {
   text-decoration: underline;
 }
-
 
 .submit-button {
   width: 100%;
@@ -100,7 +98,6 @@ select {
   background-color: #990000;
 }
 
-
 .content {
   width: 100%;
   margin-bottom: 20px;
@@ -112,8 +109,7 @@ select {
   flex-wrap: wrap;
 }
 
-.search input[type="text"],
-.search select {
+.search input[type="text"], .search select {
   width: 48%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -127,8 +123,7 @@ select {
   color: #999;
 }
 
-.search input[type="text"]:focus,
-.search select:focus {
+.search input[type="text"]:focus, .search select:focus {
   border-color: #b30000;
   outline: none;
 }
