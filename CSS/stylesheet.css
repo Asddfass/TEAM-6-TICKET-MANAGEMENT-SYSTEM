@@ -50,7 +50,7 @@ nav a {
     background-image: url('../IMG/landing_front.png');
     background-size: cover;
     background-position: center;
-    height: 90vh;
+    height: 92vh;
     color: white;
     display: flex;
     align-items: center;
@@ -66,19 +66,20 @@ nav a {
 
 .home-content {
     position: relative;
-    max-width: 400px;
+    margin-left: 150px;
+    max-width: 600px;
     z-index: 1;
 }
 
 #home h2 {
-    font-size: 3rem;
+    font-size: 4.5rem;
     margin-bottom: 1rem;
     z-index: 1;
     position: relative;
 }
 
 #home p {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     z-index: 1;
     position: relative;
 }
@@ -155,9 +156,13 @@ footer {
     font-size: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1058px) {
     #home h2 {
-      font-size: 2rem;
+      font-size: 3rem;
+    }
+
+    #home p {
+        font-size: 1rem;
     }
     
     .section {
@@ -167,4 +172,34 @@ footer {
     #home {
       padding: 2rem;
     }
+    
+    .home-content {
+        margin-left: 150px;
+        max-width: 450px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    #home h2 {
+      font-size: 2.4rem;
+    }
+
+    #home p {
+        font-size: 0.8rem;
+    }
+    
+    .section {
+      flex-direction: column;
+    }
+
+    #home {
+      padding: 2rem;
+    }
+    
+    .home-content {
+        margin-left: 75px;
+        max-width: 300px;
+    }
+
 }
