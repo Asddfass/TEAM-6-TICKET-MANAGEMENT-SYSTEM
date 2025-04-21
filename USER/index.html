@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty Dashboard - Home</title>
+    <title>Faculty Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="CSS/userStyle.css">
+    <link rel="stylesheet" href="userStyle.css">
 </head>
 <body>
     <div class="dashboard-container d-flex">
@@ -14,25 +14,25 @@
             <div>
                 <ul class="nav nav-pills flex-column mt-4">
                     <li class="nav-item">
-                        <a href="" class="nav-link active" aria-current="page">
+                        <a href="#home-section" class="nav-link active" aria-current="page"> 
                             <i class="fas fa-home me-2"></i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="REQUEST/" class="nav-link">
+                        <a href="#request-section" class="nav-link">
                             <i class="fas fa-file-alt me-2"></i>
                             <span>Request</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="STATUS/" class="nav-link">
+                        <a href="#status-section" class="nav-link">
                             <i class="fas fa-hourglass-half me-2"></i>
                             <span>Status</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="HISTORY/" class="nav-link">
+                        <a href="#history-section" class="nav-link">
                             <i class="fas fa-history me-2"></i>
                             <span>History</span>
                         </a>
@@ -40,81 +40,322 @@
                 </ul>
             </div>
             <div class="logout-section">
-                <a href="../LOGIN/" class="nav-link">
+                <a href="index.html" id="logout-link" class="nav-link">
                    <i class="fas fa-sign-out-alt me-2"></i>
                    <span>Logout</span>
+               </a>
            </div>
         </nav>
 
         <div class="main-content flex-grow-1">
-            <header class="header d-flex justify-content-between align-items-center p-3 shadow-sm">
+             <header class="header d-flex justify-content-between align-items-center p-3 shadow-sm">
                 <h4 class="mb-0">Faculty Dashboard</h4>
-                <div class="header-icons">
-                    <a href="#" class="text-decoration-none me-3"><i class="fas fa-bell fs-5"></i></a>
-                    <a href="#" class="text-decoration-none me-3"><i class="fas fa-cog fs-5"></i></a>
-                    <a href="#" class="text-decoration-none"><i class="fas fa-user-circle fs-5"></i></a>
+                <div class="header-icons d-flex align-items-center">
+                    <a href="#" class="text-decoration-none me-3 text-secondary" id="settings-icon-link" title="Settings">
+                        <i class="fas fa-cog fs-5"></i>
+                    </a>
+                    <a href="#" class="text-decoration-none text-secondary" id="profile-icon-link" title="View Profile">
+                        <i class="fas fa-user-circle fs-5"></i>
+                    </a>
                 </div>
             </header>
 
             <div class="content-area p-4">
-                <h5 class="mb-4">Home</h5>
 
-                <div class="row g-4 mb-4">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card status-card status-pending h-100">
-                            <div class="card-body">
-                                <div>
-                                    <h6 class="card-title mb-1">Pending Request</h6>
-                                    <a href="STATUS/" class="card-link text-decoration-none">View All Requests</a>
+                <!-- HOME SECTION -->
+                <div class="content-section" id="home-section">
+                    <h5 class="mb-4">Home</h5>
+                    <div class="row g-3 mb-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="info-box info-box-pending h-100">
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Pending Request</span>
+                                    <span class="info-box-number" id="pending-count">0</span>
+                                    <a href="#status-section" class="view-link internal-nav">View All Requests</a>
                                 </div>
-                                <div class="count display-4 fw-bold">0</div> 
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                             <div class="info-box info-box-approved h-100">
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Approved Request</span>
+                                    <span class="info-box-number" id="approved-count">0</span>
+                                    <a href="#status-section" class="view-link internal-nav">View All Requests</a>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-lg-4 col-md-6">
+                            <div class="info-box info-box-progress h-100">
+                                <div class="info-box-content">
+                                    <span class="info-box-text">In Progress</span>
+                                    <span class="info-box-number" id="progress-count">0</span>
+                                    <a href="#status-section" class="view-link internal-nav">View All Requests</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card status-card status-approved h-100">
-                             <div class="card-body">
-                                <div>
-                                    <h6 class="card-title mb-1">Approved Request</h6>
-                                    <a href="STATUS/" class="card-link text-decoration-none">View All Requests</a>
-                                </div>
-                                <div class="count display-4 fw-bold">0</div> 
-                            </div>
-                        </div>
-                    </div>
-
-                     <div class="col-lg-4 col-md-6">
-                        <div class="card status-card status-progress h-100">
-                             <div class="card-body">
-                                <div>
-                                    <h6 class="card-title mb-1">In Progress</h6>
-                                    <a href="STATUS/" class="card-link text-decoration-none">View All Requests</a>
-                                </div>
-                                <div class="count display-4 fw-bold">0</div> 
+                    <div class="card notification-card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3"><i class="fas fa-bell me-2"></i>Notifications</h5>
+                            <div id="notification-content">
+                                <p class="text-muted text-center" id="no-notification-message">No notifications yet.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card notification-card">
-                    <div class="card-body">
-                         <h5 class="card-title mb-3">
-                            <i class="fas fa-bell me-2"></i>Notifications
-                         </h5>
-                         <p class="text-muted text-center">
-                            No notifications yet. Submit a request to get updates.
-                         </p>
-                    </div>
+                <!-- REQUEST SECTION -->
+                <div class="content-section" id="request-section" style="display: none;">
+                     <h5 class="mb-4">Submit a Request</h5>
+                     <form action="#" method="post" class="request-form needs-validation" id="request-form" novalidate>
+                         <fieldset class="mb-4 p-3 border rounded">
+                             <legend class="fw-bold h6 float-none w-auto px-2">Full Name</legend>
+                             <div class="row g-3">
+                                 <div class="col-md-4">
+                                     <label for="last-name" class="form-label">Last Name</label>
+                                     <input type="text" class="form-control form-control-sm" id="last-name" name="last_name" required>
+                                     <div class="invalid-feedback">Please provide a last name.</div>
+                                 </div>
+                                 <div class="col-md-4">
+                                     <label for="first-name" class="form-label">First Name</label>
+                                     <input type="text" class="form-control form-control-sm" id="first-name" name="first_name" required>
+                                     <div class="invalid-feedback">Please provide a first name.</div>
+                                 </div>
+                                 <div class="col-md-2">
+                                     <label for="middle-name" class="form-label">Middle</label>
+                                     <input type="text" class="form-control form-control-sm" id="middle-name" name="middle_name">
+                                 </div>
+                                 <div class="col-md-2">
+                                     <label for="suffix" class="form-label">Suffix</label>
+                                     <input type="text" class="form-control form-control-sm" id="suffix" name="suffix">
+                                 </div>
+                             </div>
+                         </fieldset>
+                         <div class="row g-3 mb-3">
+                             <div class="col-md-6">
+                                 <label for="email" class="form-label">Email</label>
+                                 <input type="email" class="form-control form-control-sm" id="email" name="email" required>
+                                 <div class="invalid-feedback">Please provide a valid email address.</div>
+                             </div>
+                             <div class="col-md-6">
+                                 <label for="employee-id" class="form-label">Employee ID</label>
+                                 <input type="text" class="form-control form-control-sm" id="employee-id" name="employee_id" required>
+                                 <div class="invalid-feedback">Please provide your Employee ID.</div>
+                             </div>
+                         </div>
+                         <div class="row g-3 mb-3">
+                             <div class="col-md-6">
+                                 <label for="college" class="form-label">College</label>
+                                 <select class="form-select form-select-sm" id="college" name="college" required>
+                                     <option value="" disabled selected>Select...</option>
+                                     <option value="ccs">Computing Studies</option>
+                                <option value="claw">Law</option>
+                                <option value="coa">Agriculture</option>
+                                <option value="cla">Liberal Arts</option>
+                                <option value="carch">Architecture</option>
+                                <option value="cn">Nursing</option>
+                                <option value="cais">Asian & Islamic Studies</option>
+                                <option value="cfes">Forestry & Environmental Studies</option>
+                                <option value="ccje">Criminal Justice Education</option>
+                                <option value="che">Home Economics</option>
+                                <option value="coe">Engineering</option>
+                                <option value="cm">Medicine</option>
+                                <option value="cpads">Public Administration & Development Studies</option>
+                                <option value="csspe">Sports Science & Physical Education</option>
+                                <option value="csm">Science and Mathematics</option>
+                                <option value="cswcd">Social Work & Community Development</option>
+                                <option value="cte">Teacher Education</option>
+                                 </select>
+                                 <div class="invalid-feedback">Please select a department.</div>
+                             </div>
+                             <div class="col-md-6">
+                                 <label for="request-type" class="form-label">Type of Request / Issue</label>
+                                 <select class="form-select form-select-sm" id="request-type" name="request_type" required>
+                                     <option value="" disabled selected>Select...</option>
+                                     <option value="technical_support">Technical Support</option>
+                                     <option value="classroom_issue">Classroom Issue</option>
+                                     <option value="supplies_request">Supplies Request</option>
+                                     <option value="maintenance">Maintenance</option>
+                                     <option value="hr_query">HR Query</option>
+                                     <option value="other">Other</option>
+                                 </select>
+                                 <div class="invalid-feedback">Please select the type of request.</div>
+                             </div>
+                         </div>
+                         <div class="row g-3 mb-3">
+                             <div class="col-md-6">
+                                 <label for="priority" class="form-label">Priority Level</label>
+                                 <select class="form-select form-select-sm" id="priority" name="priority" required>
+                                     <option value="" disabled selected>Select...</option>
+                                     <option value="low">Low</option>
+                                     <option value="medium">Medium</option>
+                                     <option value="high">High</option>
+                                     <option value="urgent">Urgent</option>
+                                 </select>
+                                 <div class="invalid-feedback">Please select a priority level.</div>
+                             </div>
+                             <div class="col-md-6">
+                                 <label for="request-title" class="form-label">Request Title / Subject</label>
+                                 <input type="text" class="form-control form-control-sm" id="request-title" name="request_title" required>
+                                 <div class="invalid-feedback"> Please provide a title or subject for your request.</div>
+                             </div>
+                         </div>
+                         <div class="mb-3">
+                             <label for="request-details" class="form-label">Request Details / Description</label>
+                             <textarea class="form-control form-control-sm" id="request-details" name="request_details" rows="4" required></textarea>
+                             <div class="invalid-feedback">Please provide details about your request.</div>
+                         </div>
+                         <div class="mb-4">
+                             <label for="attachments" class="form-label">Upload Supporting Files or Photos (optional)</label>
+                             <input class="form-control form-control-sm" type="file" id="attachments" name="attachments[]" multiple>
+                             <div class="form-text small">You can upload multiple files if needed.</div>
+                         </div>
+                         <div class="form-check mb-4">
+                             <input class="form-check-input" type="checkbox" value="" id="terms" name="terms" required>
+                             <label class="form-check-label" for="terms">I acknowledge that the information provided is accurate. </label>
+                             <div class="invalid-feedback">You must acknowledge before submitting.</div>
+                         </div>
+                         <div class="mb-3">
+                             <button class="btn btn-danger" type="submit">Submit</button>
+                             <button class="btn btn-secondary ms-2" type="reset">Clear</button>
+                         </div>
+                     </form>
                 </div>
 
+                <!-- STATUS SECTION -->
+                <div class="content-section" id="status-section" style="display: none;">
+                    <h5 class="mb-4">Current Request Status</h5>
+                    <div class="content-table-header d-flex justify-content-between align-items-center mb-3 px-3 py-2" style="display: none;">
+                         <div class="col-content"><strong>Ticket #</strong></div>
+                         <div class="col-content"><strong>Subject</strong></div>
+                         <div class="col-content"><strong>Status</strong></div>
+                         <div class="col-content text-end"><strong>Submitted</strong></div>
+                         <div class="col-content text-end" style="flex-basis: 140px; flex-grow: 0;"><strong>Action</strong></div>
+                    </div>
+                    <div class="status-content mb-4" id="status-content">
+                    </div>
+                    <div class="text-center py-5 border-top" id="no-status-message" style="display: none;">
+                         <p class="text-muted fs-5 mb-2">No active requests found.</p>
+                         <a href="#request-section" class="text-decoration-none link-danger fw-medium nav-link internal-nav"><i class="fas fa-plus-circle me-1"></i>Submit Request Now</a>
+                     </div>
+                </div>
+
+                <!-- HISTORY SECTION -->
+                <div class="content-section" id="history-section" style="display: none;">
+                    <h5 class="mb-4">Completed Request History</h5>
+                    <div class="content-table-container">
+                        <div class="content-table-header d-flex justify-content-between align-items-center mb-3 px-3 py-2" style="display: none;">
+                            <div class="col-content"><strong>Ticket #</strong></div>
+                            <div class="col-content"><strong>Subject</strong></div>
+                            <div class="col-content"><strong>Status</strong></div>
+                            <div class="col-content text-end"><strong>Completed/Rejected</strong></div>
+                            <div class="col-content text-end" style="flex-basis: 80px; flex-grow: 0;"><strong>Action</strong></div>
+                        </div>
+                        <div class="history-content mb-4" id="history-content">
+                        </div>
+                        <div class="text-center py-5 border-top" id="no-history-message" style="display: none;">
+                            <p class="text-muted fs-5 mb-2">No completed requests found.</p>
+                            <a href="#request-section" class="text-decoration-none link-danger fw-medium nav-link internal-nav"><i class="fas fa-plus-circle me-1"></i>Submit Request Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <!-- View Details Modal -->
+    <div class="modal fade" id="viewRequestModal" tabindex="-1" aria-labelledby="viewRequestModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewRequestModalLabel">Request Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="view-request-form">
+                        <fieldset class="mb-3 p-3 border rounded">
+                            <legend class="fw-bold h6 float-none w-auto px-2 fs-sm">Submitter</legend>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Last Name</label><input type="text" class="form-control form-control-sm form-control-plaintext ps-1" id="view-last-name" readonly></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">First Name</label><input type="text" class="form-control form-control-sm form-control-plaintext ps-1" id="view-first-name" readonly></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Middle</label><input type="text" class="form-control form-control-sm form-control-plaintext ps-1" id="view-middle-name" readonly></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Suffix</label><input type="text" class="form-control form-control-sm form-control-plaintext ps-1" id="view-suffix" readonly></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Email</label><input type="email" class="form-control form-control-sm form-control-plaintext ps-1" id="view-email" readonly></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Employee ID</label><input type="text" class="form-control form-control-sm form-control-plaintext ps-1" id="view-employee-id" readonly></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">College</label><input type="text" class="form-control form-control-sm form-control-plaintext ps-1" id="view-college" readonly></div>
+                        </fieldset>
+                        <fieldset class="mb-3 p-3 border rounded">
+                            <legend class="fw-bold h6 float-none w-auto px-2 fs-sm">Request Info</legend>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Type</label><input type="text" class="form-control form-control-sm form-control-plaintext ps-1" id="view-request-type" readonly></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Priority</label><input type="text" class="form-control form-control-sm form-control-plaintext ps-1" id="view-priority" readonly></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Subject</label><input type="text" class="form-control form-control-sm form-control-plaintext ps-1" id="view-request-title" readonly></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Details</label><textarea class="form-control form-control-sm form-control-plaintext ps-1" id="view-request-details" rows="4" readonly></textarea></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Attachments</label><div id="view-attachments" class="form-control-plaintext ps-1 text-muted"></div></div>
+                        </fieldset>
+                        <fieldset class="mb-1 p-3 border rounded">
+                            <legend class="fw-bold h6 float-none w-auto px-2 fs-sm">Status & Timeline</legend>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Status</label><div id="view-status" class="fw-bold ps-1"></div></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Submitted</label><p id="view-submitted" class="form-control-plaintext ps-1 mb-0"></p></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Updated</label><p id="view-last-updated" class="form-control-plaintext ps-1 mb-0"></p></div>
+                            <div class="mb-2"><label class="form-label form-label-sm d-block">Completed/Rejected</label><p id="view-completed" class="form-control-plaintext ps-1 mb-0"></p></div>
+                            <div class="mb-2" id="view-notes-row" style="display: none;"><label class="form-label form-label-sm d-block">Notes</label><textarea class="form-control form-control-sm form-control-plaintext ps-1" id="view-notes" rows="2" readonly></textarea></div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
             </div>
         </div>
     </div>
 
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <script src="userScript.js"></script>
-    
-    </body>
-    </html>
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title" id="confirmationModalLabel">Confirm</h5></div>
+                <div class="modal-body" id="confirmationModalBody"></div>
+                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button><button type="button" class="btn btn-danger" id="confirmActionButton">Confirm</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Modal -->
+    <div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="userProfileModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userProfileModalLabel">User Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-3">
+                        <img src="placeholder-profile.png" alt="Profile Picture" id="profile-picture" class="rounded-circle mb-2" width="80" height="80" style="object-fit: cover; border: 1px solid #ccc;">
+                        <i class="fas fa-user-circle fs-1 text-secondary" id="profile-icon-placeholder" style="display: none;"></i>
+                    </div>
+                    <p class="text-center fs-5 fw-medium mb-3" id="profile-name">Faculty Member</p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong class="text-muted">Email:</strong><br><span id="profile-email">faculty@example.edu</span></p>
+                            <p><strong class="text-muted">Employee ID:</strong><br><span id="profile-employee-id">E00000</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong class="text-muted">College:</strong><br><span id="profile-college">N/A</span></p>
+                            <p><strong class="text-muted">Position:</strong><br><span id="profile-position">Faculty</span></p>
+                            <p><strong class="text-muted">Phone:</strong><br><span id="profile-phone">N/A</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="userScript.js"></script>
+</body>
+</html>
