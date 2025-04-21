@@ -7,77 +7,78 @@
   <link rel="stylesheet" href="CSS/registration.css">
 </head>
 <body>
-    <div class="container">
-      <h2>Registration</h2>
-      <form>
-        <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" name="lastName" required>
-        </div>
-        <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input type="text" id="firstName" name="firstName" required>
-        </div>
-        <div class="form-group">
-          <label for="middleName">Middle Name (optional)</label>
-          <input type="text" id="middleName" name="middleName">
-        </div>
-        <div class="form-group">
-          <label for="suffix">Suffix (optional)</label>
-          <input type="text" id="suffix" name="suffix">
-        </div>
-        <div class="form-group">
-          <label for="employeeId">Employee ID Number</label>
-          <input type="text" id="employeeId" name="employeeId" required>
-        </div>
-        <div class="form-group">
-            <label for="department">Department</label>
-            <select id="department" name="department" placeholder="Select Department" required>
-                <option value="" disabled selected>Select College</option>
-                <option value="College of Agriculture">College of Agriculture</option>
-                <option value="College of Architecture">College of Architecture</option>
-                <option value="College of Asian & Islamic Studies">College of Asian & Islamic Studies</option>
-                <option value="College of Computing Studies">College of Computing Studies</option>
-                <option value="College of Criminal Justice Education">College of Criminal Justice Education</option>
-                <option value="College of Engineering">College of Engineering</option>
-                <option value="College of Forestry & Environmental Studies">College of Forestry & Environmental Studies</option>
-                <option value="College of Home Economics">College of Home Economics</option>
-                <option value="College of Law">College of Law</option>
-                <option value="College of Liberal Arts">College of Liberal Arts</option>
-                <option value="College of Medicine">College of Medicine</option>
-                <option value="College of Nursing">College of Nursing</option>
-                <option value="College of Public Administration & Development Studies">College of Public Administration & Development Studies</option>
-                <option value="College of Science and Mathematics">College of Science and Mathematics</option>
-                <option value="College of Social Work & Community Development">College of Social Work & Community Development</option>
-                <option value="College of Sports Science & Physical Education">College of Sports Science & Physical Education</option>
-                <option value="College of Teacher Education">College of Teacher Education</option>
-              </select>
-        
-            </select>
-          </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="contact">Contact Number (optional)</label>
-          <input type="text" id="contact" name="contact">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
-        </div>
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" required see password>
-        </div>
-        <div class="form-group-full terms">
-          <input type="checkbox" id="terms" name="terms">
-          <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
-        </div>
-        <button type="submit" class="submit-button">Create Account</button>
-      </form>
-    </div>
-  </body>
-  </html>
-  
+
+  <!-- Back to landing page button -->
+  <a href="landing.html" class="back-button">&#8592; Back</a>
+
+  <div class="container">
+    <h2>Registration</h2>
+    <form>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" required>
+      </div>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" required>
+      </div>
+      <div class="form-group">
+        <label for="middleName">Middle Name (optional)</label>
+        <input type="text" id="middleName" name="middleName">
+      </div>
+      <div class="form-group">
+        <label for="suffix">Suffix (optional)</label>
+        <input type="text" id="suffix" name="suffix">
+      </div>
+      <div class="form-group">
+        <label for="employeeId">Employee ID Number</label>
+        <input type="text" id="employeeId" name="employeeId" required>
+      </div>
+      <div class="form-group">
+        <label for="department">Department</label>
+        <select id="department" name="department" required>
+          <option value="" disabled selected>Select College</option>
+          <option value="College of Agriculture">College of Agriculture</option>
+          <option value="College of Architecture">College of Architecture</option>
+          <option value="College of Asian & Islamic Studies">College of Asian & Islamic Studies</option>
+          <option value="College of Computing Studies">College of Computing Studies</option>
+          <option value="College of Criminal Justice Education">College of Criminal Justice Education</option>
+          <option value="College of Engineering">College of Engineering</option>
+          <option value="College of Forestry & Environmental Studies">College of Forestry & Environmental Studies</option>
+          <option value="College of Home Economics">College of Home Economics</option>
+          <option value="College of Law">College of Law</option>
+          <option value="College of Liberal Arts">College of Liberal Arts</option>
+          <option value="College of Medicine">College of Medicine</option>
+          <option value="College of Nursing">College of Nursing</option>
+          <option value="College of Public Administration & Development Studies">College of Public Administration & Development Studies</option>
+          <option value="College of Science and Mathematics">College of Science and Mathematics</option>
+          <option value="College of Social Work & Community Development">College of Social Work & Community Development</option>
+          <option value="College of Sports Science & Physical Education">College of Sports Science & Physical Education</option>
+          <option value="College of Teacher Education">College of Teacher Education</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact Number (optional)</label>
+        <input type="text" id="contact" name="contact">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+      </div>
+      <div class="form-group-full terms">
+        <input type="checkbox" id="terms" name="terms">
+        <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+      </div>
+      <button type="submit" class="submit-button">Create Account</button>
+    </form>
+  </div>
+</body>
+</html>
