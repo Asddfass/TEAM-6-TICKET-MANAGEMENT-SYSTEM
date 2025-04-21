@@ -11,10 +11,12 @@
 
 <body>
   <div class="d-flex">
+    <button class="btn btn-danger d-md-none m-2" id="sidebarToggle">☰</button>
+
     <div class="sidebar d-flex flex-column p-3 position-fixed" style="width: 250px;">
       <div class="logo">
-        <img src="IMG/wmsu_logo.png" alt="Agent Logo">
-        <span>Agent Name</span>
+        <img src="../IMG/wmsu_logo.png" alt="Agent Logo">
+        <span>Kevin Trazie</span>
       </div>
       <a href="#dashboard" class="active">Dashboard</a>
       <a href="#assigned">Assigned Tickets</a>
@@ -268,7 +270,13 @@
         <section id="settings" class="content-section d-none">
           <h2>Settings</h2>
           <p>Update profile settings, password, etc.</p>
+        
+          <div class="form-check form-switch mt-3">
+            <input class="form-check-input" type="checkbox" id="darkModeToggle">
+            <label class="form-check-label" for="darkModeToggle">Enable Dark Mode</label>
+          </div>
         </section>
+        
 
       </div>
     </div>
@@ -419,6 +427,14 @@
   <script>
     document.getElementById('confirmLogout').addEventListener('click', function () {
       window.location.href = '../';
+    });
+  </script>
+  <script>
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.sidebar');
+  
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
     });
   </script>
 
