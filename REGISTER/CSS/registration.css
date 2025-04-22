@@ -1,3 +1,4 @@
+/* Global box-sizing and font reset */
 * {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
@@ -5,6 +6,7 @@
   padding: 0;
 }
 
+/* Body with background image and gradient overlay */
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
               url('../../IMG/wmsuBackground.png') center/cover no-repeat;
@@ -15,6 +17,7 @@ body {
   position: relative;
 }
 
+/* Container with glassmorphism effect */
 .container {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
@@ -27,6 +30,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+/* Heading style */
 h2 {
   text-align: center;
   color: white;
@@ -34,6 +38,7 @@ h2 {
   font-size: 32px;
 }
 
+/* Form layout using flexbox with wrapping and gap */
 form {
   display: flex;
   flex-wrap: wrap;
@@ -41,6 +46,7 @@ form {
   justify-content: space-between;
 }
 
+/* Form groups with flexible width and column layout */
 .form-group,
 .form-group-full {
   flex: 1 1 45%;
@@ -48,16 +54,19 @@ form {
   flex-direction: column;
 }
 
+/* Full width form group */
 .form-group-full {
   flex: 1 1 100%;
 }
 
+/* Label styling */
 label {
   color: white;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
+/* Input and select styling with glassmorphism */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -73,17 +82,20 @@ select {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Placeholder and select text color */
 input::placeholder,
 select {
   color: #eee;
 }
 
+/* Focus styles for inputs and selects */
 input:focus,
 select:focus {
   outline: none;
   border: 1px solid #fff;
 }
 
+/* Terms section layout and styling */
 .terms {
   flex-direction: row;
   align-items: center;
@@ -92,6 +104,7 @@ select:focus {
   color: white;
 }
 
+/* Terms links styling */
 .terms a {
   color: #ffcccc;
   text-decoration: none;
@@ -101,6 +114,7 @@ select:focus {
   text-decoration: underline;
 }
 
+/* Submit button styling */
 .submit-button {
   flex: 1 1 100%;
   padding: 15px;
@@ -119,11 +133,12 @@ select:focus {
   background-color: rgba(153, 0, 0, 0.9);
 }
 
+/* Select option text color */
 select option {
   color: black;
 }
 
-/* ✅ Added Back Button */
+/* Back button with glassmorphism and positioning */
 .back-button {
   position: absolute;
   top: 20px;
@@ -145,4 +160,80 @@ select option {
 
 .back-button:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive styles */
+
+/* Small devices (max-width: 599px) */
+@media (max-width: 599px) {
+  form {
+    flex-direction: column;
+  }
+  .form-group,
+  .form-group-full {
+    flex: 1 1 100%;
+  }
+  .container {
+    padding: 20px;
+    max-width: 90%;
+  }
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .submit-button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+/* Medium devices (600px to 1023px) */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .container {
+    max-width: 500px;
+    padding: 30px;
+  }
+  h2 {
+    font-size: 28px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    font-size: 13px;
+    padding: 11px;
+  }
+  .submit-button {
+    font-size: 15px;
+    padding: 14px;
+  }
+}
+
+/* Large devices (1024px and above) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 600px;
+    padding: 40px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    font-size: 14px;
+    padding: 12px;
+  }
+  .submit-button {
+    font-size: 16px;
+    padding: 15px;
+  }
 }
