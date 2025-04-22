@@ -11,8 +11,10 @@
 
 <body>
   <div class="d-flex">
+    <!-- Sidebar toggle button for small devices -->
     <button class="btn btn-danger d-md-none m-2" id="sidebarToggle">☰</button>
 
+    <!-- Sidebar navigation -->
     <div class="sidebar d-flex flex-column p-3 position-fixed" style="width: 250px;">
       <div class="logo">
         <img src="../IMG/wmsu_logo.png" alt="Agent Logo">
@@ -26,13 +28,16 @@
       <button class="logout mt-auto" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</button>
     </div>
 
+    <!-- Main dashboard content -->
     <div class="dashboard-content w-100">
       <div class="container-fluid">
 
+        <!-- Dashboard overview section -->
         <section id="dashboard" class="content-section">
           <h1 class="mb-4">Agent Overview</h1>
 
           <div class="row g-4">
+            <!-- New Tickets card -->
             <div class="col-md-6 col-lg-3">
               <div class="card text-bg-primary">
                 <div class="card-body">
@@ -42,6 +47,7 @@
               </div>
             </div>
 
+            <!-- Resolved Tickets card -->
             <div class="col-md-6 col-lg-3">
               <div class="card text-bg-success">
                 <div class="card-body">
@@ -51,6 +57,7 @@
               </div>
             </div>
 
+            <!-- Pending Tickets card -->
             <div class="col-md-6 col-lg-3">
               <div class="card text-bg-warning">
                 <div class="card-body">
@@ -60,6 +67,7 @@
               </div>
             </div>
 
+            <!-- Escalated Tickets card -->
             <div class="col-md-6 col-lg-3">
               <div class="card text-bg-danger">
                 <div class="card-body">
@@ -70,6 +78,7 @@
             </div>
           </div>
 
+          <!-- Assigned Tickets table -->
           <div class="mt-5">
             <h2>Assigned Tickets</h2>
             <table class="table table-striped">
@@ -119,6 +128,7 @@
               </tbody>
             </table>
 
+            <!-- Performance chart -->
             <div class="mt-5">
               <h2>Performance Chart</h2>
               <canvas id="agentChart" height="100"></canvas>
@@ -126,7 +136,7 @@
           </div>
         </section>
 
-
+        <!-- Assigned Tickets section (hidden by default) -->
         <section id="assigned" class="content-section d-none">
           <h2>Assigned Tickets</h2>
           <table class="table table-bordered table-striped">
@@ -148,6 +158,7 @@
                 <td>Low</td>
                 <td>John Doe</td>
                 <td>
+                  <!-- Button to open ticket modal with data attributes -->
                   <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
                     data-id="223" data-title="Email not sending" data-priority="Low" data-status="Pending"
                     data-description="The user is having trouble sending an email (Probably a Crim Student)."
@@ -163,6 +174,7 @@
                 <td>High</td>
                 <td>Bob Joe</td>
                 <td>
+                  <!-- Button to open ticket modal with data attributes -->
                   <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
                     data-id="224" data-title="System crash on save" data-priority="High" data-status="Escalated"
                     data-description="When saving the user's code the system crashes." data-submitted-by="Bob Joe"
@@ -178,6 +190,7 @@
                 <td>High</td>
                 <td>Marie Cruz</td>
                 <td>
+                  <!-- Button to open ticket modal with data attributes -->
                   <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
                     data-id="301" data-title="Email not syncing" data-priority="High" data-status="Pending"
                     data-description="The user's Outlook is not syncing emails from the server. Tried restarting the app, but the issue persists."
@@ -193,6 +206,7 @@
                 <td>Medium</td>
                 <td>Carlos Diaz</td>
                 <td>
+                  <!-- Button to open ticket modal with data attributes -->
                   <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
                     data-id="302" data-title="VPN not connecting" data-priority="Medium" data-status="In Progress"
                     data-description="The user's device is unable to connect to a VPN." data-submitted-by="Carlos Diaz"
@@ -205,7 +219,7 @@
           </table>
         </section>
 
-
+        <!-- Open Tickets section (hidden by default) -->
         <section id="open" class="content-section d-none">
           <h2>Open Tickets</h2>
           <table class="table table-hover">
@@ -237,7 +251,7 @@
           </table>
         </section>
 
-
+        <!-- Resolved Tickets section (hidden by default) -->
         <section id="resolved" class="content-section d-none">
           <h2>Resolved Tickets</h2>
           <table class="table table-success table-striped">
@@ -266,7 +280,7 @@
           </table>
         </section>
 
-
+        <!-- Settings section (hidden by default) -->
         <section id="settings" class="content-section d-none">
           <h2>Settings</h2>
           <p>Update profile settings, password, etc.</p>
