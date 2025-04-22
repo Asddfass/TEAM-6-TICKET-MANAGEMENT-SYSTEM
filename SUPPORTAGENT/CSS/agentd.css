@@ -120,13 +120,12 @@ h5.card-title {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Sidebar Toggle */
 #sidebarToggle {
     position: fixed;
     top: 10px;
     left: 10px;
     z-index: 1050;
-  }
+}
   
 @media (max-width: 767.98px) {
     .sidebar {

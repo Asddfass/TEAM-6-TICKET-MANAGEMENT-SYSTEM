@@ -25,7 +25,7 @@ links.forEach(link =>
     });
 });
 
-/* VIEW MODAL */
+/* VIEW TICKET MODAL */
 
 const modal = document.getElementById('ticketModal');
 
