@@ -159,7 +159,7 @@
         </tbody>
       </table>
 
-      <!-- Edit Ticket Modal -->
+     
       <div id="editModal" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
           background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); z-index: 1000;">
         <h2>Edit Ticket</h2>
@@ -185,7 +185,7 @@
         </form>
       </div>
 
-      <!-- Modal Overlay -->
+   
       <div id="modalOverlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
           background: rgba(0,0,0,0.5); z-index: 999;"></div>
     </div>
@@ -260,9 +260,7 @@
       <div class="chart-container" style="margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
         <canvas id="reportChart"></canvas>
       </div>
-      <div class="chart-container" style="margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
-        <canvas id="priorityChart"></canvas>
-      </div>
+
       <div class="chart-container" style="max-width: 700px; margin-left: auto; margin-right: auto;">
         <canvas id="trendChart"></canvas>
       </div>
@@ -276,11 +274,7 @@
           <option value="enabled">Enabled</option>
           <option value="disabled">Disabled</option>
         </select><br />
-        <label for="theme">Theme:</label><br />
-        <select id="theme" name="theme" style="width: 100%; padding: 8px; margin-bottom: 15px;">
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select><br />
+      
         <button type="button" onclick="alert('Settings saved!')" style="padding: 10px 20px; background-color: crimson; color: white; border: none; border-radius: 5px; cursor: pointer;">Save</button>
       </form>
     </div>
@@ -327,7 +321,7 @@
       }
     });
 
-    // Additional chart for reports section
+    
     const reportCtx = document.getElementById('reportChart').getContext('2d');
     const reportChart = new Chart(reportCtx, {
       type: 'pie',
@@ -355,7 +349,7 @@
   </script>
 
   <script>
-    // Ticket management functionality
+  
     document.addEventListener('DOMContentLoaded', () => {
       const ticketsTable = document.getElementById('ticketsTable').getElementsByTagName('tbody')[0];
       const editModal = document.getElementById('editModal');
@@ -363,13 +357,12 @@
       const editForm = document.getElementById('editForm');
       let currentEditRow = null;
 
-      // Show modal
+   
       function showModal() {
         editModal.style.display = 'block';
         modalOverlay.style.display = 'block';
       }
 
-      // Hide modal
       function hideModal() {
         editModal.style.display = 'none';
         modalOverlay.style.display = 'none';
@@ -377,7 +370,7 @@
         editForm.reset();
       }
 
-      // Handle Edit button click
+      
       ticketsTable.addEventListener('click', (e) => {
         if (e.target.classList.contains('editBtn')) {
           currentEditRow = e.target.closest('tr');
@@ -398,7 +391,7 @@
         }
       });
 
-      // Handle form submission for editing
+      
       editForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (currentEditRow) {
@@ -411,12 +404,12 @@
         }
       });
 
-      // Cancel edit
+      
       document.getElementById('cancelEdit').addEventListener('click', () => {
         hideModal();
       });
 
-      // Add Ticket button functionality
+      
       document.getElementById('addTicketBtn').addEventListener('click', () => {
         const newRow = ticketsTable.insertRow();
         const newId = `#${(ticketsTable.rows.length).toString().padStart(3, '0')}`;
@@ -444,10 +437,10 @@
           </td>
         `;
 
-        // Disable Add Ticket button while adding
+       
         document.getElementById('addTicketBtn').disabled = true;
 
-        // Save new ticket
+        
         newRow.querySelector('.saveNewBtn').addEventListener('click', () => {
           const inputs = newRow.querySelectorAll('input, select');
           if (!inputs[0].value.trim() || !inputs[2].value.trim()) {
@@ -469,7 +462,6 @@
           document.getElementById('addTicketBtn').disabled = false;
         });
 
-        // Cancel new ticket
         newRow.querySelector('.cancelNewBtn').addEventListener('click', () => {
           newRow.remove();
           document.getElementById('addTicketBtn').disabled = false;
@@ -479,7 +471,7 @@
   </script>
 
   <script>
-    // Additional charts for Reports section
+
     const priorityCtx = document.getElementById('priorityChart').getContext('2d');
     const priorityChart = new Chart(priorityCtx, {
       type: 'bar',
