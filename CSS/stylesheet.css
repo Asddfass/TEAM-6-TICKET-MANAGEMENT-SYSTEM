@@ -12,37 +12,55 @@ body {
     overflow-x: hidden;
 }
 
+/* Layout groupings */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+/* Burger menu hidden by default */
+.burger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    margin-left: auto;
+}
+
+/* Header base style */
 header {
     background: #AA0022;
     padding: 1.5rem;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     color: white;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-header h1 {
-    font-family: 'Port Lligat Slab', serif;
-    font-size: 2rem;
+/* Navigation links */
+nav {
+    display: flex;
+    gap: 1rem;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 1rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .login-btn {
     background-color: #00448B;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1.2rem;
     border-radius: 50px;
     color: white;
     text-decoration: none;
     font-size: 1rem;
+    margin-left: 1rem;
 }
 
 #home {
@@ -102,7 +120,7 @@ nav a {
     align-items: center;
     justify-content: center;
     background: rgba(123, 6, 29, 0.7);
-}   
+}
 
 .section.reverse {
     flex-direction: row-reverse;
@@ -168,21 +186,21 @@ footer {
 
 @media (max-width: 1058px) {
     #home h2 {
-      font-size: 3rem;
+        font-size: 3rem;
     }
 
     #home p {
         font-size: 1rem;
     }
-    
+
     .section {
-      flex-direction: column;
+        flex-direction: column;
     }
 
     #home {
-      padding: 2rem;
+        padding: 2rem;
     }
-    
+
     .home-content {
         margin-left: 150px;
         max-width: 450px;
@@ -191,25 +209,51 @@ footer {
 }
 
 @media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+        gap: 0.5rem;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .login-btn {
+        align-self: stretch;
+        margin-top: 1rem;
+        text-align: center;
+    }
+
     #home h2 {
-      font-size: 2.4rem;
+        font-size: 2.4rem;
     }
 
     #home p {
         font-size: 0.8rem;
     }
-    
+
     .section {
-      flex-direction: column;
+        flex-direction: column;
     }
 
     #home {
-      padding: 2rem;
+        padding: 2rem;
     }
-    
+
     .home-content {
         margin-left: 75px;
         max-width: 300px;
     }
-
 }
