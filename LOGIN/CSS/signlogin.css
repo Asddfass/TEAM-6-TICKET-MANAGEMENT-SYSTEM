@@ -159,5 +159,27 @@ body {
 @media (min-width: 1024px) {
   .auth-container {
       width: 350px;
+      margin: auto;
+  }
+}
+
+@media (max-width: 399px) {
+  body {
+    overflow-x: hidden;
+  }
+  .auth-container {
+    width: 95%;
+    padding: 1rem;
+  }
+  .auth-container h2 {
+    font-size: 1.2rem;
+  }
+  .auth-btn {
+    padding: 8px;
+  }
+  .auth-container input,
+  .auth-container select {
+    padding: 8px;
+    font-size: 0.85rem;
   }
 }
