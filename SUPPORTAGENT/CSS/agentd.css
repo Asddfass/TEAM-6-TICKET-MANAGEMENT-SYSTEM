@@ -1,18 +1,22 @@
+/* Reset margin and padding for all elements */
 * {
     margin: 0;
     padding: 0;
 }
 
+/* Prevent horizontal scroll */
 body {
     overflow-x: hidden;
 }
 
+/* Sidebar styling */
 .sidebar {
-    height: 100vh;
-    background-color: rgba(220, 20, 60);
+    height: 100vh; /* Full viewport height */
+    background-color: rgba(220, 20, 60); /* Red background */
     color: white;
 }
 
+/* Logout button styling */
 .logout {
     background: none;
     border: none;
@@ -23,7 +27,8 @@ body {
     font-size: 1rem;
     cursor: pointer;
 }
-  
+
+/* Sidebar links and buttons */
 .sidebar a, .sidebar button {
     color: white;
     text-decoration: none;
@@ -32,21 +37,25 @@ body {
     transition: background-color 0.3s ease, padding-left 0.3s ease;
 }
 
+/* Hover effect for sidebar links and buttons */
 .sidebar a:hover, .sidebar button:hover {
     background-color: #AA0022;
     padding-left: 30px;
 }
 
+/* Active sidebar link */
 .sidebar a.active {
   background-color: #990000;
   padding-left: 30px;
 }
 
+/* Main dashboard content area */
 .dashboard-content {
-    margin-left: 250px;
+    margin-left: 250px; /* Leave space for sidebar */
     padding: 20px;
 }
-  
+
+/* Sidebar logo container */
 .sidebar .logo {
     padding: 20px;
     margin-bottom: 10px;
@@ -58,76 +67,92 @@ body {
     justify-content: center;
     gap: 10px;
 }
-  
+
+/* Sidebar logo image */
 .sidebar .logo img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background-color: #f8f9fa;
 }
-  
+
+/* Card component with transition effects */
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-  
+
+/* Card hover effect */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
-  
+
+/* Table row hover effect */
 table tr:hover {
     background-color: #f8f9fa;
 }
 
+/* Content section opacity transition */
 .content-section {
     transition: opacity 0.3s ease;
 }
 
+/* Card styling */
 .card {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-  
+
+/* Card body padding */
 .card-body {
     padding: 20px;
 }
-  
+
+/* Card title font size */
 h5.card-title {
     font-size: 1.2rem;
 }
 
+/* Card text font size */
 .card-text {
     font-size: 2rem;
 }
 
+/* Utility class for margin top */
 .mt-5 {
     margin-top: 40px !important;
 }
 
+/* Ticket chart container */
 #ticketChart {
     max-height: 400px;
     margin-top: 30px;
 }
-  
+
+/* Ticket chart sizing */
 #ticketChart {
     width: 100% !important;
     height: 300px !important;
     margin-top: 30px;
 }
-  
+
+/* Card styling repeated (can be consolidated) */
 .card {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Sidebar toggle button positioning */
 #sidebarToggle {
     position: fixed;
     top: 10px;
     left: 10px;
     z-index: 1050;
 }
-  
+
+/* Responsive styles for small devices */
 @media (max-width: 767.98px) {
+    /* Hide sidebar by sliding it out */
     .sidebar {
         transform: translateX(-100%);
         transition: transform 0.3s ease;
@@ -135,25 +160,31 @@ h5.card-title {
         width: 250px;
     }
   
+    /* Add margin to logo for spacing */
     .logo {
         margin-top: 50px;
     }
 
+    /* Show sidebar when active */
     .sidebar.active {
         transform: translateX(0);
     }
   
+    /* Adjust dashboard content to full width */
     .dashboard-content {
         margin-left: 0;
         padding-top: 60px;
     }
 }
 
+/* Styles for medium and larger devices */
 @media (min-width: 768px) {
+    /* Reset sidebar transform */
     .sidebar {
         transform: none !important;
     }
   
+    /* Hide sidebar toggle button */
     #sidebarToggle {
         display: none;
     }
