@@ -1,129 +1,152 @@
+/* Reset default margin, padding and set box-sizing for all elements */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif; /* Set default font */
 }
 
+/* Body styles: flex container for sidebar and main content */
 body {
   display: flex;
-  height: 100vh;
-  background-color: #f4f4f4;
+  height: 100vh; /* Full viewport height */
+  background-color: #f4f4f4; /* Light gray background */
 }
+
+/* Logout button styles */
 .logout {
-    background: none;
-    border: none;
-    color: white;
-    text-align: left;
-    padding: 10px 0;
-    width: 100%;
-    font-size: 1rem;
-    cursor: pointer;
-}
-.sidebar {
-  width: 250px;
-  background-color: crimson;
+  background: none;
+  border: none;
   color: white;
+  text-align: left;
+  padding: 10px 0;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Sidebar container styles */
+.sidebar {
+  width: 250px; /* Fixed width */
+  background-color: crimson; /* Crimson background */
+  color: white; /* White text */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
 }
 
+/* Sidebar profile image styles */
 .sidebar img {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
+  border-radius: 50%; /* Circular image */
+  object-fit: cover; /* Cover image area */
   margin-bottom: 20px;
-  border: 3px solid white;
+  border: 3px solid white; /* White border around image */
 }
 
+/* Sidebar heading styles */
 .sidebar h2 {
   margin-bottom: 30px;
 }
 
+/* Navigation links list styles */
 .nav-links {
-  list-style: none;
+  list-style: none; /* Remove bullets */
   width: 100%;
   padding-left: 0;
 }
 
+/* Individual navigation link styles */
 .nav-links li {
   width: 100%;
   padding: 15px 20px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s; /* Smooth background color transition */
 }
 
+/* Hover effect for navigation links */
 .nav-links li:hover {
-  background-color: #b22222;
+  background-color: #b22222; /* Darker red on hover */
 }
 
+/* Main content container styles */
 .main-content {
-  flex: 1;
+  flex: 1; /* Take remaining space */
   padding: 20px;
-  overflow-y: auto;
+  overflow-y: auto; /* Scroll vertically if content overflows */
 }
 
+/* Main content heading styles */
 .main-content h1 {
   margin-bottom: 20px;
 }
 
+/* Container for stats cards */
 .stats {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Wrap cards on smaller screens */
   margin-bottom: 30px;
 }
 
+/* Individual card styles */
 .card {
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   flex: 1;
   min-width: 200px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
 }
 
+/* Card hover effect: lift and shadow */
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Card heading styles */
 .card h2 {
   font-size: 2em;
   color: crimson;
 }
 
+/* Card paragraph styles */
 .card p {
   margin-top: 10px;
   color: #555;
 }
 
+/* Container for online users list */
 .online-users {
   margin-top: 30px;
 }
 
+/* Online users list styles */
 .online-users ul {
-  list-style: none;
+  list-style: none; /* Remove bullets */
   padding: 0;
 }
 
+/* Individual online user item styles */
 .online-users li {
   background: white;
   padding: 10px;
   margin: 5px 0;
   border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow */
 }
 
+/* Container for user info table */
 .user-info {
   margin-top: 40px;
 }
 
+/* User info table styles */
 .user-info table {
   width: 100%;
   border-collapse: collapse;
@@ -133,27 +156,32 @@ body {
   overflow: hidden;
 }
 
+/* Table header and cell padding and alignment */
 .user-info th,
 .user-info td {
   padding: 12px 15px;
   text-align: left;
 }
 
+/* Table header background and text color */
 .user-info th {
   background-color: crimson;
   color: white;
 }
 
+/* Zebra striping for table rows */
 .user-info tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
+/* Container for charts */
 .chart-container {
   width: 100%;
   margin-top: 40px;
 }
 
+/* Canvas element styles for charts */
 .chart-container canvas {
-  width: 100% !important;
-  height: auto !important;
+  width: 100% !important; /* Full width */
+  height: auto !important; /* Maintain aspect ratio */
 }
