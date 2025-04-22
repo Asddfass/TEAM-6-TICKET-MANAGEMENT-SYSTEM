@@ -12,7 +12,11 @@
 
   <div class="container">
     <h2>Registration</h2>
-    <form>
+    <!-- Success message, hidden by default -->
+    <div id="successMessage" style="display:none; color: green; margin-bottom: 1rem;">
+      Registration successful! You can now log in.
+    </div>
+    <form id="registrationForm">
       <div class="form-group">
         <label for="lastName">Last Name</label>
         <input type="text" id="lastName" name="lastName" required>
@@ -79,5 +83,33 @@
       <button type="submit" class="submit-button">Create Account</button>
     </form>
   </div>
+
+  <script>
+    // Handle form submission
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Basic validation: check if passwords match and terms are checked
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const termsChecked = document.getElementById('terms').checked;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+
+      if (!termsChecked) {
+        alert('You must agree to the Terms and Conditions.');
+        return;
+      }
+
+      // If validation passes, show success message
+      document.getElementById('successMessage').style.display = 'block';
+
+      // Optionally, reset the form
+      this.reset();
+    });
+  </script>
 </body>
 </html>
