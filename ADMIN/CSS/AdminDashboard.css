@@ -185,3 +185,113 @@ body {
   width: 100% !important; /* Full width */
   height: auto !important; /* Maintain aspect ratio */
 }
+
+/* Responsive styles for tablets and smaller devices */
+@media (max-width: 1024px) {
+  body {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+
+  .sidebar img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0;
+  }
+
+  .sidebar h2 {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
+
+  .nav-links li {
+    padding: 10px 15px;
+  }
+
+  .main-content {
+    padding: 15px;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+  .sidebar {
+    flex-direction: column;
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links li {
+    padding: 12px 20px;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .card {
+    min-width: 100%;
+  }
+
+  .online-users li {
+    font-size: 0.9rem;
+  }
+
+  .user-info th,
+  .user-info td {
+    padding: 8px 10px;
+  }
+}
+
+/* Responsive styles for very small devices */
+@media (max-width: 480px) {
+  .sidebar img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .sidebar h2 {
+    font-size: 1rem;
+  }
+
+  .nav-links li {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .main-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .card h2 {
+    font-size: 1.5rem;
+  }
+}

@@ -13,12 +13,16 @@ body {
 }
 
 /* Layout groupings */
+
+/* Flex container for left side of header */
 .header-left {
     display: flex;
     align-items: center;
 }
 
 /* Burger menu hidden by default */
+
+/* Burger menu icon hidden by default, styled for mobile */
 .burger {
     display: none;
     font-size: 2rem;
@@ -28,6 +32,8 @@ body {
 }
 
 /* Header base style */
+
+/* Main header styling with sticky positioning */
 header {
     background: #AA0022;
     padding: 1.5rem;
@@ -42,17 +48,23 @@ header {
 }
 
 /* Navigation links */
+
+/* Navigation container with horizontal layout and spacing */
 nav {
     display: flex;
     gap: 1rem;
 }
 
+
+/* Navigation links styling */
 nav a {
     color: white;
     text-decoration: none;
     font-size: 1.1rem;
 }
 
+
+/* Login button styling */
 .login-btn {
     background-color: #00448B;
     padding: 0.5rem 1.2rem;
@@ -63,6 +75,8 @@ nav a {
     margin-left: 1rem;
 }
 
+
+/* Home section with background image and overlay */
 #home {
     position: relative;
     background-image: url('../IMG/landing_front.png');
@@ -75,6 +89,8 @@ nav a {
     padding: 4rem;
 }
 
+
+/* Semi-transparent overlay for home section */
 #home::after {
     content: "";
     position: absolute;
@@ -82,6 +98,8 @@ nav a {
     background: rgba(213, 16, 16, 0.4);
 }
 
+
+/* Content container inside home section */
 .home-content {
     position: relative;
     margin-left: 150px;
@@ -89,6 +107,8 @@ nav a {
     z-index: 1;
 }
 
+
+/* Main heading style in home section */
 #home h2 {
     font-size: 4.5rem;
     margin-bottom: 1rem;
@@ -96,6 +116,8 @@ nav a {
     position: relative;
 }
 
+
+/* Paragraph text style in home section */
 #home p {
     font-size: 1.4rem;
     z-index: 1;
@@ -103,6 +125,8 @@ nav a {
     margin-bottom: 10px;
 }
 
+
+/* Register button styling */
 .register-btn {
     background-color: #00448B;
     padding: 0.5rem 1.5rem;
@@ -112,6 +136,8 @@ nav a {
     font-size: 1.5rem;
 }
 
+
+/* Section container with padding, flex layout, and background */
 .section {
     padding: 4rem 2rem;
     display: flex;
@@ -122,53 +148,73 @@ nav a {
     background: rgba(123, 6, 29, 0.7);
 }
 
+
+/* Reverse layout for section */
 .section.reverse {
     flex-direction: row-reverse;
 }
 
+
+/* Fixed width for images inside sections */
 .section img {
     width: 300px;
 }
 
+
+/* Text content styling inside sections */
 .text-content {
     max-width: 600px;
     color: #fdfdfd;
     z-index: 1;
 }
 
+
+/* Heading style inside text content */
 .text-content h3 {
     color: #550011;
     font-size: 2rem;
     margin-bottom: 1rem;
 }
 
+
+/* Paragraph style inside text content */
 .text-content p {
     font-size: 1.1rem;
 }
 
+
+/* Section content container positioning */
 .section-content {
     z-index: 1;
     position: relative;
 }
 
+
+/* Divider line styling */
 .divider {
     border-top: 3px solid #550011;
     margin: 2rem 0;
     width: 60%;
 }
 
+
+/* About section styling */
 #about {
     background-color: #f8f8f8;
     padding: 4rem 2rem;
     text-align: center;
 }
 
+
+/* Heading style in about section */
 #about h2 {
     font-size: 3rem;
     color: #CF2C4D;
     margin-bottom: 2rem;
 }
 
+
+/* Paragraph style in about section */
 #about p {
     max-width: 900px;
     margin: auto;
@@ -176,6 +222,8 @@ nav a {
     text-align: justify;
 }
 
+
+/* Footer styling */
 footer {
     background-color: #550011;
     color: white;
@@ -184,6 +232,8 @@ footer {
     font-size: 2rem;
 }
 
+
+/* Responsive styles for medium screens */
 @media (max-width: 1058px) {
     #home h2 {
         font-size: 3rem;
@@ -208,6 +258,8 @@ footer {
 
 }
 
+
+/* Responsive styles for small screens */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
