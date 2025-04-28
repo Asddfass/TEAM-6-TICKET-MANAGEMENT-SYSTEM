@@ -116,65 +116,8 @@
                      <h5 class="mb-4">Submit a Request</h5>
                      <form action="#" method="post" class="request-form needs-validation" id="request-form" novalidate>
                          <fieldset class="mb-4 p-3 border rounded">
-                             <legend class="fw-bold h6 float-none w-auto px-2">Full Name</legend>
-                             <div class="row g-3">
-                                 <div class="col-md-4">
-                                     <label for="last-name" class="form-label">Last Name</label>
-                                     <input type="text" class="form-control form-control-sm" id="last-name" name="last_name" required>
-                                     <div class="invalid-feedback">Please provide a last name.</div>
-                                 </div>
-                                 <div class="col-md-4">
-                                     <label for="first-name" class="form-label">First Name</label>
-                                     <input type="text" class="form-control form-control-sm" id="first-name" name="first_name" required>
-                                     <div class="invalid-feedback">Please provide a first name.</div>
-                                 </div>
-                                 <div class="col-md-2">
-                                     <label for="middle-name" class="form-label">Middle</label>
-                                     <input type="text" class="form-control form-control-sm" id="middle-name" name="middle_name">
-                                 </div>
-                                 <div class="col-md-2">
-                                     <label for="suffix" class="form-label">Suffix</label>
-                                     <input type="text" class="form-control form-control-sm" id="suffix" name="suffix">
-                                 </div>
-                             </div>
-                         </fieldset>
-                         <div class="row g-3 mb-3">
-                             <div class="col-md-6">
-                                 <label for="email" class="form-label">Email</label>
-                                 <input type="email" class="form-control form-control-sm" id="email" name="email" required>
-                                 <div class="invalid-feedback">Please provide a valid email address.</div>
-                             </div>
-                             <div class="col-md-6">
-                                 <label for="employee-id" class="form-label">Employee ID</label>
-                                 <input type="text" class="form-control form-control-sm" id="employee-id" name="employee_id" required>
-                                 <div class="invalid-feedback">Please provide your Employee ID.</div>
-                             </div>
-                         </div>
-                         <div class="row g-3 mb-3">
-                             <div class="col-md-6">
-                                 <label for="college" class="form-label">College</label>
-                                 <select class="form-select form-select-sm" id="college" name="college" required>
-                                     <option value="" disabled selected>Select...</option>
-                                     <option value="ccs">Computing Studies</option>
-                                <option value="claw">Law</option>
-                                <option value="coa">Agriculture</option>
-                                <option value="cla">Liberal Arts</option>
-                                <option value="carch">Architecture</option>
-                                <option value="cn">Nursing</option>
-                                <option value="cais">Asian & Islamic Studies</option>
-                                <option value="cfes">Forestry & Environmental Studies</option>
-                                <option value="ccje">Criminal Justice Education</option>
-                                <option value="che">Home Economics</option>
-                                <option value="coe">Engineering</option>
-                                <option value="cm">Medicine</option>
-                                <option value="cpads">Public Administration & Development Studies</option>
-                                <option value="csspe">Sports Science & Physical Education</option>
-                                <option value="csm">Science and Mathematics</option>
-                                <option value="cswcd">Social Work & Community Development</option>
-                                <option value="cte">Teacher Education</option>
-                                 </select>
-                                 <div class="invalid-feedback">Please select a department.</div>
-                             </div>
+
+                             <div class="row g-3 mb-3">
                              <div class="col-md-6">
                                  <label for="request-type" class="form-label">Type of Request / Issue</label>
                                  <select class="form-select form-select-sm" id="request-type" name="request_type" required>
@@ -189,7 +132,6 @@
                                  <div class="invalid-feedback">Please select the type of request.</div>
                              </div>
                          </div>
-                         <div class="row g-3 mb-3">
                              <div class="col-md-6">
                                  <label for="priority" class="form-label">Priority Level</label>
                                  <select class="form-select form-select-sm" id="priority" name="priority" required>
@@ -201,7 +143,7 @@
                                  </select>
                                  <div class="invalid-feedback">Please select a priority level.</div>
                              </div>
-                             <div class="col-md-6">
+                             <div class="row g-3 mb-3">
                                  <label for="request-title" class="form-label">Request Title / Subject</label>
                                  <input type="text" class="form-control form-control-sm" id="request-title" name="request_title" required>
                                  <div class="invalid-feedback"> Please provide a title or subject for your request.</div>
