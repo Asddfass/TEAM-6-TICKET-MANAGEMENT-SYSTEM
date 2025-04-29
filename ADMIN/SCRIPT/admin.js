@@ -1,4 +1,11 @@
-// Show/Hide sections
+// Initialize when document loads
+document.addEventListener('DOMContentLoaded', function() {
+  showSection('dashboard');
+  initializeCharts();
+  initializeEventListeners();
+});
+
+// Section Navigation
 function showSection(sectionId) {
   document.querySelectorAll('.section').forEach(section => {
       section.style.display = 'none';
@@ -6,12 +13,9 @@ function showSection(sectionId) {
   document.getElementById(sectionId).style.display = 'block';
 }
 
-// Initialize dashboard charts when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize dashboard as default view
-  showSection('dashboard');
-  
-  // Ticket Statistics Chart
+// Chart Initialization
+function initializeCharts() {
+  // Dashboard Ticket Chart
   const ticketCtx = document.getElementById('ticketChart').getContext('2d');
   new Chart(ticketCtx, {
       type: 'bar',
@@ -44,9 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
               title: {
                   display: true,
                   text: 'Monthly Ticket Statistics',
-                  font: {
-                      size: 16
-                  }
+                  font: { size: 16 }
               }
           }
       }
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Reports Charts
   if(document.getElementById('reportChart')) {
+      // Pie Chart for Status Distribution
       const reportCtx = document.getElementById('reportChart').getContext('2d');
       new Chart(reportCtx, {
           type: 'pie',
@@ -79,9 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
               }
           }
       });
-  }
 
-  if(document.getElementById('trendChart')) {
+      // Line Chart for Trends
       const trendCtx = document.getElementById('trendChart').getContext('2d');
       new Chart(trendCtx, {
           type: 'line',
@@ -91,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
                   label: 'Ticket Trends',
                   data: [30, 45, 35, 50, 40, 60],
                   borderColor: 'crimson',
-                  tension: 0.1
+                  tension: 0.1,
+                  fill: false
               }]
           },
           options: {
@@ -102,183 +105,229 @@ document.addEventListener('DOMContentLoaded', function() {
                       text: 'Ticket Trends Over Time',
                       font: { size: 16 }
                   }
+              },
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                      grid: {
+                          color: 'rgba(0, 0, 0, 0.1)'
+                      }
+                  },
+                  x: {
+                      grid: {
+                          display: false
+                      }
+                  }
               }
           }
       });
   }
-
-  // Add event listeners to all buttons
-  initializeButtons();
-});
-
-// Initialize all button click handlers
-function initializeButtons() {
-  // View ticket buttons
-  document.querySelectorAll('.view-btn').forEach(button => {
-      button.addEventListener('click', function() {
-          const row = this.closest('tr');
-          viewTicket(row);
-      });
-  });
-
-  // Edit ticket buttons
-  document.querySelectorAll('.edit-btn').forEach(button => {
-      button.addEventListener('click', function() {
-          const row = this.closest('tr');
-          editTicket(row);
-      });
-  });
-
-  // Delete ticket buttons
-  document.querySelectorAll('.delete-btn').forEach(button => {
-      button.addEventListener('click', function() {
-          const row = this.closest('tr');
-          deleteTicket(row);
-      });
-  });
 }
 
 // Ticket Management Functions
-function viewTicket(row) {
+function viewTicket(button) {
+  const row = button.closest('tr');
   const ticketData = {
       id: row.cells[0].textContent,
       subject: row.cells[1].textContent,
-      status: row.cells[2].textContent,
-      priority: row.cells[3].textContent,
+      status: row.cells[2].querySelector('.status-badge').textContent,
+      priority: row.cells[3].querySelector('.priority-badge').textContent,
       assigned: row.cells[4].textContent
   };
 
-  showModal('View Ticket', `
-      <div class="ticket-details">
+  document.getElementById('ticketDetails').innerHTML = `
+      <div class="ticket-info">
           <p><strong>Ticket ID:</strong> ${ticketData.id}</p>
           <p><strong>Subject:</strong> ${ticketData.subject}</p>
-          <p><strong>Status:</strong> ${ticketData.status}</p>
-          <p><strong>Priority:</strong> ${ticketData.priority}</p>
+          <p><strong>Status:</strong> <span class="status-badge ${ticketData.status.toLowerCase()}">${ticketData.status}</span></p>
+          <p><strong>Priority:</strong> <span class="priority-badge ${ticketData.priority.toLowerCase()}">${ticketData.priority}</span></p>
           <p><strong>Assigned To:</strong> ${ticketData.assigned}</p>
+          <p><strong>Created Date:</strong> ${new Date().toLocaleDateString()}</p>
+          <p><strong>Last Updated:</strong> ${new Date().toLocaleDateString()}</p>
+          <div class="ticket-description">
+              <h3>Description</h3>
+              <p>Detailed description of the ticket issue goes here...</p>
+          </div>
       </div>
-  `);
+  `;
+
+  document.getElementById('viewTicketModal').style.display = 'block';
 }
 
-function editTicket(row) {
-  const ticketData = {
-      id: row.cells[0].textContent,
-      subject: row.cells[1].textContent,
-      status: row.cells[2].textContent,
-      priority: row.cells[3].textContent,
-      assigned: row.cells[4].textContent
+function editTicket(button) {
+  const row = button.closest('tr');
+  const modal = document.getElementById('editTicketModal');
+  
+  document.getElementById('editSubject').value = row.cells[1].textContent;
+  document.getElementById('editStatus').value = row.cells[2].querySelector('.status-badge').textContent;
+  document.getElementById('editPriority').value = row.cells[3].querySelector('.priority-badge').textContent;
+  document.getElementById('editAssigned').value = row.cells[4].textContent;
+  
+  modal.style.display = 'block';
+
+  document.getElementById('editTicketForm').onsubmit = function(e) {
+      e.preventDefault();
+      const status = document.getElementById('editStatus').value;
+      const priority = document.getElementById('editPriority').value;
+      
+      row.cells[1].textContent = document.getElementById('editSubject').value;
+      row.cells[2].innerHTML = `<span class="status-badge ${status.toLowerCase()}">${status}</span>`;
+      row.cells[3].innerHTML = `<span class="priority-badge ${priority.toLowerCase()}">${priority}</span>`;
+      row.cells[4].textContent = document.getElementById('editAssigned').value;
+      
+      modal.style.display = 'none';
+  };
+}
+
+function deleteTicket(button) {
+  const row = button.closest('tr');
+  const modal = document.getElementById('deleteTicketModal');
+  modal.style.display = 'block';
+
+  document.getElementById('confirmDelete').onclick = function() {
+      row.remove();
+      modal.style.display = 'none';
   };
 
-  showModal('Edit Ticket', `
-      <form id="editTicketForm">
-          <div class="form-group">
-              <label>Subject:</label>
-              <input type="text" id="editSubject" value="${ticketData.subject}" required>
-          </div>
-          <div class="form-group">
-              <label>Status:</label>
-              <select id="editStatus">
-                  <option value="Open" ${ticketData.status === 'Open' ? 'selected' : ''}>Open</option>
-                  <option value="Pending" ${ticketData.status === 'Pending' ? 'selected' : ''}>Pending</option>
-                  <option value="Closed" ${ticketData.status === 'Closed' ? 'selected' : ''}>Closed</option>
-              </select>
-          </div>
-          <div class="form-group">
-              <label>Priority:</label>
-              <select id="editPriority">
-                  <option value="High" ${ticketData.priority === 'High' ? 'selected' : ''}>High</option>
-                  <option value="Medium" ${ticketData.priority === 'Medium' ? 'selected' : ''}>Medium</option>
-                  <option value="Low" ${ticketData.priority === 'Low' ? 'selected' : ''}>Low</option>
-              </select>
-          </div>
-          <div class="form-group">
-              <label>Assigned To:</label>
-              <input type="text" id="editAssigned" value="${ticketData.assigned}" required>
-          </div>
-          <button type="submit" class="save-btn">Save Changes</button>
-      </form>
-  `, function(modal) {
-      const form = modal.querySelector('#editTicketForm');
-      form.onsubmit = function(e) {
-          e.preventDefault();
-          row.cells[1].textContent = document.getElementById('editSubject').value;
-          row.cells[2].textContent = document.getElementById('editStatus').value;
-          row.cells[3].textContent = document.getElementById('editPriority').value;
-          row.cells[4].textContent = document.getElementById('editAssigned').value;
-          modal.style.display = 'none';
-      };
-  });
-}
-
-function deleteTicket(row) {
-  showConfirmModal('Are you sure you want to delete this ticket?', function() {
-      row.remove();
-  });
+  document.getElementById('cancelDelete').onclick = function() {
+      modal.style.display = 'none';
+  };
 }
 
 // User Management Functions
 function approveUser(button) {
-  showConfirmModal('Are you sure you want to approve this user?', function() {
-      const row = button.closest('tr');
-      row.cells[3].textContent = 'Active';
-      button.parentElement.innerHTML = '<button class="reject-btn" onclick="rejectUser(this)">Deactivate</button>';
-  });
+  const row = button.closest('tr');
+  row.cells[3].innerHTML = '<span class="status-badge active">Active</span>';
+  button.parentElement.innerHTML = `
+      <button class="viewBtn" onclick="viewUser(this)">View</button>
+      <button class="editBtn" onclick="editUser(this)">Edit</button>
+      <button class="deleteBtn" onclick="deleteUser(this)">Delete</button>
+  `;
 }
 
 function rejectUser(button) {
-  showConfirmModal('Are you sure you want to reject this user?', function() {
-      const row = button.closest('tr');
-      row.cells[3].textContent = 'Rejected';
-      button.parentElement.innerHTML = '<button class="approve-btn" onclick="approveUser(this)">Approve</button>';
-  });
-}
-
-// Modal Functions
-function showModal(title, content, callback) {
-  const modal = document.createElement('div');
-  modal.className = 'modal';
-  modal.innerHTML = `
-      <div class="modal-content">
-          <h2>${title}</h2>
-          ${content}
-          <button class="close-btn" onclick="this.closest('.modal').remove()">Close</button>
-      </div>
+  const row = button.closest('tr');
+  row.cells[3].innerHTML = '<span class="status-badge inactive">Rejected</span>';
+  button.parentElement.innerHTML = `
+      <button class="approve-btn" onclick="approveUser(this)">Approve</button>
   `;
-  document.body.appendChild(modal);
-  modal.style.display = 'block';
-  if (callback) callback(modal);
 }
 
-function showConfirmModal(message, onConfirm) {
-  showModal('Confirm Action', `
-      <p>${message}</p>
-      <div class="modal-buttons">
-          <button class="save-btn" onclick="handleConfirm(this)">Confirm</button>
-          <button class="delete-btn" onclick="this.closest('.modal').remove()">Cancel</button>
-      </div>
-  `);
+// Search and Filter Functions
+function initializeEventListeners() {
+  // Search functionality
+  document.querySelectorAll('.search-box input').forEach(input => {
+      input.addEventListener('keyup', function() {
+          const searchText = this.value.toLowerCase();
+          const table = this.closest('.section').querySelector('table');
+          const rows = table.getElementsByTagName('tr');
 
-  window.handleConfirm = function(button) {
-      onConfirm();
-      button.closest('.modal').remove();
+          for (let i = 1; i < rows.length; i++) {
+              const row = rows[i];
+              const text = row.textContent.toLowerCase();
+              row.style.display = text.includes(searchText) ? '' : 'none';
+          }
+      });
+  });
+
+  // Filter functionality
+  document.querySelectorAll('.filter-select').forEach(select => {
+      select.addEventListener('change', function() {
+          const filterValue = this.value.toLowerCase();
+          const table = this.closest('.section').querySelector('table');
+          const rows = table.getElementsByTagName('tr');
+
+          for (let i = 1; i < rows.length; i++) {
+              const row = rows[i];
+              const statusElement = row.querySelector('.status-badge');
+              if (statusElement) {
+                  const status = statusElement.textContent.toLowerCase();
+                  row.style.display = (!filterValue || status === filterValue) ? '' : 'none';
+              }
+          }
+      });
+  });
+
+  // Modal close buttons
+  document.querySelectorAll('.close').forEach(closeBtn => {
+      closeBtn.onclick = function() {
+          this.closest('.modal').style.display = 'none';
+      };
+  });
+
+  // Close modal when clicking outside
+  window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+          event.target.style.display = 'none';
+      }
   };
+
+  // Pagination buttons
+  document.querySelectorAll('.pagination-button').forEach(button => {
+      button.addEventListener('click', function() {
+          document.querySelectorAll('.pagination-button').forEach(btn => {
+              btn.classList.remove('active');
+          });
+          this.classList.add('active');
+          // Add pagination logic here
+      });
+  });
 }
 
 // Settings Functions
 function saveSettings() {
   const notifications = document.getElementById('notifications').value;
-  showModal('Success', '<p>Settings saved successfully!</p>');
+  showNotification('Settings saved successfully!');
+}
+
+function showNotification(message) {
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+      notification.classList.add('show');
+      setTimeout(() => {
+          notification.classList.remove('show');
+          setTimeout(() => {
+              notification.remove();
+          }, 300);
+      }, 2000);
+  }, 100);
 }
 
 // Logout Function
 function handleLogout() {
-  showConfirmModal('Are you sure you want to logout?', function() {
-      window.location.href = '../LOGIN/';
-  });
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.innerHTML = `
+      <div class="modal-content">
+          <h2>Confirm Logout</h2>
+          <p>Are you sure you want to logout?</p>
+          <div class="modal-buttons">
+              <button onclick="confirmLogout()" class="logout-btn">Logout</button>
+              <button onclick="this.closest('.modal').remove()" class="cancel-btn">Cancel</button>
+          </div>
+      </div>
+  `;
+  document.body.appendChild(modal);
+  modal.style.display = 'block';
 }
 
-// Close modals when clicking outside
-window.onclick = function(event) {
-  if (event.target.className === 'modal') {
-      event.target.remove();
-  }
-};
+function confirmLogout() {
+  window.location.href = '../LOGIN/';
+}
+
+// Export functions if needed
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+      showSection,
+      viewTicket,
+      editTicket,
+      deleteTicket,
+      approveUser,
+      rejectUser,
+      handleLogout
+  };
+}

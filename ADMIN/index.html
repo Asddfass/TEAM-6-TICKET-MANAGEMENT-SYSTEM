@@ -1,298 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Dashboard - Ticketing System</title>
-  <link rel="stylesheet" href="CSS/AdminDashboard.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Ticketing System</title>
+    <link rel="stylesheet" href="CSS/AdminDashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Sidebar navigation panel -->
-  <div class="sidebar">
-    <img src="../IMG/adminPic.jpg" alt="Admin Picture" />
-    <h2>Hello Ali!</h2>
-    <ul class="nav-links">
-      <li onclick="showSection('dashboard')">Dashboard</li>
-      <li onclick="showSection('tickets')">Manage Tickets</li>
-      <li onclick="showSection('users')">Users</li>
-      <li onclick="showSection('reports')">Reports</li>
-      <li onclick="showSection('settings')">Settings</li>
-      <li onclick="showSection('logout')">Logout</li>
-    </ul>
-  </div>
-
-  <!-- Main content area -->
-  <div class="main-content">
-    <!-- Dashboard section -->
-    <div id="dashboard" class="section">
-      <h1>Welcome, Ali!</h1>
-      <div class="stats">
-        <div class="card">
-          <h2>124</h2>
-          <p>Tickets Availed</p>
-        </div>
-        <div class="card">
-          <h2>58</h2>
-          <p>Tickets Pending</p>
-        </div>
-        <div class="card">
-          <h2>23</h2>
-          <p>Users Online</p>
-        </div>
-        <div class="card">
-          <h2>320</h2>
-          <p>Total Users</p>
-        </div>
-      </div>
-
-      <div class="online-users">
-        <h2>Currently Online Users</h2>
-        <ul>
-          <li>John Doe</li>
-          <li>Jane Smith</li>
-          <li>Mike Johnson</li>
-          <li>Emily Davis</li>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="../IMG/adminPic.jpg" alt="Admin Picture">
+        <h2>Hello Ali!</h2>
+        <ul class="nav-links">
+            <li onclick="showSection('dashboard')">Dashboard</li>
+            <li onclick="showSection('tickets')">Manage Tickets</li>
+            <li onclick="showSection('users')">Users</li>
+            <li onclick="showSection('reports')">Reports</li>
+            <li onclick="showSection('settings')">Settings</li>
+            <li onclick="showSection('logout')">Logout</li>
         </ul>
-      </div>
-
-      <div class="user-info">
-        <h2>Online User Details</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Last Active</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>John Doe</td>
-              <td>john@example.com</td>
-              <td>Support Agent</td>
-              <td><span class="status-badge online">Online</span></td>
-              <td>5 mins ago</td>
-            </tr>
-            <tr>
-              <td>Jane Smith</td>
-              <td>jane@example.com</td>
-              <td>Manager</td>
-              <td><span class="status-badge online">Online</span></td>
-              <td>Just now</td>
-            </tr>
-            <tr>
-              <td>Mike Johnson</td>
-              <td>mike@example.com</td>
-              <td>Support Agent</td>
-              <td><span class="status-badge online">Online</span></td>
-              <td>2 mins ago</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="chart-container">
-        <canvas id="ticketChart"></canvas>
-      </div>
     </div>
 
-    <!-- Tickets section -->
-    <div id="tickets" class="section" style="display:none">
-      <h1>Manage Tickets</h1>
-      <div class="tickets-header">
-        <input type="text" id="ticketSearch" placeholder="Search tickets..." class="search-input">
-        <select id="statusFilter" class="status-filter">
-          <option value="all">All Status</option>
-          <option value="open">Open</option>
-          <option value="pending">Pending</option>
-          <option value="closed">Closed</option>
-        </select>
-      </div>
-      
-      <table class="tickets-table">
-        <thead>
-          <tr>
-            <th>Ticket ID</th>
-            <th>Subject</th>
-            <th>Status</th>
-            <th>Priority</th>
-            <th>Assigned To</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>#001</td>
-            <td>Login Issue</td>
-            <td><span class="status-badge open">Open</span></td>
-            <td><span class="priority-badge high">High</span></td>
-            <td>John Doe</td>
-            <td class="action-buttons">
-              <button class="viewBtn" onclick="viewTicket(this)">View</button>
-              <button class="editBtn" onclick="editTicket(this)">Edit</button>
-              <button class="deleteBtn" onclick="deleteTicket(this)">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>#002</td>
-            <td>Payment Failed</td>
-            <td><span class="status-badge pending">Pending</span></td>
-            <td><span class="priority-badge medium">Medium</span></td>
-            <td>Jane Smith</td>
-            <td class="action-buttons">
-              <button class="viewBtn" onclick="viewTicket(this)">View</button>
-              <button class="editBtn" onclick="editTicket(this)">Edit</button>
-              <button class="deleteBtn" onclick="deleteTicket(this)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- View Ticket Modal -->
-      <div id="viewTicketModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Ticket Details</h2>
-          <div id="ticketDetails" class="ticket-details"></div>
-        </div>
-      </div>
-
-      <!-- Edit Ticket Modal -->
-      <div id="editTicketModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Edit Ticket</h2>
-          <form id="editTicketForm">
-            <div class="form-group">
-              <label>Subject:</label>
-              <input type="text" id="editSubject" required>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="section">
+            <h1>Welcome, Ali!</h1>
+            <!-- Stats Cards -->
+            <div class="stats">
+                <div class="card">
+                    <h2>124</h2>
+                    <p>Tickets Availed</p>
+                </div>
+                <div class="card">
+                    <h2>58</h2>
+                    <p>Tickets Pending</p>
+                </div>
+                <div class="card">
+                    <h2>23</h2>
+                    <p>Users Online</p>
+                </div>
+                <div class="card">
+                    <h2>320</h2>
+                    <p>Total Users</p>
+                </div>
             </div>
-            <div class="form-group">
-              <label>Status:</label>
-              <select id="editStatus">
-                <option value="Open">Open</option>
-                <option value="Pending">Pending</option>
-                <option value="Closed">Closed</option>
-              </select>
+
+            <!-- Online Users Section -->
+            <div class="online-users">
+                <h2>Currently Online Users</h2>
+                <div class="table-controls">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search users...">
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Last Active</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td>Support Agent</td>
+                            <td><span class="status-badge online">Online</span></td>
+                            <td>5 mins ago</td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>jane@example.com</td>
+                            <td>Manager</td>
+                            <td><span class="status-badge online">Online</span></td>
+                            <td>Just now</td>
+                        </tr>
+                        <tr>
+                            <td>Mike Johnson</td>
+                            <td>mike@example.com</td>
+                            <td>Support Agent</td>
+                            <td><span class="status-badge online">Online</span></td>
+                            <td>2 mins ago</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="form-group">
-              <label>Priority:</label>
-              <select id="editPriority">
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-              </select>
+
+            <!-- Chart Container -->
+            <div class="chart-container">
+                <canvas id="ticketChart"></canvas>
             </div>
-            <div class="form-group">
-              <label>Assigned To:</label>
-              <input type="text" id="editAssigned" required>
+        </div>
+
+        <!-- Manage Tickets Section -->
+        <div id="tickets" class="section" style="display:none">
+            <h1>Manage Tickets</h1>
+            <div class="table-controls">
+                <div class="search-box">
+                    <input type="text" placeholder="Search tickets...">
+                </div>
+                <div class="filter-box">
+                    <select class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="open">Open</option>
+                        <option value="pending">Pending</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">All Priority</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
             </div>
-            <div class="modal-buttons">
-              <button type="submit" class="save-btn">Save Changes</button>
-              <button type="button" class="cancel-btn">Cancel</button>
+
+            <table class="data-table tickets-table">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Assigned To</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#001</td>
+                        <td>Login Issue</td>
+                        <td><span class="status-badge open">Open</span></td>
+                        <td><span class="priority-badge high">High</span></td>
+                        <td>John Doe</td>
+                        <td class="action-buttons">
+                            <button class="viewBtn" onclick="viewTicket(this)">View</button>
+                            <button class="editBtn" onclick="editTicket(this)">Edit</button>
+                            <button class="deleteBtn" onclick="deleteTicket(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>Payment Failed</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td><span class="priority-badge medium">Medium</span></td>
+                        <td>Jane Smith</td>
+                        <td class="action-buttons">
+                            <button class="viewBtn" onclick="viewTicket(this)">View</button>
+                            <button class="editBtn" onclick="editTicket(this)">Edit</button>
+                            <button class="deleteBtn" onclick="deleteTicket(this)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="table-pagination">
+                <div class="pagination-info">
+                    Showing 1-10 of 100 entries
+                </div>
+                <div class="pagination-controls">
+                    <button class="pagination-button">Previous</button>
+                    <button class="pagination-button active">1</button>
+                    <button class="pagination-button">2</button>
+                    <button class="pagination-button">3</button>
+                    <button class="pagination-button">Next</button>
+                </div>
             </div>
-          </form>
         </div>
-      </div>
 
-      <!-- Delete Confirmation Modal -->
-      <div id="deleteTicketModal" class="modal">
-        <div class="modal-content">
-          <h2>Delete Ticket</h2>
-          <p>Are you sure you want to delete this ticket?</p>
-          <div class="modal-buttons">
-            <button id="confirmDelete" class="delete-btn">Delete</button>
-            <button id="cancelDelete" class="cancel-btn">Cancel</button>
-          </div>
+        <!-- Users Section -->
+        <div id="users" class="section" style="display:none">
+            <h1>Users Management</h1>
+            <div class="table-controls">
+                <div class="search-box">
+                    <input type="text" placeholder="Search users...">
+                </div>
+                <div class="filter-box">
+                    <select class="filter-select">
+                        <option value="">All Roles</option>
+                        <option value="admin">Admin</option>
+                        <option value="agent">Support Agent</option>
+                        <option value="user">User</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+            </div>
+
+            <table class="data-table users-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>Support Agent</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="approve-btn" onclick="approveUser(this)">Approve</button>
+                            <button class="reject-btn" onclick="rejectUser(this)">Reject</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>jane@example.com</td>
+                        <td>Admin</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td class="action-buttons">
+                            <button class="viewBtn" onclick="viewUser(this)">View</button>
+                            <button class="editBtn" onclick="editUser(this)">Edit</button>
+                            <button class="deleteBtn" onclick="deleteUser(this)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="table-pagination">
+                <div class="pagination-info">
+                    Showing 1-10 of 50 entries
+                </div>
+                <div class="pagination-controls">
+                    <button class="pagination-button">Previous</button>
+                    <button class="pagination-button active">1</button>
+                    <button class="pagination-button">2</button>
+                    <button class="pagination-button">3</button>
+                    <button class="pagination-button">Next</button>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Reports Section -->
+        <div id="reports" class="section" style="display:none">
+            <h1>Reports</h1>
+            <div class="stats">
+                <div class="card">
+                    <h2>197</h2>
+                    <p>Total Tickets</p>
+                </div>
+                <div class="card">
+                    <h2>65</h2>
+                    <p>Open Tickets</p>
+                </div>
+                <div class="card">
+                    <h2>102</h2>
+                    <p>Closed Tickets</p>
+                </div>
+                <div class="card">
+                    <h2>30</h2>
+                    <p>Pending Tickets</p>
+                </div>
+            </div>
+
+            <div class="reports-charts">
+                <div class="chart-wrapper">
+                    <h3>Ticket Status Distribution</h3>
+                    <canvas id="reportChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>Monthly Ticket Trends</h3>
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings" class="section" style="display:none">
+            <h1>Settings</h1>
+            <form class="settings-form">
+                <div class="form-group">
+                    <label for="notifications">Email Notifications</label>
+                    <select id="notifications" class="form-control">
+                        <option value="enabled">Enabled</option>
+                        <option value="disabled">Disabled</option>
+                    </select>
+                </div>
+                <button type="button" class="save-btn">Save Settings</button>
+            </form>
+        </div>
+
+        <!-- Logout Section -->
+        <div id="logout" class="section" style="display:none">
+            <h1>Logout</h1>
+            <div class="logout-confirmation">
+                <p>Are you sure you want to logout?</p>
+                <button class="logout-btn">Logout</button>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <!-- View Ticket Modal -->
+        <div id="viewTicketModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Ticket Details</h2>
+                <div id="ticketDetails" class="ticket-details"></div>
+            </div>
+        </div>
+
+        <!-- Edit Ticket Modal -->
+        <div id="editTicketModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Ticket</h2>
+                <form id="editTicketForm">
+                    <div class="form-group">
+                        <label>Subject:</label>
+                        <input type="text" id="editSubject" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Status:</label>
+                        <select id="editStatus">
+                            <option value="Open">Open</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority:</label>
+                        <select id="editPriority">
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Assigned To:</label>
+                        <input type="text" id="editAssigned" required>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="submit" class="save-btn">Save Changes</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="deleteTicketModal" class="modal">
+            <div class="modal-content">
+                <h2>Delete Ticket</h2>
+                <p>Are you sure you want to delete this ticket?</p>
+                <div class="modal-buttons">
+                    <button id="confirmDelete" class="delete-btn">Delete</button>
+                    <button id="cancelDelete" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Users section -->
-    <div id="users" class="section" style="display:none">
-      <h1>Users</h1>
-      <table class="users-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>John Doe</td>
-            <td>john@example.com</td>
-            <td>Support Agent</td>
-            <td><span class="status-badge pending">Pending</span></td>
-            <td class="action-buttons">
-              <button class="approve-btn" onclick="approveUser(this)">Approve</button>
-              <button class="reject-btn" onclick="rejectUser(this)">Reject</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Reports section -->
-    <div id="reports" class="section" style="display:none">
-      <h1>Reports</h1>
-      <div class="stats">
-        <div class="card">
-          <h2>197</h2>
-          <p>Total Tickets</p>
-        </div>
-        <div class="card">
-          <h2>65</h2>
-          <p>Open Tickets</p>
-        </div>
-        <div class="card">
-          <h2>102</h2>
-          <p>Closed Tickets</p>
-        </div>
-        <div class="card">
-          <h2>30</h2>
-          <p>Pending Tickets</p>
-        </div>
-      </div>
-      <div class="reports-charts">
-        <div class="chart-container">
-          <canvas id="reportChart"></canvas>
-        </div>
-        <div class="chart-container">
-          <canvas id="trendChart"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- Settings section -->
-    <div id="settings" class="section" style="display:none">
-      <h1>Settings</h1>
-      <form class="settings-form">
-        <div class="form-group">
-          <label for="notifications">Email Notifications:</label>
-          <select id="notifications" name="notifications">
-            <option value="enabled">Enabled</option>
-            <option value="disabled">Disabled</option>
-          </select>
-        </div>
-        <button type="button" onclick="saveSettings()" class="save-btn">Save Settings</button>
-      </form>
-    </div>
-
-    <!-- Logout section -->
-    <div id="logout" class="section" style="display:none">
-      <h1>Logout</h1>
-      <p>Are you sure you want to logout?</p>
-      <button onclick="handleLogout()" class="logout-btn">Logout</button>
-    </div>
-  </div>
-
-  <script src="SCRIPT/admin.js"></script>
+    <script src="SCRIPT/admin.js"></script>
 </body>
 </html>
