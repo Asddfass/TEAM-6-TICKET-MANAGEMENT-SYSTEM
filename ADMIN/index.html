@@ -6,7 +6,6 @@
   <title>Admin Dashboard - Ticketing System</title>
   <link rel="stylesheet" href="CSS/AdminDashboard.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 <body>
   <!-- Sidebar navigation panel -->
@@ -113,11 +112,9 @@
       </div>
     </div>
 
-    <!-- Manage Tickets section: hidden by default -->
+    <!-- Manage Tickets section -->
     <div id="tickets" class="section" style="display:none">
       <h1>Manage Tickets</h1>
-    
-      <!-- Tickets table with ticket details and action buttons -->
       <table id="ticketsTable" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
         <thead>
           <tr style="background-color: crimson; color: white;">
@@ -130,7 +127,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Sample ticket rows -->
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd;">#001</td>
             <td style="padding: 10px; border: 1px solid #ddd;">Login Issue</td>
@@ -143,68 +139,14 @@
               <button class="deleteBtn">Delete</button>
             </td>
           </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">#002</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Payment Failure</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Pending</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Medium</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Jane Smith</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-              <button class="viewBtn">View</button>
-              <button class="editBtn">Edit</button>
-              <button class="deleteBtn">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">#003</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Bug in Dashboard</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Closed</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Low</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Mike Johnson</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-              <button class="viewBtn">View</button>
-              <button class="editBtn">Edit</button>
-              <button class="deleteBtn">Delete</button>
-            </td>
-          </tr>
+          <!-- Add more ticket rows as needed -->
         </tbody>
       </table>
-
-      <!-- Modal dialog for editing a ticket -->
-      <div id="editModal" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-          background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); z-index: 1000;">
-        <h2>Edit Ticket</h2>
-        <form id="editForm">
-          <label for="editSubject">Subject:</label><br />
-          <input type="text" id="editSubject" name="subject" style="width: 100%; padding: 8px; margin-bottom: 10px;" required /><br />
-          <label for="editStatus">Status:</label><br />
-          <select id="editStatus" name="status" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-            <option value="Open">Open</option>
-            <option value="Pending">Pending</option>
-            <option value="Closed">Closed</option>
-          </select><br />
-          <label for="editPriority">Priority:</label><br />
-          <select id="editPriority" name="priority" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-          </select><br />
-          <label for="editAssignedTo">Assigned To:</label><br />
-          <input type="text" id="editAssignedTo" name="assignedTo" style="width: 100%; padding: 8px; margin-bottom: 10px;" required /><br />
-          <button type="submit" style="padding: 10px 20px; background-color: crimson; color: white; border: none; border-radius: 5px; cursor: pointer;">Save</button>
-          <button type="button" id="cancelEdit" style="padding: 10px 20px; margin-left: 10px; background-color: #ccc; border: none; border-radius: 5px; cursor: pointer;">Cancel</button>
-        </form>
-      </div>
-
-      <!-- Overlay behind the modal to darken the background -->
-      <div id="modalOverlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-          background: rgba(0,0,0,0.5); z-index: 999;"></div>
     </div>
 
-    <!-- Users management section: hidden by default -->
+    <!-- Users section -->
     <div id="users" class="section" style="display:none">
       <h1>Users</h1>
-      <!-- Users table with user details and action buttons -->
       <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
         <thead>
           <tr style="background-color: crimson; color: white;">
@@ -216,99 +158,82 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Sample user rows -->
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd;">John Doe</td>
             <td style="padding: 10px; border: 1px solid #ddd;">john@example.com</td>
             <td style="padding: 10px; border: 1px solid #ddd;">Support Agent</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Active</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">Pending</td>
             <td style="padding: 10px; border: 1px solid #ddd;">
-              <button onclick="alert('Editing user John Doe')">Edit</button>
-              <button onclick="alert('Deactivating user John Doe')">Deactivate</button>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">Jane Smith</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">jane@example.com</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Manager</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Active</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-              <button onclick="alert('Editing user Jane Smith')">Edit</button>
-              <button onclick="alert('Deactivating user Jane Smith')">Deactivate</button>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">Mike Johnson</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">mike@example.com</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Support Agent</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Active</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-              <button onclick="alert('Editing user Mike Johnson')">Edit</button>
-              <button onclick="alert('Deactivating user Mike Johnson')">Deactivate</button>
+              <button class="approve-btn" onclick="approveUser(this)">Approve</button>
+              <button class="reject-btn" onclick="rejectUser(this)">Reject</button>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <!-- Confirmation Modal -->
+      <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+          <h2>Confirm Action</h2>
+          <p id="modalMessage"></p>
+          <div class="modal-buttons">
+            <button id="confirmBtn">Confirm</button>
+            <button id="cancelBtn">Cancel</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Reports section: hidden by default -->
+    <!-- Reports section -->
     <div id="reports" class="section" style="display:none">
       <h1>Reports</h1>
-      <!-- Summary cards for ticket statistics -->
-      <div class="stats" style="margin-bottom: 20px; justify-content: center; gap: 30px;">
-        <div class="card" style="flex: none; width: 150px; text-align: center;">
+      <div class="stats">
+        <div class="card">
           <h2>197</h2>
           <p>Total Tickets</p>
         </div>
-        <div class="card" style="flex: none; width: 150px; text-align: center;">
+        <div class="card">
           <h2>65</h2>
           <p>Open Tickets</p>
         </div>
-        <div class="card" style="flex: none; width: 150px; text-align: center;">
+        <div class="card">
           <h2>102</h2>
           <p>Closed Tickets</p>
         </div>
-        <div class="card" style="flex: none; width: 150px; text-align: center;">
+        <div class="card">
           <h2>30</h2>
           <p>Pending Tickets</p>
         </div>
       </div>
-      <!-- Pie chart showing ticket status distribution -->
-      <div class="chart-container" style="margin-bottom: 30px; max-width: 600px; height: 300px; margin-left: auto; margin-right: auto;">
+      <div class="chart-container">
         <canvas id="reportChart"></canvas>
       </div>
-
-      <!-- Line chart showing ticket trends over time -->
-      <div class="chart-container" style="max-width: 600px; height: 300px; margin-left: auto; margin-right: auto;">
+      <div class="chart-container">
         <canvas id="trendChart"></canvas>
       </div>
     </div>
 
-    <!-- Settings section: hidden by default -->
+    <!-- Settings section -->
     <div id="settings" class="section" style="display:none">
       <h1>Settings</h1>
-      <!-- Form for email notification settings -->
-      <form style="margin-top: 20px; max-width: 400px;">
+      <form>
         <label for="notifications">Email Notifications:</label><br />
-        <select id="notifications" name="notifications" style="width: 100%; padding: 8px; margin-bottom: 15px;">
+        <select id="notifications" name="notifications">
           <option value="enabled">Enabled</option>
           <option value="disabled">Disabled</option>
         </select><br />
-      
-        <button type="button" onclick="alert('Settings saved!')" style="padding: 10px 20px; background-color: crimson; color: white; border: none; border-radius: 5px; cursor: pointer;">Save</button>
+        <button type="button" onclick="saveSettings()">Save</button>
       </form>
     </div>
 
-    <!-- Logout section: hidden by default -->
+    <!-- Logout section -->
     <div id="logout" class="section" style="display:none">
       <h1>Logout</h1>
       <p>Are you sure you want to logout?</p>
-      <!-- Logout button redirects to login page -->
-      <button onclick="alert('Logged out! Redirecting to login page...'); window.location.href='../LOGIN/';" style="padding: 10px 20px; background-color: crimson; color: white; border: none; border-radius: 5px; cursor: pointer;">Logout</button>
+      <button onclick="handleLogout()">Logout</button>
     </div>
   </div>
   
-  <!-- JavaScript for section navigation and charts -->
   <script src="SCRIPT/admin.js"></script>
 </body>
 </html>
