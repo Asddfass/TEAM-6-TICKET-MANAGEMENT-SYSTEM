@@ -310,7 +310,7 @@ $(function() {
             question: "Are you sure you want to log out?",
             title: "Logout Confirmation",
             confirmButtonText: "Logout",
-            confirmCb: () => { window.location.href = url; }
+            confirmCb: () => { window.location.href = '../LOGIN/'; }
         });
     });
 
