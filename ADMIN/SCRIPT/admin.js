@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   showSection('dashboard');
   initializeCharts();
   initializeEventListeners();
+  initializePagination();
 });
 
 // Section Navigation
@@ -47,7 +48,56 @@ function initializeCharts() {
       }
   });
 
-  // Initialize other charts if needed
+  // Reports Charts
+  if(document.getElementById('reportChart')) {
+      const reportCtx = document.getElementById('reportChart').getContext('2d');
+      new Chart(reportCtx, {
+          type: 'pie',
+          data: {
+              labels: ['Open', 'Closed', 'Pending'],
+              datasets: [{
+                  data: [65, 102, 30],
+                  backgroundColor: [
+                      'rgba(33, 150, 243, 0.8)',
+                      'rgba(76, 175, 80, 0.8)',
+                      'rgba(255, 152, 0, 0.8)'
+                  ]
+              }]
+          },
+          options: {
+              responsive: true,
+              plugins: {
+                  title: {
+                      display: true,
+                      text: 'Ticket Status Distribution'
+                  }
+              }
+          }
+      });
+
+      const trendCtx = document.getElementById('trendChart').getContext('2d');
+      new Chart(trendCtx, {
+          type: 'line',
+          data: {
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+              datasets: [{
+                  label: 'Ticket Trends',
+                  data: [30, 45, 35, 50, 40, 60],
+                  borderColor: 'crimson',
+                  tension: 0.1
+              }]
+          },
+          options: {
+              responsive: true,
+              plugins: {
+                  title: {
+                      display: true,
+                      text: 'Monthly Ticket Trends'
+                  }
+              }
+          }
+      });
+  }
 }
 
 // Notification System
@@ -85,7 +135,6 @@ function createNotificationContainer() {
   document.body.appendChild(container);
   return container;
 }
-
 // Ticket Management Functions
 function viewTicket(button) {
   const row = button.closest('tr');
@@ -157,7 +206,7 @@ function editTicket(button) {
           // Close modal and show notification
           modal.style.display = 'none';
           showNotification('Success', 'Ticket updated successfully!', 'success');
-      }, 1000);
+      }, 800);
   };
 
   initializeModalClose(modal);
@@ -198,13 +247,195 @@ function confirmDelete(button, ticketId) {
 
   // Simulate API call
   setTimeout(() => {
-      row.classList.add('deleting');
+      row.style.opacity = '0';
+      row.style.transform = 'translateX(-20px)';
+      row.style.transition = 'all 0.3s ease';
+      
       setTimeout(() => {
           row.remove();
           modal.style.display = 'none';
           showNotification('Success', `Ticket ${ticketId} has been deleted`, 'success');
       }, 300);
-  }, 1000);
+  }, 800);
+}
+// User Management Functions
+function viewUser(button) {
+  const row = button.closest('tr');
+  const userData = {
+      name: row.cells[0].textContent,
+      email: row.cells[1].textContent,
+      role: row.cells[2].textContent,
+      status: row.cells[3].querySelector('.status-badge').textContent
+  };
+
+  const modal = document.getElementById('viewUserModal');
+  modal.querySelector('.modal-content').innerHTML = `
+      <span class="close">&times;</span>
+      <h2>User Details</h2>
+      <div class="user-info">
+          <p><strong>Name:</strong> ${userData.name}</p>
+          <p><strong>Email:</strong> ${userData.email}</p>
+          <p><strong>Role:</strong> ${userData.role}</p>
+          <p><strong>Status:</strong> <span class="status-badge ${userData.status.toLowerCase()}">${userData.status}</span></p>
+      </div>
+  `;
+
+  modal.style.display = 'block';
+  initializeModalClose(modal);
+}
+
+function editUser(button) {
+  const row = button.closest('tr');
+  const userData = {
+      name: row.cells[0].textContent,
+      email: row.cells[1].textContent,
+      role: row.cells[2].textContent,
+      status: row.cells[3].querySelector('.status-badge').textContent
+  };
+
+  const modal = document.getElementById('editUserModal');
+  modal.querySelector('.modal-content').innerHTML = `
+      <span class="close">&times;</span>
+      <h2>Edit User</h2>
+      <form id="editUserForm">
+          <div class="form-group">
+              <label>Name:</label>
+              <input type="text" id="editUserName" value="${userData.name}" required>
+          </div>
+          <div class="form-group">
+              <label>Email:</label>
+              <input type="email" id="editUserEmail" value="${userData.email}" required>
+          </div>
+          <div class="form-group">
+              <label>Role:</label>
+              <select id="editUserRole">
+                  <option value="Admin" ${userData.role === 'Admin' ? 'selected' : ''}>Admin</option>
+                  <option value="Support Agent" ${userData.role === 'Support Agent' ? 'selected' : ''}>Support Agent</option>
+                  <option value="User" ${userData.role === 'User' ? 'selected' : ''}>User</option>
+              </select>
+          </div>
+          <div class="modal-buttons">
+              <button type="submit" class="save-btn">Save Changes</button>
+              <button type="button" class="cancel-btn" onclick="closeModal(this)">Cancel</button>
+          </div>
+      </form>
+  `;
+
+  modal.style.display = 'block';
+
+  // Handle form submission
+  document.getElementById('editUserForm').onsubmit = function(e) {
+      e.preventDefault();
+      
+      // Show loading spinner
+      const saveBtn = this.querySelector('.save-btn');
+      saveBtn.innerHTML = '<span class="loading-spinner"></span>Saving...';
+      saveBtn.disabled = true;
+
+      // Simulate API call
+      setTimeout(() => {
+          // Update table row
+          row.cells[0].textContent = document.getElementById('editUserName').value;
+          row.cells[1].textContent = document.getElementById('editUserEmail').value;
+          row.cells[2].textContent = document.getElementById('editUserRole').value;
+
+          // Close modal and show notification
+          modal.style.display = 'none';
+          showNotification('Success', 'User updated successfully!', 'success');
+      }, 800);
+  };
+
+  initializeModalClose(modal);
+}
+
+function deleteUser(button) {
+  const row = button.closest('tr');
+  const userName = row.cells[0].textContent;
+
+  const modal = document.getElementById('deleteUserModal');
+  modal.querySelector('.modal-content').innerHTML = `
+      <div class="delete-confirmation">
+          <div class="delete-icon"></div>
+          <h2>Delete User</h2>
+          <p>Are you sure you want to delete this user?</p>
+          <div class="delete-details">
+              <p><strong>Name:</strong> ${userName}</p>
+              <p><strong>Email:</strong> ${row.cells[1].textContent}</p>
+              <p><strong>Role:</strong> ${row.cells[2].textContent}</p>
+          </div>
+          <div class="modal-buttons">
+              <button class="delete-btn" onclick="confirmDeleteUser(this)">Delete</button>
+              <button class="cancel-btn" onclick="closeModal(this)">Cancel</button>
+          </div>
+      </div>
+  `;
+
+  modal.style.display = 'block';
+  initializeModalClose(modal);
+}
+
+function confirmDeleteUser(button) {
+  const modal = button.closest('.modal');
+  const userName = button.closest('.delete-confirmation')
+      .querySelector('.delete-details p:first-child strong')
+      .nextSibling.textContent.trim();
+  const row = Array.from(document.querySelectorAll('tr'))
+      .find(row => row.cells[0].textContent.trim() === userName);
+
+  // Show loading state
+  button.innerHTML = '<span class="loading-spinner"></span>Deleting...';
+  button.disabled = true;
+
+  // Simulate API call
+  setTimeout(() => {
+      row.style.opacity = '0';
+      row.style.transform = 'translateX(-20px)';
+      row.style.transition = 'all 0.3s ease';
+      
+      setTimeout(() => {
+          row.remove();
+          modal.style.display = 'none';
+          showNotification('Success', `User ${userName} has been deleted`, 'success');
+      }, 300);
+  }, 800);
+}
+
+function approveUser(button) {
+  const row = button.closest('tr');
+  const userName = row.cells[0].textContent;
+
+  // Show loading state
+  button.innerHTML = '<span class="loading-spinner"></span>Approving...';
+  button.disabled = true;
+
+  // Simulate API call
+  setTimeout(() => {
+      row.cells[3].innerHTML = '<span class="status-badge active">Active</span>';
+      row.cells[4].innerHTML = `
+          <button class="viewBtn" onclick="viewUser(this)">View</button>
+          <button class="editBtn" onclick="editUser(this)">Edit</button>
+          <button class="deleteBtn" onclick="deleteUser(this)">Delete</button>
+      `;
+      showNotification('Success', `User ${userName} has been approved`, 'success');
+  }, 800);
+}
+
+function rejectUser(button) {
+  const row = button.closest('tr');
+  const userName = row.cells[0].textContent;
+
+  // Show loading state
+  button.innerHTML = '<span class="loading-spinner"></span>Rejecting...';
+  button.disabled = true;
+
+  // Simulate API call
+  setTimeout(() => {
+      row.cells[3].innerHTML = '<span class="status-badge inactive">Rejected</span>';
+      row.cells[4].innerHTML = `
+          <button class="approve-btn" onclick="approveUser(this)">Approve</button>
+      `;
+      showNotification('Warning', `User ${userName} has been rejected`, 'error');
+  }, 800);
 }
 
 // Modal Utilities
@@ -264,163 +495,3 @@ function initializeEventListeners() {
 
 // Add notification container to the body
 document.body.insertAdjacentHTML('beforeend', '<div class="notification-container"></div>');
-// Updated Delete Function
-function deleteTicket(button) {
-  const row = button.closest('tr');
-  const ticketId = row.cells[0].textContent;
-  const subject = row.cells[1].textContent;
-
-  const modal = document.getElementById('deleteTicketModal');
-  modal.style.display = 'block';
-
-  const confirmDelete = document.getElementById('confirmDelete');
-  const cancelDelete = document.getElementById('cancelDelete');
-
-  // Handle delete confirmation
-  confirmDelete.onclick = function() {
-      // Show loading state
-      this.innerHTML = '<span class="loading-spinner"></span>Deleting...';
-      this.disabled = true;
-
-      // Simulate delete action
-      setTimeout(() => {
-          row.style.opacity = '0';
-          row.style.transform = 'translateX(-20px)';
-          row.style.transition = 'all 0.3s ease';
-          
-          setTimeout(() => {
-              row.remove();
-              modal.style.display = 'none';
-              showNotification('Success', `Ticket ${ticketId} has been deleted`, 'success');
-          }, 300);
-      }, 800);
-  };
-
-  // Handle cancel
-  cancelDelete.onclick = function() {
-      modal.style.display = 'none';
-  };
-}
-
-// Updated Approve/Reject Functions
-function approveUser(button) {
-  const row = button.closest('tr');
-  const userName = row.cells[0].textContent;
-
-  // Show loading state
-  button.innerHTML = '<span class="loading-spinner"></span>Approving...';
-  button.disabled = true;
-
-  // Simulate approve action
-  setTimeout(() => {
-      row.cells[3].innerHTML = '<span class="status-badge active">Active</span>';
-      row.cells[4].innerHTML = `
-          <button class="viewBtn" onclick="viewUser(this)">View</button>
-          <button class="editBtn" onclick="editUser(this)">Edit</button>
-          <button class="deleteBtn" onclick="deleteUser(this)">Delete</button>
-      `;
-      showNotification('Success', `User ${userName} has been approved`, 'success');
-  }, 800);
-}
-
-function rejectUser(button) {
-  const row = button.closest('tr');
-  const userName = row.cells[0].textContent;
-
-  // Show loading state
-  button.innerHTML = '<span class="loading-spinner"></span>Rejecting...';
-  button.disabled = true;
-
-  // Simulate reject action
-  setTimeout(() => {
-      row.cells[3].innerHTML = '<span class="status-badge inactive">Rejected</span>';
-      row.cells[4].innerHTML = `
-          <button class="approve-btn" onclick="approveUser(this)">Approve</button>
-      `;
-      showNotification('Warning', `User ${userName} has been rejected`, 'error');
-  }, 800);
-}
-
-// Pagination Functions
-function initializePagination() {
-  const itemsPerPage = 5; // Number of items per page
-  const tables = document.querySelectorAll('.data-table');
-
-  tables.forEach(table => {
-      const rows = table.querySelectorAll('tbody tr');
-      const totalPages = Math.ceil(rows.length / itemsPerPage);
-      let currentPage = 1;
-
-      const paginationContainer = table.parentElement.querySelector('.table-pagination');
-      if (!paginationContainer) return;
-
-      const paginationControls = paginationContainer.querySelector('.pagination-controls');
-      const paginationInfo = paginationContainer.querySelector('.pagination-info');
-
-      // Update pagination buttons
-      function updatePaginationButtons() {
-          paginationControls.innerHTML = `
-              <button class="pagination-button prev" ${currentPage === 1 ? 'disabled' : ''}>Previous</button>
-              ${generatePageButtons()}
-              <button class="pagination-button next" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>
-          `;
-
-          // Update info text
-          const startItem = (currentPage - 1) * itemsPerPage + 1;
-          const endItem = Math.min(currentPage * itemsPerPage, rows.length);
-          paginationInfo.textContent = `Showing ${startItem}-${endItem} of ${rows.length} entries`;
-
-          // Add event listeners to new buttons
-          addPaginationEventListeners();
-      }
-
-      // Generate page number buttons
-      function generatePageButtons() {
-          let buttons = '';
-          for (let i = 1; i <= totalPages; i++) {
-              buttons += `<button class="pagination-button ${i === currentPage ? 'active' : ''}">${i}</button>`;
-          }
-          return buttons;
-      }
-
-      // Show appropriate rows for current page
-      function showPage(page) {
-          const start = (page - 1) * itemsPerPage;
-          const end = start + itemsPerPage;
-
-          rows.forEach((row, index) => {
-              row.style.display = (index >= start && index < end) ? '' : 'none';
-          });
-      }
-
-      // Add event listeners to pagination buttons
-      function addPaginationEventListeners() {
-          const buttons = paginationControls.querySelectorAll('.pagination-button');
-          buttons.forEach(button => {
-              button.addEventListener('click', () => {
-                  if (button.classList.contains('prev') && currentPage > 1) {
-                      currentPage--;
-                  } else if (button.classList.contains('next') && currentPage < totalPages) {
-                      currentPage++;
-                  } else if (!button.classList.contains('prev') && !button.classList.contains('next')) {
-                      currentPage = parseInt(button.textContent);
-                  }
-                  showPage(currentPage);
-                  updatePaginationButtons();
-              });
-          });
-      }
-
-      // Initialize pagination
-      showPage(1);
-      updatePaginationButtons();
-  });
-}
-
-// Add this to your existing initializeEventListeners function
-function initializeEventListeners() {
-  // ... your existing event listeners ...
-
-  // Initialize pagination
-  initializePagination();
-}
