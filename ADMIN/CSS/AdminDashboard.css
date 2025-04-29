@@ -3,14 +3,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif; /* Set default font */
+  font-family: Arial, sans-serif;
 }
 
-/* Body styles: flex container for sidebar and main content */
+/* Body styles */
 body {
   display: flex;
-  height: 100vh; /* Full viewport height */
-  background-color: #f4f4f4; /* Light gray background */
+  height: 100vh;
+  background-color: #f4f4f4;
 }
 
 /* Logout button styles */
@@ -27,9 +27,9 @@ body {
 
 /* Sidebar container styles */
 .sidebar {
-  width: 250px; /* Fixed width */
-  background-color: crimson; /* Crimson background */
-  color: white; /* White text */
+  width: 250px;
+  background-color: crimson;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,10 +40,10 @@ body {
 .sidebar img {
   width: 100px;
   height: 100px;
-  border-radius: 50%; /* Circular image */
-  object-fit: cover; /* Cover image area */
+  border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 20px;
-  border: 3px solid white; /* White border around image */
+  border: 3px solid white;
 }
 
 /* Sidebar heading styles */
@@ -53,7 +53,7 @@ body {
 
 /* Navigation links list styles */
 .nav-links {
-  list-style: none; /* Remove bullets */
+  list-style: none;
   width: 100%;
   padding-left: 0;
 }
@@ -63,19 +63,19 @@ body {
   width: 100%;
   padding: 15px 20px;
   cursor: pointer;
-  transition: background 0.3s; /* Smooth background color transition */
+  transition: background 0.3s;
 }
 
 /* Hover effect for navigation links */
 .nav-links li:hover {
-  background-color: #b22222; /* Darker red on hover */
+  background-color: #b22222;
 }
 
 /* Main content container styles */
 .main-content {
-  flex: 1; /* Take remaining space */
+  flex: 1;
   padding: 20px;
-  overflow-y: auto; /* Scroll vertically if content overflows */
+  overflow-y: auto;
 }
 
 /* Main content heading styles */
@@ -87,7 +87,7 @@ body {
 .stats {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap; /* Wrap cards on smaller screens */
+  flex-wrap: wrap;
   margin-bottom: 30px;
 }
 
@@ -96,14 +96,14 @@ body {
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 200px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Card hover effect: lift and shadow */
+/* Card hover effect */
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -128,7 +128,7 @@ body {
 
 /* Online users list styles */
 .online-users ul {
-  list-style: none; /* Remove bullets */
+  list-style: none;
   padding: 0;
 }
 
@@ -138,7 +138,7 @@ body {
   padding: 10px;
   margin: 5px 0;
   border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Container for user info table */
@@ -156,14 +156,14 @@ body {
   overflow: hidden;
 }
 
-/* Table header and cell padding and alignment */
+/* Table header and cell styles */
 .user-info th,
 .user-info td {
   padding: 12px 15px;
   text-align: left;
 }
 
-/* Table header background and text color */
+/* Table header styles */
 .user-info th {
   background-color: crimson;
   color: white;
@@ -174,19 +174,84 @@ body {
   background-color: #f9f9f9;
 }
 
-/* Container for charts */
+/* Chart container styles */
 .chart-container {
   width: 100%;
   margin-top: 40px;
 }
 
-/* Canvas element styles for charts */
+/* Canvas element styles */
 .chart-container canvas {
-  width: 100% !important; /* Full width */
-  height: auto !important; /* Maintain aspect ratio */
+  width: 100% !important;
+  height: auto !important;
 }
 
-/* Responsive styles for tablets and smaller devices */
+/* Button styles */
+.approve-btn, .reject-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.approve-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.reject-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#confirmBtn {
+    background-color: crimson;
+    color: white;
+}
+
+#cancelBtn {
+    background-color: #ddd;
+}
+
+/* Responsive styles */
 @media (max-width: 1024px) {
   body {
     flex-direction: column;
@@ -231,7 +296,6 @@ body {
   }
 }
 
-/* Responsive styles for mobile devices */
 @media (max-width: 768px) {
   .sidebar {
     flex-direction: column;
@@ -260,18 +324,8 @@ body {
   .card {
     min-width: 100%;
   }
-
-  .online-users li {
-    font-size: 0.9rem;
-  }
-
-  .user-info th,
-  .user-info td {
-    padding: 8px 10px;
-  }
 }
 
-/* Responsive styles for very small devices */
 @media (max-width: 480px) {
   .sidebar img {
     width: 50px;
