@@ -1,4 +1,4 @@
-/* Reset default margin, padding and set box-sizing for all elements */
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,26 +6,13 @@
   font-family: Arial, sans-serif;
 }
 
-/* Body styles */
 body {
   display: flex;
   height: 100vh;
   background-color: #f4f4f4;
 }
 
-/* Logout button styles */
-.logout {
-  background: none;
-  border: none;
-  color: white;
-  text-align: left;
-  padding: 10px 0;
-  width: 100%;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* Sidebar container styles */
+/* Sidebar styles */
 .sidebar {
   width: 250px;
   background-color: crimson;
@@ -36,7 +23,6 @@ body {
   padding: 20px 0;
 }
 
-/* Sidebar profile image styles */
 .sidebar img {
   width: 100px;
   height: 100px;
@@ -46,44 +32,41 @@ body {
   border: 3px solid white;
 }
 
-/* Sidebar heading styles */
 .sidebar h2 {
   margin-bottom: 30px;
 }
 
-/* Navigation links list styles */
 .nav-links {
   list-style: none;
   width: 100%;
-  padding-left: 0;
 }
 
-/* Individual navigation link styles */
 .nav-links li {
-  width: 100%;
   padding: 15px 20px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-/* Hover effect for navigation links */
 .nav-links li:hover {
   background-color: #b22222;
 }
 
-/* Main content container styles */
+/* Main content styles */
 .main-content {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
 }
 
-/* Main content heading styles */
-.main-content h1 {
+.section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
   margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Container for stats cards */
+/* Stats cards */
 .stats {
   display: flex;
   gap: 20px;
@@ -91,225 +74,216 @@ body {
   margin-bottom: 30px;
 }
 
-/* Individual card styles */
 .card {
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   flex: 1;
   min-width: 200px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-/* Card hover effect */
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
-/* Card heading styles */
 .card h2 {
   font-size: 2em;
   color: crimson;
+  margin-bottom: 10px;
 }
 
-/* Card paragraph styles */
-.card p {
-  margin-top: 10px;
-  color: #555;
-}
-
-/* Container for online users list */
-.online-users {
-  margin-top: 30px;
-}
-
-/* Online users list styles */
-.online-users ul {
-  list-style: none;
-  padding: 0;
-}
-
-/* Individual online user item styles */
-.online-users li {
-  background: white;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Container for user info table */
-.user-info {
-  margin-top: 40px;
-}
-
-/* User info table styles */
-.user-info table {
+/* Tables */
+table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
+  margin-top: 20px;
 }
 
-/* Table header and cell styles */
-.user-info th,
-.user-info td {
+th, td {
   padding: 12px 15px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Table header styles */
-.user-info th {
+th {
   background-color: crimson;
   color: white;
 }
 
-/* Zebra striping for table rows */
-.user-info tr:nth-child(even) {
-  background-color: #f9f9f9;
+tr:hover {
+  background-color: #f5f5f5;
 }
 
-/* Chart container styles */
-.chart-container {
-  width: 100%;
-  margin-top: 40px;
+/* Buttons */
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Canvas element styles */
-.chart-container canvas {
-  width: 100% !important;
-  height: auto !important;
+.view-btn {
+  background-color: #2196f3;
+  color: white;
+  margin-right: 5px;
 }
 
-/* Button styles */
-.approve-btn, .reject-btn {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px;
+.edit-btn {
+  background-color: #4caf50;
+  color: white;
+  margin-right: 5px;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
 }
 
 .approve-btn {
-    background-color: #4CAF50;
-    color: white;
+  background-color: #4CAF50;
+  color: white;
+  margin-right: 5px;
 }
 
 .reject-btn {
-    background-color: #f44336;
-    color: white;
+  background-color: #f44336;
+  color: white;
 }
 
 /* Modal styles */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;
 }
 
 .modal-content {
-    background-color: white;
-    width: 400px;
-    padding: 20px;
-    border-radius: 5px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  position: relative;
 }
 
 .modal-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.modal-buttons button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* Form styles */
+.form-group {
+  margin-bottom: 15px;
 }
 
-#confirmBtn {
-    background-color: crimson;
-    color: white;
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-#cancelBtn {
-    background-color: #ddd;
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-/* Responsive styles */
+/* Ticket management specific styles */
+.tickets-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.ticket-search {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.tickets-table td {
+  vertical-align: middle;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.85em;
+}
+
+.status-badge.open {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-badge.pending {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.status-badge.closed {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+
+/* Chart container */
+.chart-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Responsive design */
 @media (max-width: 1024px) {
-  body {
-    flex-direction: column;
-    height: auto;
-  }
-
   .sidebar {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 10px 0;
+    width: 200px;
   }
 
-  .sidebar img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0;
-  }
-
-  .sidebar h2 {
-    margin-bottom: 0;
-    font-size: 1.2rem;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-direction: row;
-    width: auto;
-  }
-
-  .nav-links li {
-    padding: 10px 15px;
-  }
-
-  .main-content {
-    padding: 15px;
-  }
-
-  .stats {
-    flex-direction: column;
-    gap: 15px;
+  .card {
+    min-width: 150px;
   }
 }
 
 @media (max-width: 768px) {
-  .sidebar {
+  body {
     flex-direction: column;
+  }
+
+  .sidebar {
     width: 100%;
-    padding: 15px 0;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sidebar img {
+    width: 50px;
+    height: 50px;
+    margin: 0;
   }
 
   .nav-links {
-    flex-direction: column;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .nav-links li {
-    padding: 12px 20px;
+    padding: 10px;
   }
 
   .main-content {
@@ -318,34 +292,34 @@ body {
 
   .stats {
     flex-direction: column;
-    gap: 10px;
   }
 
   .card {
     min-width: 100%;
   }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
 }
 
-@media (max-width: 480px) {
-  .sidebar img {
-    width: 50px;
-    height: 50px;
-  }
+/* Settings section */
+.settings-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
 
-  .sidebar h2 {
-    font-size: 1rem;
-  }
+.save-btn {
+  background-color: crimson;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
 
-  .nav-links li {
-    padding: 10px 15px;
-    font-size: 0.9rem;
-  }
-
-  .main-content h1 {
-    font-size: 1.5rem;
-  }
-
-  .card h2 {
-    font-size: 1.5rem;
-  }
+/* Logout section */
+.logout-btn {
+  background-color: crimson;
+  color: white;
+  padding: 10px 20px;
 }
