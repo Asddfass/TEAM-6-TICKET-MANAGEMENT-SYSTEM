@@ -137,35 +137,57 @@ function createNotificationContainer() {
 }
 // Ticket Management Functions
 function viewTicket(button) {
-  const row = button.closest('tr');
-  const ticketData = {
-      id: row.cells[0].textContent,
-      subject: row.cells[1].textContent,
-      status: row.cells[2].querySelector('.status-badge').textContent,
-      priority: row.cells[3].querySelector('.priority-badge').textContent,
-      assigned: row.cells[4].textContent
-  };
+    const row = button.closest('tr');
+    const ticketData = {
+        id: row.cells[0].textContent,
+        subject: row.cells[1].textContent,
+        status: row.cells[2].querySelector('.status-badge').textContent,
+        priority: row.cells[3].querySelector('.priority-badge').textContent,
+        assigned: row.cells[4].textContent
+    };
 
-  const modal = document.getElementById('viewTicketModal');
-  modal.querySelector('.modal-content').innerHTML = `
-      <span class="close">&times;</span>
-      <h2>Ticket Details</h2>
-      <div class="ticket-info">
-          <p><strong>Ticket ID:</strong> ${ticketData.id}</p>
-          <p><strong>Subject:</strong> ${ticketData.subject}</p>
-          <p><strong>Status:</strong> <span class="status-badge ${ticketData.status.toLowerCase()}">${ticketData.status}</span></p>
-          <p><strong>Priority:</strong> <span class="priority-badge ${ticketData.priority.toLowerCase()}">${ticketData.priority}</span></p>
-          <p><strong>Assigned To:</strong> ${ticketData.assigned}</p>
-          <div class="ticket-description">
-              <h3>Description</h3>
-              <p>Detailed description of the ticket issue...</p>
-          </div>
-      </div>
-  `;
+    const modal = document.getElementById('viewTicketModal');
+    modal.querySelector('.modal-content').innerHTML = `
+        <div class="modal-header">
+            <h2>Ticket #${ticketData.id}</h2>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="ticket-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Status</span>
+                    <span class="status-badge ${ticketData.status.toLowerCase()}">${ticketData.status}</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Priority</span>
+                    <span class="priority-badge ${ticketData.priority.toLowerCase()}">${ticketData.priority}</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Assigned To</span>
+                    <span class="assigned-user">${ticketData.assigned}</span>
+                </div>
+            </div>
+            
+            <div class="ticket-content">
+                <div class="ticket-subject">
+                    <h3>Subject</h3>
+                    <p>${ticketData.subject}</p>
+                </div>
+                <div class="ticket-description">
+                    <h3>Description</h3>
+                    <p>Detailed description of the ticket issue...</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="cancel-btn" onclick="closeModal(this)">Close</button>
+        </div>
+    `;
 
-  modal.style.display = 'block';
-  initializeModalClose(modal);
+    modal.style.display = 'block';
+    initializeModalClose(modal);
 }
+
 
 function editTicket(button) {
   const row = button.closest('tr');
