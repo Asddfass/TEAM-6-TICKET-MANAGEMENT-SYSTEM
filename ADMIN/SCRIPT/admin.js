@@ -13,9 +13,9 @@ function showSection(sectionId) {
   document.getElementById(sectionId).style.display = 'block';
 }
 
-// Chart Initialization
+// Initialize Charts
 function initializeCharts() {
-  // Dashboard Ticket Chart
+  // Ticket Statistics Chart
   const ticketCtx = document.getElementById('ticketChart').getContext('2d');
   new Chart(ticketCtx, {
       type: 'bar',
@@ -43,85 +43,47 @@ function initializeCharts() {
                       display: false
                   }
               }
-          },
-          plugins: {
-              title: {
-                  display: true,
-                  text: 'Monthly Ticket Statistics',
-                  font: { size: 16 }
-              }
           }
       }
   });
 
-  // Reports Charts
-  if(document.getElementById('reportChart')) {
-      // Pie Chart for Status Distribution
-      const reportCtx = document.getElementById('reportChart').getContext('2d');
-      new Chart(reportCtx, {
-          type: 'pie',
-          data: {
-              labels: ['Open', 'Closed', 'Pending'],
-              datasets: [{
-                  data: [65, 102, 30],
-                  backgroundColor: [
-                      'rgba(33, 150, 243, 0.8)',
-                      'rgba(76, 175, 80, 0.8)',
-                      'rgba(255, 152, 0, 0.8)'
-                  ]
-              }]
-          },
-          options: {
-              responsive: true,
-              plugins: {
-                  title: {
-                      display: true,
-                      text: 'Ticket Status Distribution',
-                      font: { size: 16 }
-                  }
-              }
-          }
-      });
+  // Initialize other charts if needed
+}
 
-      // Line Chart for Trends
-      const trendCtx = document.getElementById('trendChart').getContext('2d');
-      new Chart(trendCtx, {
-          type: 'line',
-          data: {
-              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-              datasets: [{
-                  label: 'Ticket Trends',
-                  data: [30, 45, 35, 50, 40, 60],
-                  borderColor: 'crimson',
-                  tension: 0.1,
-                  fill: false
-              }]
-          },
-          options: {
-              responsive: true,
-              plugins: {
-                  title: {
-                      display: true,
-                      text: 'Ticket Trends Over Time',
-                      font: { size: 16 }
-                  }
-              },
-              scales: {
-                  y: {
-                      beginAtZero: true,
-                      grid: {
-                          color: 'rgba(0, 0, 0, 0.1)'
-                      }
-                  },
-                  x: {
-                      grid: {
-                          display: false
-                      }
-                  }
-              }
-          }
-      });
-  }
+// Notification System
+function showNotification(title, message, type = 'success') {
+  const notificationContainer = document.querySelector('.notification-container') || createNotificationContainer();
+  
+  const toast = document.createElement('div');
+  toast.className = `notification-toast ${type}`;
+  toast.innerHTML = `
+      <div class="notification-icon">
+          ${type === 'success' ? '✓' : '!'}
+      </div>
+      <div class="notification-content">
+          <div class="notification-title">${title}</div>
+          <div class="notification-message">${message}</div>
+      </div>
+      <div class="notification-close" onclick="this.parentElement.remove()">×</div>
+  `;
+
+  notificationContainer.appendChild(toast);
+  
+  // Show animation
+  setTimeout(() => toast.classList.add('show'), 100);
+
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+  }, 5000);
+}
+
+function createNotificationContainer() {
+  const container = document.createElement('div');
+  container.className = 'notification-container';
+  document.body.appendChild(container);
+  return container;
 }
 
 // Ticket Management Functions
@@ -135,85 +97,136 @@ function viewTicket(button) {
       assigned: row.cells[4].textContent
   };
 
-  document.getElementById('ticketDetails').innerHTML = `
+  const modal = document.getElementById('viewTicketModal');
+  modal.querySelector('.modal-content').innerHTML = `
+      <span class="close">&times;</span>
+      <h2>Ticket Details</h2>
       <div class="ticket-info">
           <p><strong>Ticket ID:</strong> ${ticketData.id}</p>
           <p><strong>Subject:</strong> ${ticketData.subject}</p>
           <p><strong>Status:</strong> <span class="status-badge ${ticketData.status.toLowerCase()}">${ticketData.status}</span></p>
           <p><strong>Priority:</strong> <span class="priority-badge ${ticketData.priority.toLowerCase()}">${ticketData.priority}</span></p>
           <p><strong>Assigned To:</strong> ${ticketData.assigned}</p>
-          <p><strong>Created Date:</strong> ${new Date().toLocaleDateString()}</p>
-          <p><strong>Last Updated:</strong> ${new Date().toLocaleDateString()}</p>
           <div class="ticket-description">
               <h3>Description</h3>
-              <p>Detailed description of the ticket issue goes here...</p>
+              <p>Detailed description of the ticket issue...</p>
           </div>
       </div>
   `;
 
-  document.getElementById('viewTicketModal').style.display = 'block';
+  modal.style.display = 'block';
+  initializeModalClose(modal);
 }
 
 function editTicket(button) {
   const row = button.closest('tr');
+  const ticketData = {
+      id: row.cells[0].textContent,
+      subject: row.cells[1].textContent,
+      status: row.cells[2].querySelector('.status-badge').textContent,
+      priority: row.cells[3].querySelector('.priority-badge').textContent,
+      assigned: row.cells[4].textContent
+  };
+
   const modal = document.getElementById('editTicketModal');
-  
-  document.getElementById('editSubject').value = row.cells[1].textContent;
-  document.getElementById('editStatus').value = row.cells[2].querySelector('.status-badge').textContent;
-  document.getElementById('editPriority').value = row.cells[3].querySelector('.priority-badge').textContent;
-  document.getElementById('editAssigned').value = row.cells[4].textContent;
-  
   modal.style.display = 'block';
 
+  // Populate form fields
+  document.getElementById('editSubject').value = ticketData.subject;
+  document.getElementById('editStatus').value = ticketData.status;
+  document.getElementById('editPriority').value = ticketData.priority;
+  document.getElementById('editAssigned').value = ticketData.assigned;
+
+  // Handle form submission
   document.getElementById('editTicketForm').onsubmit = function(e) {
       e.preventDefault();
-      const status = document.getElementById('editStatus').value;
-      const priority = document.getElementById('editPriority').value;
       
-      row.cells[1].textContent = document.getElementById('editSubject').value;
-      row.cells[2].innerHTML = `<span class="status-badge ${status.toLowerCase()}">${status}</span>`;
-      row.cells[3].innerHTML = `<span class="priority-badge ${priority.toLowerCase()}">${priority}</span>`;
-      row.cells[4].textContent = document.getElementById('editAssigned').value;
-      
-      modal.style.display = 'none';
+      // Show loading spinner
+      const saveBtn = this.querySelector('.save-btn');
+      saveBtn.innerHTML = '<span class="loading-spinner"></span>Saving...';
+      saveBtn.disabled = true;
+
+      // Simulate API call
+      setTimeout(() => {
+          // Update table row
+          row.cells[1].textContent = document.getElementById('editSubject').value;
+          row.cells[2].innerHTML = `<span class="status-badge ${document.getElementById('editStatus').value.toLowerCase()}">${document.getElementById('editStatus').value}</span>`;
+          row.cells[3].innerHTML = `<span class="priority-badge ${document.getElementById('editPriority').value.toLowerCase()}">${document.getElementById('editPriority').value}</span>`;
+          row.cells[4].textContent = document.getElementById('editAssigned').value;
+
+          // Close modal and show notification
+          modal.style.display = 'none';
+          showNotification('Success', 'Ticket updated successfully!', 'success');
+      }, 1000);
   };
+
+  initializeModalClose(modal);
 }
 
 function deleteTicket(button) {
   const row = button.closest('tr');
+  const ticketId = row.cells[0].textContent;
+  
   const modal = document.getElementById('deleteTicketModal');
+  modal.querySelector('.modal-content').innerHTML = `
+      <div class="delete-confirmation">
+          <div class="delete-icon"></div>
+          <h2>Delete Ticket</h2>
+          <p>Are you sure you want to delete ticket ${ticketId}?</p>
+          <div class="delete-details">
+              <p><strong>Subject:</strong> ${row.cells[1].textContent}</p>
+              <p><strong>Status:</strong> ${row.cells[2].textContent}</p>
+          </div>
+          <div class="modal-buttons">
+              <button class="delete-btn" onclick="confirmDelete(this, '${ticketId}')">Delete</button>
+              <button class="cancel-btn" onclick="closeModal(this)">Cancel</button>
+          </div>
+      </div>
+  `;
+
   modal.style.display = 'block';
+  initializeModalClose(modal);
+}
 
-  document.getElementById('confirmDelete').onclick = function() {
-      row.remove();
-      modal.style.display = 'none';
+function confirmDelete(button, ticketId) {
+  const modal = button.closest('.modal');
+  const row = document.querySelector(`tr:has(td:first-child:contains('${ticketId}'))`);
+  
+  // Show loading state
+  button.innerHTML = '<span class="loading-spinner"></span>Deleting...';
+  button.disabled = true;
+
+  // Simulate API call
+  setTimeout(() => {
+      row.classList.add('deleting');
+      setTimeout(() => {
+          row.remove();
+          modal.style.display = 'none';
+          showNotification('Success', `Ticket ${ticketId} has been deleted`, 'success');
+      }, 300);
+  }, 1000);
+}
+
+// Modal Utilities
+function initializeModalClose(modal) {
+  const closeBtn = modal.querySelector('.close');
+  if (closeBtn) {
+      closeBtn.onclick = () => closeModal(modal);
+  }
+  
+  window.onclick = (event) => {
+      if (event.target === modal) {
+          closeModal(modal);
+      }
   };
-
-  document.getElementById('cancelDelete').onclick = function() {
-      modal.style.display = 'none';
-  };
 }
 
-// User Management Functions
-function approveUser(button) {
-  const row = button.closest('tr');
-  row.cells[3].innerHTML = '<span class="status-badge active">Active</span>';
-  button.parentElement.innerHTML = `
-      <button class="viewBtn" onclick="viewUser(this)">View</button>
-      <button class="editBtn" onclick="editUser(this)">Edit</button>
-      <button class="deleteBtn" onclick="deleteUser(this)">Delete</button>
-  `;
+function closeModal(element) {
+  const modal = element.closest('.modal');
+  modal.style.display = 'none';
 }
 
-function rejectUser(button) {
-  const row = button.closest('tr');
-  row.cells[3].innerHTML = '<span class="status-badge inactive">Rejected</span>';
-  button.parentElement.innerHTML = `
-      <button class="approve-btn" onclick="approveUser(this)">Approve</button>
-  `;
-}
-
-// Search and Filter Functions
+// Initialize Event Listeners
 function initializeEventListeners() {
   // Search functionality
   document.querySelectorAll('.search-box input').forEach(input => {
@@ -247,87 +260,167 @@ function initializeEventListeners() {
           }
       });
   });
-
-  // Modal close buttons
-  document.querySelectorAll('.close').forEach(closeBtn => {
-      closeBtn.onclick = function() {
-          this.closest('.modal').style.display = 'none';
-      };
-  });
-
-  // Close modal when clicking outside
-  window.onclick = function(event) {
-      if (event.target.classList.contains('modal')) {
-          event.target.style.display = 'none';
-      }
-  };
-
-  // Pagination buttons
-  document.querySelectorAll('.pagination-button').forEach(button => {
-      button.addEventListener('click', function() {
-          document.querySelectorAll('.pagination-button').forEach(btn => {
-              btn.classList.remove('active');
-          });
-          this.classList.add('active');
-          // Add pagination logic here
-      });
-  });
 }
 
-// Settings Functions
-function saveSettings() {
-  const notifications = document.getElementById('notifications').value;
-  showNotification('Settings saved successfully!');
-}
+// Add notification container to the body
+document.body.insertAdjacentHTML('beforeend', '<div class="notification-container"></div>');
+// Updated Delete Function
+function deleteTicket(button) {
+  const row = button.closest('tr');
+  const ticketId = row.cells[0].textContent;
+  const subject = row.cells[1].textContent;
 
-function showNotification(message) {
-  const notification = document.createElement('div');
-  notification.className = 'notification';
-  notification.textContent = message;
-  document.body.appendChild(notification);
-  
-  setTimeout(() => {
-      notification.classList.add('show');
-      setTimeout(() => {
-          notification.classList.remove('show');
-          setTimeout(() => {
-              notification.remove();
-          }, 300);
-      }, 2000);
-  }, 100);
-}
-
-// Logout Function
-function handleLogout() {
-  const modal = document.createElement('div');
-  modal.className = 'modal';
-  modal.innerHTML = `
-      <div class="modal-content">
-          <h2>Confirm Logout</h2>
-          <p>Are you sure you want to logout?</p>
-          <div class="modal-buttons">
-              <button onclick="confirmLogout()" class="logout-btn">Logout</button>
-              <button onclick="this.closest('.modal').remove()" class="cancel-btn">Cancel</button>
-          </div>
-      </div>
-  `;
-  document.body.appendChild(modal);
+  const modal = document.getElementById('deleteTicketModal');
   modal.style.display = 'block';
-}
 
-function confirmLogout() {
-  window.location.href = '../LOGIN/';
-}
+  const confirmDelete = document.getElementById('confirmDelete');
+  const cancelDelete = document.getElementById('cancelDelete');
 
-// Export functions if needed
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-      showSection,
-      viewTicket,
-      editTicket,
-      deleteTicket,
-      approveUser,
-      rejectUser,
-      handleLogout
+  // Handle delete confirmation
+  confirmDelete.onclick = function() {
+      // Show loading state
+      this.innerHTML = '<span class="loading-spinner"></span>Deleting...';
+      this.disabled = true;
+
+      // Simulate delete action
+      setTimeout(() => {
+          row.style.opacity = '0';
+          row.style.transform = 'translateX(-20px)';
+          row.style.transition = 'all 0.3s ease';
+          
+          setTimeout(() => {
+              row.remove();
+              modal.style.display = 'none';
+              showNotification('Success', `Ticket ${ticketId} has been deleted`, 'success');
+          }, 300);
+      }, 800);
   };
+
+  // Handle cancel
+  cancelDelete.onclick = function() {
+      modal.style.display = 'none';
+  };
+}
+
+// Updated Approve/Reject Functions
+function approveUser(button) {
+  const row = button.closest('tr');
+  const userName = row.cells[0].textContent;
+
+  // Show loading state
+  button.innerHTML = '<span class="loading-spinner"></span>Approving...';
+  button.disabled = true;
+
+  // Simulate approve action
+  setTimeout(() => {
+      row.cells[3].innerHTML = '<span class="status-badge active">Active</span>';
+      row.cells[4].innerHTML = `
+          <button class="viewBtn" onclick="viewUser(this)">View</button>
+          <button class="editBtn" onclick="editUser(this)">Edit</button>
+          <button class="deleteBtn" onclick="deleteUser(this)">Delete</button>
+      `;
+      showNotification('Success', `User ${userName} has been approved`, 'success');
+  }, 800);
+}
+
+function rejectUser(button) {
+  const row = button.closest('tr');
+  const userName = row.cells[0].textContent;
+
+  // Show loading state
+  button.innerHTML = '<span class="loading-spinner"></span>Rejecting...';
+  button.disabled = true;
+
+  // Simulate reject action
+  setTimeout(() => {
+      row.cells[3].innerHTML = '<span class="status-badge inactive">Rejected</span>';
+      row.cells[4].innerHTML = `
+          <button class="approve-btn" onclick="approveUser(this)">Approve</button>
+      `;
+      showNotification('Warning', `User ${userName} has been rejected`, 'error');
+  }, 800);
+}
+
+// Pagination Functions
+function initializePagination() {
+  const itemsPerPage = 5; // Number of items per page
+  const tables = document.querySelectorAll('.data-table');
+
+  tables.forEach(table => {
+      const rows = table.querySelectorAll('tbody tr');
+      const totalPages = Math.ceil(rows.length / itemsPerPage);
+      let currentPage = 1;
+
+      const paginationContainer = table.parentElement.querySelector('.table-pagination');
+      if (!paginationContainer) return;
+
+      const paginationControls = paginationContainer.querySelector('.pagination-controls');
+      const paginationInfo = paginationContainer.querySelector('.pagination-info');
+
+      // Update pagination buttons
+      function updatePaginationButtons() {
+          paginationControls.innerHTML = `
+              <button class="pagination-button prev" ${currentPage === 1 ? 'disabled' : ''}>Previous</button>
+              ${generatePageButtons()}
+              <button class="pagination-button next" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>
+          `;
+
+          // Update info text
+          const startItem = (currentPage - 1) * itemsPerPage + 1;
+          const endItem = Math.min(currentPage * itemsPerPage, rows.length);
+          paginationInfo.textContent = `Showing ${startItem}-${endItem} of ${rows.length} entries`;
+
+          // Add event listeners to new buttons
+          addPaginationEventListeners();
+      }
+
+      // Generate page number buttons
+      function generatePageButtons() {
+          let buttons = '';
+          for (let i = 1; i <= totalPages; i++) {
+              buttons += `<button class="pagination-button ${i === currentPage ? 'active' : ''}">${i}</button>`;
+          }
+          return buttons;
+      }
+
+      // Show appropriate rows for current page
+      function showPage(page) {
+          const start = (page - 1) * itemsPerPage;
+          const end = start + itemsPerPage;
+
+          rows.forEach((row, index) => {
+              row.style.display = (index >= start && index < end) ? '' : 'none';
+          });
+      }
+
+      // Add event listeners to pagination buttons
+      function addPaginationEventListeners() {
+          const buttons = paginationControls.querySelectorAll('.pagination-button');
+          buttons.forEach(button => {
+              button.addEventListener('click', () => {
+                  if (button.classList.contains('prev') && currentPage > 1) {
+                      currentPage--;
+                  } else if (button.classList.contains('next') && currentPage < totalPages) {
+                      currentPage++;
+                  } else if (!button.classList.contains('prev') && !button.classList.contains('next')) {
+                      currentPage = parseInt(button.textContent);
+                  }
+                  showPage(currentPage);
+                  updatePaginationButtons();
+              });
+          });
+      }
+
+      // Initialize pagination
+      showPage(1);
+      updatePaginationButtons();
+  });
+}
+
+// Add this to your existing initializeEventListeners function
+function initializeEventListeners() {
+  // ... your existing event listeners ...
+
+  // Initialize pagination
+  initializePagination();
 }

@@ -731,9 +731,274 @@ body {
   animation: spin 1s linear infinite;
   margin-right: 10px;
 }
+/* Enhanced Modal and Notification Styles - New Code */
+
+/* Notification System */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+
+.notification-toast {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  transform: translateX(120%);
+  transition: transform 0.3s ease;
+  border-left: 4px solid crimson;
+}
+
+.notification-toast.show {
+  transform: translateX(0);
+}
+
+.notification-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(231, 76, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e74c3c;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4px;
+}
+
+.notification-message {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.notification-close {
+  color: #999;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.3s ease;
+}
+
+.notification-close:hover {
+  color: #666;
+}
+
+/* Enhanced Modal Styles */
+.modal-content {
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from { 
+      transform: translate(-50%, -60%);
+      opacity: 0;
+  }
+  to { 
+      transform: translate(-50%, -50%);
+      opacity: 1;
+  }
+}
+
+/* Delete Confirmation Modal */
+.delete-confirmation {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.delete-icon {
+  width: 60px;
+  height: 60px;
+  background: #fee7e7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.delete-icon::before {
+  content: '!';
+  font-size: 40px;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.delete-confirmation p {
+  color: #2c3e50;
+  font-size: 1.2em;
+  margin-bottom: 25px;
+}
+
+.delete-details {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: left;
+  border: 1px solid #eee;
+}
+
+/* Enhanced Modal Buttons */
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.modal-buttons .save-btn,
+.modal-buttons .delete-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  color: white;
+}
+
+.modal-buttons .save-btn {
+  background: crimson;
+}
+
+.modal-buttons .delete-btn {
+  background: #e74c3c;
+}
+
+.modal-buttons .cancel-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  background: #f1f2f6;
+  color: #2c3e50;
+  min-width: 120px;
+}
+
+.modal-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Delete Animation */
+@keyframes rowFadeOut {
+  from { 
+      opacity: 1; 
+      transform: translateX(0);
+  }
+  to { 
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+}
+
+.deleting {
+  animation: rowFadeOut 0.3s ease forwards;
+}
+
+/* Modal Close Button */
+.modal .close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  background: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  color: #666;
+}
+
+.modal .close:hover {
+  background: #e9ecef;
+  transform: rotate(90deg);
+  color: #333;
+}
+
+/* Loading Animation */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid crimson;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Pagination Styles */
+.pagination-button {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 2px;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background: #f8f9fa;
+  border-color: #ddd;
+}
+
+.pagination-button.active {
+  background: crimson;
+  color: white;
+  border-color: crimson;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 
