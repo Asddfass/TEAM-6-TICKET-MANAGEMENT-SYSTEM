@@ -10,10 +10,8 @@
 <body>
   <!-- Sidebar navigation panel -->
   <div class="sidebar">
-    <!-- Admin profile picture -->
     <img src="../IMG/adminPic.jpg" alt="Admin Picture" />
     <h2>Hello Ali!</h2>
-    <!-- Navigation links for different sections -->
     <ul class="nav-links">
       <li onclick="showSection('dashboard')">Dashboard</li>
       <li onclick="showSection('tickets')">Manage Tickets</li>
@@ -24,12 +22,11 @@
     </ul>
   </div>
 
-  <!-- Main content area where different sections are displayed -->
+  <!-- Main content area -->
   <div class="main-content">
-    <!-- Dashboard section: visible by default -->
+    <!-- Dashboard section -->
     <div id="dashboard" class="section">
       <h1>Welcome, Ali!</h1>
-      <!-- Summary statistics cards -->
       <div class="stats">
         <div class="card">
           <h2>124</h2>
@@ -49,7 +46,6 @@
         </div>
       </div>
 
-      <!-- List of currently online users -->
       <div class="online-users">
         <h2>Currently Online Users</h2>
         <ul>
@@ -60,7 +56,6 @@
         </ul>
       </div>
 
-      <!-- Detailed table of online user information -->
       <div class="user-info">
         <h2>Online User Details</h2>
         <table>
@@ -76,28 +71,28 @@
           <tbody>
             <tr>
               <td>John Doe</td>
-              <td>ae202401395@wmsu.edu.ph.</td>
+              <td>john@example.com</td>
               <td>Support Agent</td>
               <td>Online</td>
               <td>5 mins ago</td>
             </tr>
             <tr>
               <td>Jane Smith</td>
-              <td>ae202401395@wmsu.edu.ph.</td>
+              <td>jane@example.com</td>
               <td>Manager</td>
               <td>Online</td>
               <td>Just now</td>
             </tr>
             <tr>
               <td>Mike Johnson</td>
-              <td>ae202401395@wmsu.edu.ph</td>
+              <td>mike@example.com</td>
               <td>Support Agent</td>
               <td>Online</td>
               <td>2 mins ago</td>
             </tr>
             <tr>
               <td>Emily Davis</td>
-              <td>ae202401395@wmsu.edu.ph.</td>
+              <td>emily@example.com</td>
               <td>Customer</td>
               <td>Online</td>
               <td>1 min ago</td>
@@ -106,37 +101,36 @@
         </table>
       </div>
 
-      <!-- Container for the bar chart showing monthly ticket data -->
-      <div class="chart-container" style="max-width: 600px; height: 300px; margin: auto;">
+      <div class="chart-container">
         <canvas id="ticketChart"></canvas>
       </div>
     </div>
 
-    <!-- Manage Tickets section -->
+    <!-- Tickets section -->
     <div id="tickets" class="section" style="display:none">
       <h1>Manage Tickets</h1>
-      <table id="ticketsTable" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <table class="tickets-table">
         <thead>
-          <tr style="background-color: crimson; color: white;">
-            <th style="padding: 10px; border: 1px solid #ddd;">Ticket ID</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">Subject</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">Status</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">Priority</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">Assigned To</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+          <tr>
+            <th>Ticket ID</th>
+            <th>Subject</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Assigned To</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">#001</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Login Issue</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Open</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">High</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">John Doe</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-              <button class="viewBtn">View</button>
-              <button class="editBtn">Edit</button>
-              <button class="deleteBtn">Delete</button>
+            <td>#001</td>
+            <td>Login Issue</td>
+            <td>Open</td>
+            <td>High</td>
+            <td>John Doe</td>
+            <td>
+              <button class="view-btn">View</button>
+              <button class="edit-btn">Edit</button>
+              <button class="delete-btn">Delete</button>
             </td>
           </tr>
           <!-- Add more ticket rows as needed -->
@@ -147,27 +141,28 @@
     <!-- Users section -->
     <div id="users" class="section" style="display:none">
       <h1>Users</h1>
-      <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+      <table class="users-table">
         <thead>
-          <tr style="background-color: crimson; color: white;">
-            <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">Email</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">Role</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">Status</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">John Doe</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">john@example.com</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Support Agent</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">Pending</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
+            <td>John Doe</td>
+            <td>john@example.com</td>
+            <td>Support Agent</td>
+            <td>Pending</td>
+            <td>
               <button class="approve-btn" onclick="approveUser(this)">Approve</button>
               <button class="reject-btn" onclick="rejectUser(this)">Reject</button>
             </td>
           </tr>
+          <!-- Add more user rows as needed -->
         </tbody>
       </table>
 
@@ -216,13 +211,15 @@
     <!-- Settings section -->
     <div id="settings" class="section" style="display:none">
       <h1>Settings</h1>
-      <form>
-        <label for="notifications">Email Notifications:</label><br />
-        <select id="notifications" name="notifications">
-          <option value="enabled">Enabled</option>
-          <option value="disabled">Disabled</option>
-        </select><br />
-        <button type="button" onclick="saveSettings()">Save</button>
+      <form class="settings-form">
+        <div class="form-group">
+          <label for="notifications">Email Notifications:</label>
+          <select id="notifications" name="notifications">
+            <option value="enabled">Enabled</option>
+            <option value="disabled">Disabled</option>
+          </select>
+        </div>
+        <button type="button" onclick="saveSettings()" class="save-btn">Save Settings</button>
       </form>
     </div>
 
@@ -230,10 +227,10 @@
     <div id="logout" class="section" style="display:none">
       <h1>Logout</h1>
       <p>Are you sure you want to logout?</p>
-      <button onclick="handleLogout()">Logout</button>
+      <button onclick="handleLogout()" class="logout-btn">Logout</button>
     </div>
   </div>
-  
+
   <script src="SCRIPT/admin.js"></script>
 </body>
 </html>
