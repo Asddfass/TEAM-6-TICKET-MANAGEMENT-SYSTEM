@@ -1,7 +1,4 @@
-/* ==============================
-   Base Styles
-   ============================== */
-   body {
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
     margin: 0;
@@ -18,9 +15,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* ==============================
-   Main Layout: Sidebar & Content
-   ============================== */
+/* Main Layout: Sidebar & Content */
 .dashboard-container {
     min-height: 100vh;
 }
@@ -121,10 +116,7 @@ a:hover {
     margin-top: 0.5rem;
 }
 
-
-/* ==============================
-   Header Styles
-   ============================== */
+/* Header Styles */
 .header {
     background-color: #fff;
     border-bottom: 1px solid #e9ecef;
@@ -162,9 +154,7 @@ a:hover {
     text-align: center;
 }
 
-/* ==============================
-   Content Area & Sections
-   ============================== */
+/* Content Area & Sections */
 .content-area {
     flex-grow: 1;
     overflow-y: auto;
@@ -410,10 +400,7 @@ a:hover {
     color: #fff !important;
 }
 
-
-/* ==============================
-   Modal Styles
-   ============================== */
+/* Modal Styles */
 .modal-body .form-label-sm {
     font-size: 0.8rem;
     margin-bottom: 0.1rem;
@@ -479,10 +466,7 @@ label[for="profile-picture-input"] {
     padding-left: 0.25rem;
 }
 
-/* ==============================
-   Responsive Design
-   ============================== */
-
+/* Responsive Design */
 @media (max-width: 991.98px) {
     .sidebar {
         width: 80px;
@@ -642,16 +626,36 @@ label[for="profile-picture-input"] {
         content: attr(data-label);
     }
 
-    .status-request-card .col-content:nth-child(1)::before { content: "Ticket:"; }
-    .status-request-card .col-content:nth-child(2)::before { content: "Subject:"; }
-    .status-request-card .col-content:nth-child(3)::before { content: "Status:"; }
-    .status-request-card .col-content:nth-child(4)::before { content: "Updated:"; }
-    .status-request-card .col-content:nth-child(5)::before { content: "Action:"; }
-    .history-request-card .col-content:nth-child(1)::before { content: "Ticket:"; }
-    .history-request-card .col-content:nth-child(2)::before { content: "Subject:"; }
-    .history-request-card .col-content:nth-child(3)::before { content: "Status:"; }
-    .history-request-card .col-content:nth-child(4)::before { content: "Finalized:"; }
-    .history-request-card .col-content:nth-child(5)::before { content: "Action:"; }
+    .status-request-card .col-content:nth-child(1)::before { 
+       content: "Ticket:"; 
+    }
+    .status-request-card .col-content:nth-child(2)::before { 
+       content: "Subject:"; 
+    }
+    .status-request-card .col-content:nth-child(3)::before { 
+       content: "Status:"; 
+    }
+    .status-request-card .col-content:nth-child(4)::before { 
+       content: "Updated:"; 
+    }
+    .status-request-card .col-content:nth-child(5)::before { 
+       content: "Action:"; 
+    }
+    .history-request-card .col-content:nth-child(1)::before { 
+       content: "Ticket:"; 
+    }
+    .history-request-card .col-content:nth-child(2)::before { 
+       content: "Subject:"; 
+    }
+    .history-request-card .col-content:nth-child(3)::before { 
+       content: "Status:"; 
+    }
+    .history-request-card .col-content:nth-child(4)::before { 
+       content: "Finalized:"; 
+    }
+    .history-request-card .col-content:nth-child(5)::before { 
+       content: "Action:"; 
+    }
 
 
     .status-request-card .col-content:last-child,
