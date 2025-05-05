@@ -1,75 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WMSU ASSIST</title>
-  <link rel="stylesheet" href="CSS/stylesheet.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>WMSU ASSIST</title>
+    <link rel="stylesheet" href="CSS/stylesheet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="header-left">
-      <h1>WMSU Ticketing Management System</h1>
+    <div class="menu-overlay"></div>
+    
+    <header>
+        <div class="header-left">
+            <h1>WMSU Ticketing Management System</h1>
+        </div>
+
+        <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="navbar">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="LOGIN/" class="login-btn mobile-login">Log In</a>
+        </nav>
+
+        <a href="LOGIN/" class="login-btn desktop-login">Log In</a>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="home-content">
+                <h2>Have an issue?<br>Request a fix in just a click!</h2>
+                <p>Submit and track requests for any issues or assistance needed.</p>
+                <a href="#about" class="cta-btn">Learn More</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>Our Ticketing Management System is designed to make requesting and tracking school-related assistance easier and more efficient. Instead of relying on emails or phone calls, faculty members can quickly submit requests for repairs, support, or any issues they encounter within the school. The system ensures that each request is reviewed, processed, and assigned to the appropriate team for resolution. With real-time updates and notifications, faculty can easily track the status of their requests, ensuring timely and organized support.</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <img src="IMG/about_1.png" alt="Request image">
+                <div class="text-content">
+                    <h3>Quick and Easy Request Submission</h3>
+                    <div class="divider"></div>
+                    <p>Easily submit your requests with just a few simple steps. Whether you need a repair, assistance, or have any issue, our platform lets you submit your request quickly, saving you time and effort.</p>
+                </div>
+            </div>
+
+            <div class="feature-card reverse">
+                <img src="IMG/about_2.png" alt="Track image">
+                <div class="text-content">
+                    <h3>Track Your Request in Real-Time</h3>
+                    <div class="divider"></div>
+                    <p>Stay updated with real-time tracking for every request. You'll receive instant notifications and can monitor the status of your request from submission to resolution, ensuring you're always in the loop.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <section>
+            <h3>Contact Us</h3>
+            <p>Email: ae202401395@wmsu.edu.ph</p>
+            <p>Phone: 09999999</p>
+        </section>
+    </footer>
+
+    <div class="mobile-nav-bar">
+        <a href="#home" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+        <a href="#about" class="mobile-nav-item">
+            <i class="fas fa-info-circle"></i>
+            About
+        </a>
+        <a href="#contact" class="mobile-nav-item">
+            <i class="fas fa-envelope"></i>
+            Contact
+        </a>
     </div>
-  
-    <div class="burger" onclick="toggleMenu()">☰</div>
-  
-    <nav id="navbar">
-      <a href="#home">Home</a>
-      <a href="#about">About Us</a>
-      <a href="#contact">Contact</a>
-    </nav>
 
-    <a href="LOGIN/" class="login-btn">Log In</a>
-  </header>
-
-  <main>
-    <section id="home">
-        <div class="home-content">
-          <h2>Have an issue? Request a fix in just a click!</h2>
-          <p>Submit and track requests for any issues or assistance needed.</p>
-        </div>
-      </section>
-      <section id="about">
-        <h2>About Us</h2>
-        <p>
-          Our Ticketing Management System is designed to make requesting and tracking school-related assistance easier and more efficient. Instead of relying on emails or phone calls, faculty members can quickly submit requests for repairs, support, or any issues they encounter within the school. The system ensures that each request is reviewed, processed, and assigned to the appropriate team for resolution. With real-time updates and notifications, faculty can easily track the status of their requests, ensuring timely and organized support. Our mission is to simplify the process, improve communication, and help resolve issues faster, keeping the school running smoothly.
-        </p>
-      </section>
-      <section class="section">
-        <img src="IMG/about_1.png" alt="Request image">
-        <div class="text-content">
-          <h3>Quick and Easy Request Submission</h3>
-          <div class="divider"></div>
-          <p>
-            Easily submit your requests with just a few simple steps. Whether you need a repair, assistance, or have any issue, our platform lets you submit your request quickly, saving you time and effort.
-          </p>
-        </div>
-      </section>
-      <section class="section reverse">
-        <img src="IMG/about_2.png" alt="Track image">
-        <div class="text-content">
-          <h3>Track Your Request in Real-Time</h3>
-          <div class="divider"></div>
-          <p>
-            Stay updated with real-time tracking for every request. You'll receive instant notifications and can monitor the status of your request from submission to resolution, ensuring you're always in the loop.
-          </p>
-        </div>
-      </section>
-  </main>
-  <footer>
-    <section id="contact">
-      Contact Us 
-      <p>Through email ae202401395@wmsu.edu.ph / via phone 09999999</p>
-    </section>
-  </footer>
- <script>
-    function toggleMenu() 
-    {
-      const nav = document.getElementById("navbar");
-      nav.classList.toggle("active");
-    }
-  </script>  
-  </body>
+    <script src="SCRIPT/script.js"></script>
+</body>
 </html>
