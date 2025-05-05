@@ -872,3 +872,50 @@ body {
       text-align: center;
   }
 }
+
+.logout-confirmation {
+  text-align: center;
+  padding: 20px;
+}
+
+.logout-confirmation h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.logout-confirmation p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}

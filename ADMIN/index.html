@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,35 +8,36 @@
     <link rel="stylesheet" href="CSS/AdminDashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <!-- Sidebar -->
-<div class="sidebar">
-    <img src="../IMG/adminPic.jpg" alt="Admin Picture">
-    <h2>Hello Ali!</h2>
-    <ul class="nav-links">
-        <li class="active" onclick="showSection('dashboard')">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </li>
-        <li onclick="showSection('tickets')">
-            <i class="fas fa-file-alt"></i>
-            <span>Request</span>
-        </li>
-        <li onclick="showSection('users')">
-            <i class="fas fa-hourglass-half"></i>
-            <span>Status</span>
-        </li>
-        <li onclick="showSection('reports')">
-            <i class="fas fa-history"></i>
-            <span>History</span>
-        </li>
-        <div class="logout-divider"></div>
-        <li class="logout" onclick="showSection('logout')">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
-        </li>
-    </ul>
-</div>
+    <div class="sidebar">
+        <img src="../IMG/adminPic.jpg" alt="Admin Picture">
+        <h2>Hello Ali!</h2>
+        <ul class="nav-links">
+            <li class="active" onclick="showSection('dashboard')">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </li>
+            <li onclick="showSection('tickets')">
+                <i class="fas fa-file-alt"></i>
+                <span>Request</span>
+            </li>
+            <li onclick="showSection('users')">
+                <i class="fas fa-hourglass-half"></i>
+                <span>Status</span>
+            </li>
+            <li onclick="showSection('reports')">
+                <i class="fas fa-history"></i>
+                <span>History</span>
+            </li>
+            <div class="logout-divider"></div>
+            <li class="logout" onclick="showSection('logout')">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </li>
+        </ul>
+    </div>
 
 
     <!-- Main Content -->
@@ -111,275 +113,291 @@
         </div>
         <!-- Manage Tickets Section -->
         <div id="tickets" class="section" style="display:none">
-          <h1>Manage Tickets</h1>
-          <div class="table-controls">
-              <div class="search-box">
-                  <input type="text" placeholder="Search tickets...">
-              </div>
-              <div class="filter-box">
-                  <select class="filter-select">
-                      <option value="">All Status</option>
-                      <option value="open">Open</option>
-                      <option value="pending">Pending</option>
-                      <option value="closed">Closed</option>
-                  </select>
-                  <select class="filter-select">
-                      <option value="">All Priority</option>
-                      <option value="high">High</option>
-                      <option value="medium">Medium</option>
-                      <option value="low">Low</option>
-                  </select>
-              </div>
-          </div>
+            <h1>Manage Tickets</h1>
+            <div class="table-controls">
+                <div class="search-box">
+                    <input type="text" placeholder="Search tickets...">
+                </div>
+                <div class="filter-box">
+                    <select class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="open">Open</option>
+                        <option value="pending">Pending</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">All Priority</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+            </div>
 
-          <table class="data-table tickets-table">
-              <thead>
-                  <tr>
-                      <th>Ticket ID</th>
-                      <th>Subject</th>
-                      <th>Status</th>
-                      <th>Priority</th>
-                      <th>Assigned To</th>
-                      <th>Actions</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>#001</td>
-                      <td>Login Issue</td>
-                      <td><span class="status-badge open">Open</span></td>
-                      <td><span class="priority-badge high">High</span></td>
-                      <td>John Doe</td>
-                      <td class="action-buttons">
-                          <button class="viewBtn" onclick="viewTicket(this)">View</button>
-                          <button class="editBtn" onclick="editTicket(this)">Edit</button>
-                          <button class="deleteBtn" onclick="deleteTicket(this)">Delete</button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>#002</td>
-                      <td>Payment Failed</td>
-                      <td><span class="status-badge pending">Pending</span></td>
-                      <td><span class="priority-badge medium">Medium</span></td>
-                      <td>Jane Smith</td>
-                      <td class="action-buttons">
-                          <button class="viewBtn" onclick="viewTicket(this)">View</button>
-                          <button class="editBtn" onclick="editTicket(this)">Edit</button>
-                          <button class="deleteBtn" onclick="deleteTicket(this)">Delete</button>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
+            <table class="data-table tickets-table">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Assigned To</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#001</td>
+                        <td>Login Issue</td>
+                        <td><span class="status-badge open">Open</span></td>
+                        <td><span class="priority-badge high">High</span></td>
+                        <td>John Doe</td>
+                        <td class="action-buttons">
+                            <button class="viewBtn" onclick="viewTicket(this)">View</button>
+                            <button class="editBtn" onclick="editTicket(this)">Edit</button>
+                            <button class="deleteBtn" onclick="deleteTicket(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>Payment Failed</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td><span class="priority-badge medium">Medium</span></td>
+                        <td>Jane Smith</td>
+                        <td class="action-buttons">
+                            <button class="viewBtn" onclick="viewTicket(this)">View</button>
+                            <button class="editBtn" onclick="editTicket(this)">Edit</button>
+                            <button class="deleteBtn" onclick="deleteTicket(this)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-          <div class="table-pagination">
-              <div class="pagination-info">Showing 1-2 of 2 entries</div>
-              <div class="pagination-controls">
-                  <button class="pagination-button prev" disabled>Previous</button>
-                  <button class="pagination-button active">1</button>
-                  <button class="pagination-button next" disabled>Next</button>
-              </div>
-          </div>
-      </div>
+            <div class="table-pagination">
+                <div class="pagination-info">Showing 1-2 of 2 entries</div>
+                <div class="pagination-controls">
+                    <button class="pagination-button prev" disabled>Previous</button>
+                    <button class="pagination-button active">1</button>
+                    <button class="pagination-button next" disabled>Next</button>
+                </div>
+            </div>
+        </div>
 
-      <!-- Users Section -->
-      <div id="users" class="section" style="display:none">
-          <h1>Users Management</h1>
-          <div class="table-controls">
-              <div class="search-box">
-                  <input type="text" placeholder="Search users...">
-              </div>
-              <div class="filter-box">
-                  <select class="filter-select">
-                      <option value="">All Roles</option>
-                      <option value="admin">Admin</option>
-                      <option value="agent">Support Agent</option>
-                      <option value="user">User</option>
-                  </select>
-                  <select class="filter-select">
-                      <option value="">All Status</option>
-                      <option value="active">Active</option>
-                      <option value="pending">Pending</option>
-                      <option value="inactive">Inactive</option>
-                  </select>
-              </div>
-          </div>
+        <!-- Users Section -->
+        <div id="users" class="section" style="display:none">
+            <h1>Users Management</h1>
+            <div class="table-controls">
+                <div class="search-box">
+                    <input type="text" placeholder="Search users...">
+                </div>
+                <div class="filter-box">
+                    <select class="filter-select">
+                        <option value="">All Roles</option>
+                        <option value="admin">Admin</option>
+                        <option value="agent">Support Agent</option>
+                        <option value="user">User</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+            </div>
 
-          <table class="data-table users-table">
-              <thead>
-                  <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Role</th>
-                      <th>Status</th>
-                      <th>Actions</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>John Doe</td>
-                      <td>john@example.com</td>
-                      <td>Support Agent</td>
-                      <td><span class="status-badge pending">Pending</span></td>
-                      <td class="action-buttons">
-                          <button class="approve-btn" onclick="approveUser(this)">Approve</button>
-                          <button class="reject-btn" onclick="rejectUser(this)">Reject</button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Jane Smith</td>
-                      <td>jane@example.com</td>
-                      <td>Admin</td>
-                      <td><span class="status-badge active">Active</span></td>
-                      <td class="action-buttons">
-                          <button class="viewBtn" onclick="viewUser(this)">View</button>
-                          <button class="editBtn" onclick="editUser(this)">Edit</button>
-                          <button class="deleteBtn" onclick="deleteUser(this)">Delete</button>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
+            <table class="data-table users-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>Support Agent</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="approve-btn" onclick="approveUser(this)">Approve</button>
+                            <button class="reject-btn" onclick="rejectUser(this)">Reject</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>jane@example.com</td>
+                        <td>Admin</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td class="action-buttons">
+                            <button class="viewBtn" onclick="viewUser(this)">View</button>
+                            <button class="editBtn" onclick="editUser(this)">Edit</button>
+                            <button class="deleteBtn" onclick="deleteUser(this)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-          <div class="table-pagination">
-              <div class="pagination-info">Showing 1-2 of 2 entries</div>
-              <div class="pagination-controls">
-                  <button class="pagination-button prev" disabled>Previous</button>
-                  <button class="pagination-button active">1</button>
-                  <button class="pagination-button next" disabled>Next</button>
-              </div>
-          </div>
-      </div>
+            <div class="table-pagination">
+                <div class="pagination-info">Showing 1-2 of 2 entries</div>
+                <div class="pagination-controls">
+                    <button class="pagination-button prev" disabled>Previous</button>
+                    <button class="pagination-button active">1</button>
+                    <button class="pagination-button next" disabled>Next</button>
+                </div>
+            </div>
+        </div>
         <!-- Reports Section -->
         <div id="reports" class="section" style="display:none">
-          <h1>Reports</h1>
-          <div class="stats">
-              <div class="card">
-                  <h2>197</h2>
-                  <p>Total Tickets</p>
-              </div>
-              <div class="card">
-                  <h2>65</h2>
-                  <p>Open Tickets</p>
-              </div>
-              <div class="card">
-                  <h2>102</h2>
-                  <p>Closed Tickets</p>
-              </div>
-              <div class="card">
-                  <h2>30</h2>
-                  <p>Pending Tickets</p>
-              </div>
-          </div>
+            <h1>Reports</h1>
+            <div class="stats">
+                <div class="card">
+                    <h2>197</h2>
+                    <p>Total Tickets</p>
+                </div>
+                <div class="card">
+                    <h2>65</h2>
+                    <p>Open Tickets</p>
+                </div>
+                <div class="card">
+                    <h2>102</h2>
+                    <p>Closed Tickets</p>
+                </div>
+                <div class="card">
+                    <h2>30</h2>
+                    <p>Pending Tickets</p>
+                </div>
+            </div>
 
-          <div class="reports-charts">
-              <div class="chart-wrapper">
-                  <h3>Ticket Status Distribution</h3>
-                  <canvas id="reportChart"></canvas>
-              </div>
-              <div class="chart-wrapper">
-                  <h3>Monthly Ticket Trends</h3>
-                  <canvas id="trendChart"></canvas>
-              </div>
-          </div>
-      </div>
+            <div class="reports-charts">
+                <div class="chart-wrapper">
+                    <h3>Ticket Status Distribution</h3>
+                    <canvas id="reportChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>Monthly Ticket Trends</h3>
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+        </div>
 
-      <!-- Settings Section -->
-      <div id="settings" class="section" style="display:none">
-          <h1>Settings</h1>
-          <form class="settings-form">
-              <div class="form-group">
-                  <label for="notifications">Email Notifications</label>
-                  <select id="notifications" class="form-control">
-                      <option value="enabled">Enabled</option>
-                      <option value="disabled">Disabled</option>
-                  </select>
-              </div>
-              <button type="button" class="save-btn">Save Settings</button>
-          </form>
-      </div>
+        <!-- Settings Section -->
+        <div id="settings" class="section" style="display:none">
+            <h1>Settings</h1>
+            <form class="settings-form">
+                <div class="form-group">
+                    <label for="notifications">Email Notifications</label>
+                    <select id="notifications" class="form-control">
+                        <option value="enabled">Enabled</option>
+                        <option value="disabled">Disabled</option>
+                    </select>
+                </div>
+                <button type="button" class="save-btn">Save Settings</button>
+            </form>
+        </div>
 
-      <!-- Logout Section -->
-      <div id="logout" class="section" style="display:none">
-          <h1>Logout</h1>
-          <div class="logout-confirmation">
-              <p>Are you sure you want to logout?</p>
-              <button class="logout-btn">Logout</button>
-          </div>
-      </div>
+        <!-- Logout Section -->
+        <div id="logout" class="section" style="display:none">
+            <h1>Logout</h1>
+            <div class="logout-confirmation">
+                <p>Are you sure you want to logout?</p>
+                <button class="logout-btn">Logout</button>
+            </div>
+        </div>
 
-      <!-- Modals -->
-      <!-- View Ticket Modal -->
-      <div id="viewTicketModal" class="modal">
-          <div class="modal-content">
-              <!-- Content will be dynamically inserted -->
-          </div>
-      </div>
+        <!-- Modals -->
+        <!-- View Ticket Modal -->
+        <div id="viewTicketModal" class="modal">
+            <div class="modal-content">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
 
-      <!-- Edit Ticket Modal -->
-      <div id="editTicketModal" class="modal">
-          <div class="modal-content">
-              <span class="close">&times;</span>
-              <h2>Edit Ticket</h2>
-              <form id="editTicketForm">
-                  <div class="form-group">
-                      <label>Subject:</label>
-                      <input type="text" id="editSubject" required>
-                  </div>
-                  <div class="form-group">
-                      <label>Status:</label>
-                      <select id="editStatus">
-                          <option value="Open">Open</option>
-                          <option value="Pending">Pending</option>
-                          <option value="Closed">Closed</option>
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <label>Priority:</label>
-                      <select id="editPriority">
-                          <option value="High">High</option>
-                          <option value="Medium">Medium</option>
-                          <option value="Low">Low</option>
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <label>Assigned To:</label>
-                      <input type="text" id="editAssigned" required>
-                  </div>
-                  <div class="modal-buttons">
-                      <button type="submit" class="save-btn">Save Changes</button>
-                      <button type="button" class="cancel-btn" onclick="closeModal(this)">Cancel</button>
-                  </div>
-              </form>
-          </div>
-      </div>
+        <!-- Edit Ticket Modal -->
+        <div id="editTicketModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Ticket</h2>
+                <form id="editTicketForm">
+                    <div class="form-group">
+                        <label>Subject:</label>
+                        <input type="text" id="editSubject" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Status:</label>
+                        <select id="editStatus">
+                            <option value="Open">Open</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority:</label>
+                        <select id="editPriority">
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Assigned To:</label>
+                        <input type="text" id="editAssigned" required>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="submit" class="save-btn">Save Changes</button>
+                        <button type="button" class="cancel-btn" onclick="closeModal(this)">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-      <!-- Delete Ticket Modal -->
-      <div id="deleteTicketModal" class="modal">
-          <div class="modal-content">
-              <!-- Content will be dynamically inserted -->
-          </div>
-      </div>
+        <!-- Delete Ticket Modal -->
+        <div id="deleteTicketModal" class="modal">
+            <div class="modal-content">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
 
-      <!-- User Management Modals -->
-      <div id="viewUserModal" class="modal">
-          <div class="modal-content">
-              <!-- Content will be dynamically inserted -->
-          </div>
-      </div>
+        <!-- User Management Modals -->
+        <div id="viewUserModal" class="modal">
+            <div class="modal-content">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
 
-      <div id="editUserModal" class="modal">
-          <div class="modal-content">
-              <!-- Content will be dynamically inserted -->
-          </div>
-      </div>
+        <div id="editUserModal" class="modal">
+            <div class="modal-content">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
 
-      <div id="deleteUserModal" class="modal">
-          <div class="modal-content">
-              <!-- Content will be dynamically inserted -->
-          </div>
-      </div>
+        <div id="deleteUserModal" class="modal">
+            <div class="modal-content">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
 
-  </div>
+        <!-- Logout Confirmation Modal -->
+        <div id="logoutConfirmModal" class="modal">
+            <div class="modal-content">
+                <div class="logout-confirmation">
+                    <h2>Confirm Logout</h2>
+                    <p>Are you sure you want to logout?</p>
+                    <div class="modal-buttons">
+                        <button class="logout-btn" onclick="confirmLogout()">Logout</button>
+                        <button class="cancel-btn" onclick="closeModal(this)">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <script src="SCRIPT/admin.js"></script>
+
+    </div>
+
+    <script src="SCRIPT/admin.js"></script>
 </body>
+
 </html>
