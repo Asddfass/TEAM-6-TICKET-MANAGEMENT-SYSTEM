@@ -9,18 +9,34 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
-        <img src="../IMG/adminPic.jpg" alt="Admin Picture">
-        <h2>Hello Ali!</h2>
-        <ul class="nav-links">
-            <li onclick="showSection('dashboard')">Dashboard</li>
-            <li onclick="showSection('tickets')">Manage Tickets</li>
-            <li onclick="showSection('users')">Users</li>
-            <li onclick="showSection('reports')">Reports</li>
-            <li onclick="showSection('settings')">Settings</li>
-            <li onclick="showSection('logout')">Logout</li>
-        </ul>
-    </div>
+<div class="sidebar">
+    <img src="../IMG/adminPic.jpg" alt="Admin Picture">
+    <h2>Hello Ali!</h2>
+    <ul class="nav-links">
+        <li class="active" onclick="showSection('dashboard')">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </li>
+        <li onclick="showSection('tickets')">
+            <i class="fas fa-file-alt"></i>
+            <span>Request</span>
+        </li>
+        <li onclick="showSection('users')">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Status</span>
+        </li>
+        <li onclick="showSection('reports')">
+            <i class="fas fa-history"></i>
+            <span>History</span>
+        </li>
+        <div class="logout-divider"></div>
+        <li class="logout" onclick="showSection('logout')">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </li>
+    </ul>
+</div>
+
 
     <!-- Main Content -->
     <div class="main-content">
