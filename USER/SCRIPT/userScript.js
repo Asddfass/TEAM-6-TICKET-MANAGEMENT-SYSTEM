@@ -24,12 +24,35 @@ $(function() {
     const otherRequestTypeModalEl = document.getElementById('otherRequestTypeModal');
     const otherRequestTypeModal = otherRequestTypeModalEl ? new bootstrap.Modal(otherRequestTypeModalEl) : null;
 
+// --- Hamburger Menu Toggle --- 
+    const hamburgerButton = document.querySelector('.hamburger-button');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (hamburgerButton && sidebar) {
+        hamburgerButton.addEventListener('click', () => {
+            sidebar.classList.toggle('is-open');
+
+            const isExpanded = sidebar.classList.contains('is-open');
+            hamburgerButton.setAttribute('aria-expanded', isExpanded);
+
+        });
+
+         sidebar.addEventListener('click', (event) => {
+             if ((event.target.matches('.nav-link') || event.target.closest('.nav-link')) && !event.target.closest('#logout-link')) {
+                 if (sidebar.classList.contains('is-open') && window.innerWidth < 768) {
+                     sidebar.classList.remove('is-open');
+                     hamburgerButton.setAttribute('aria-expanded', 'false');
+                 }
+                 
+             }
+         });
+
+    } else {
+        if (!hamburgerButton) console.error("Hamburger button element not found. Make sure your HTML includes a button with class 'hamburger-button'.");
+        if (!sidebar) console.error("Sidebar element not found. Make sure your HTML includes a nav/div with class 'sidebar'.");
+    }
+    
     // --- Ticket Number Management (Alphanumeric - More Numbers) ---
-    /**
-     * Generates a random 8-character alphanumeric string with a higher
-     * probability of digits than letters.
-     * @returns {string} An 8-character alphanumeric ticket ID.
-     */
     function generateAlphanumericTicket() {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789012345678901234567890123456789';
         let ticket = '';
