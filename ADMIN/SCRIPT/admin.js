@@ -25,15 +25,16 @@ function showLogoutConfirmation() {
     initializeModalClose(modal);
 }
 
-// Functions for logout handling
 function confirmLogout() {
     // Show loading state
     const logoutBtn = document.querySelector('#logoutConfirmModal .logout-btn');
     logoutBtn.innerHTML = '<span class="loading-spinner"></span>Logging out...';
     logoutBtn.disabled = true;
 
+    // Simulate logout process
     setTimeout(() => {
-        window.location.href = '../LOGIN';
+        // Redirect to login page or perform logout action
+        window.location.href = '../LOGIN'; // Replace with your login page URL
     }, 800);
 }
 
