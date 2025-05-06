@@ -432,7 +432,7 @@ $(function() {
     // --- Event Handlers ---
     $('#logout-link').on('click', function(event) {
         event.preventDefault();
-        showConfirmationModal({ question: "Are you sure you want to logout?", title: "Confirm Logout", confirmBtnTxt: "Logout", confirmBtnClass: "btn-danger", confirmCb: () => { showToast("Logged out successfully!", "info"); setTimeout(() => { window.location.href = "../"; }, 1500); } });
+        showConfirmationModal({ question: "Are you sure you want to logout?", title: "Confirm Logout", confirmBtnTxt: "Logout", confirmBtnClass: "btn-danger", confirmCb: () => { showToast("Logged out successfully!", "info"); setTimeout(() => { window.location.href = "../LOGIN"; }, 1500); } });
     });
 
     $('body').on('click', '.cancel-request-btn', function() {

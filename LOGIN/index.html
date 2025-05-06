@@ -32,26 +32,40 @@
       $('#loginForm').on('submit', function (e) 
       {
         e.preventDefault();
-  
+
+        const loginBtn = $(this).find('button[type="submit"]');
         const username = $('input[name="username"]').val().trim();
         const password = $('input[name="password"]').val().trim();
-  
-        if (username === 'admin' && password === 'admin123') 
-        {
-          window.location.href = '../ADMIN';
-        } 
-        else if (username === 'support' && password === 'support123') 
-        {
-          window.location.href = '../SUPPORTAGENT';
-        } 
-        else if (username === 'user' && password === 'user123') 
-        {
-          window.location.href = '../USER';
-        } 
-        else 
-        {
-          $('#loginError').text('Invalid username or password');
-        }
+        const errorMsg = $('#loginError');
+
+        // Clear previous error message
+        errorMsg.text('');
+
+        // Disable button and show loading spinner
+        loginBtn.prop('disabled', true);
+        const originalBtnText = loginBtn.text();
+        loginBtn.html('<span class="loading-spinner"></span> Logging in...');
+
+        setTimeout(() => {
+          if (username === 'admin' && password === 'admin123') 
+          {
+            window.location.href = '../ADMIN/index.html';
+          } 
+          else if (username === 'support' && password === 'support123') 
+          {
+            window.location.href = '../SUPPORTAGENT/index.html';
+          } 
+          else if (username === 'user' && password === 'user123') 
+          {
+            window.location.href = '../USER/index.html';
+          } 
+          else 
+          {
+            errorMsg.text('Invalid username or password');
+            loginBtn.prop('disabled', false);
+            loginBtn.html(originalBtnText);
+          }
+        }, 800);
       });
     });
   </script>
