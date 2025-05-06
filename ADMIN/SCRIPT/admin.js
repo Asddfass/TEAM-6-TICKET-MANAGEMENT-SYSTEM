@@ -8,10 +8,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Section Navigation
 function showSection(sectionId) {
-  document.querySelectorAll('.section').forEach(section => {
-      section.style.display = 'none';
-  });
-  document.getElementById(sectionId).style.display = 'block';
+    if (sectionId === 'logout') {
+        showLogoutConfirmation();
+        return;
+    }
+    
+    document.querySelectorAll('.section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(sectionId).style.display = 'block';
+}
+
+function showLogoutConfirmation() {
+    const modal = document.getElementById('logoutConfirmModal');
+    modal.style.display = 'block';
+    initializeModalClose(modal);
+}
+
+function confirmLogout() {
+    // Show loading state
+    const logoutBtn = document.querySelector('#logoutConfirmModal .logout-btn');
+    logoutBtn.innerHTML = '<span class="loading-spinner"></span>Logging out...';
+    logoutBtn.disabled = true;
+
+    // Simulate logout process
+    setTimeout(() => {
+        // Redirect to login page or perform logout action
+        window.location.href = '../LOGIN'; // Replace with your login page URL
+    }, 800);
 }
 
 // Initialize Charts
