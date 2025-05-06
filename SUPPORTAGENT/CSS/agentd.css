@@ -45,8 +45,8 @@ body {
 
 /* Active sidebar link */
 .sidebar a.active {
-  background-color: #990000;
-  padding-left: 30px;
+    background-color: #990000;
+    padding-left: 30px;
 }
 
 /* Main dashboard content area */
@@ -173,60 +173,47 @@ table tr:hover {
     transition: opacity 0.3s ease;
 }
 
-/* Card styling */
-.card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Animation classes */
+.fade-out {
+    animation: fadeOut 0.5s ease forwards;
 }
 
-/* Card body padding */
-.card-body {
-    padding: 20px;
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-20px);
+        height: 0;
+        padding: 0;
+    }
 }
 
-/* Card title font size */
-h5.card-title {
-    font-size: 1.2rem;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-/* Card text font size */
-.card-text {
-    font-size: 2rem;
+/* Add transition for table row height */
+.table tbody tr {
+    transition: all 0.5s ease;
 }
 
-/* Utility class for margin top */
-.mt-5 {
-    margin-top: 40px !important;
+/* Style for new rows */
+.new-row {
+    background-color: rgba(40, 167, 69, 0.1);
 }
 
-/* Ticket chart container */
-#ticketChart {
-    max-height: 400px;
-    margin-top: 30px;
-}
-
-/* Ticket chart sizing */
-#ticketChart {
-    width: 100% !important;
-    height: 300px !important;
-    margin-top: 30px;
-}
-
-/* Card styling repeated (can be consolidated) */
-.card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Sidebar toggle button positioning */
-#sidebarToggle {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 1050;
-}
-
-/* Responsive styles for small devices */
+/* Responsive sidebar */
 @media (max-width: 767.98px) {
     /* Hide sidebar by sliding it out */
     .sidebar {
@@ -264,4 +251,75 @@ h5.card-title {
     #sidebarToggle {
         display: none;
     }
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* Dark mode table styles */
+body.dark-mode .table {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+body.dark-mode .table thead th {
+    background-color: #333333;
+    color: #ffffff;
+    border-bottom-color: #404040;
+}
+
+body.dark-mode .table td {
+    border-bottom-color: #404040;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode card styles */
+body.dark-mode .card:not([class*="text-bg-"]) {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+/* Dark mode modal styles */
+body.dark-mode .modal-content {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+body.dark-mode .modal-header {
+    border-bottom-color: #404040;
+}
+
+body.dark-mode .modal-footer {
+    border-top-color: #404040;
+}
+
+/* Dark mode form styles */
+body.dark-mode .form-control {
+    background-color: #333333;
+    border-color: #404040;
+    color: #ffffff;
+}
+
+body.dark-mode .form-control:focus {
+    background-color: #404040;
+    color: #ffffff;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #aaaaaa;
+}
+
+/* Dark mode close button */
+body.dark-mode .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
 }

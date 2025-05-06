@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support Agent Dashboard - Ticketing System</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="CSS/agentd.css">
 </head>
 
@@ -81,7 +82,7 @@
           <!-- Assigned Tickets table -->
           <div class="mt-5 table-responsive">
             <h2>Assigned Tickets</h2>
-            <table class="table table-striped table table-bordered">
+            <table class="table table-striped table-bordered">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -136,10 +137,10 @@
           </div>
         </section>
 
-        <!-- Assigned Tickets section (hidden by default) -->
+        <!-- Assigned Tickets section -->
         <section id="assigned" class="content-section d-none">
           <h2>Assigned Tickets</h2>
-          <table class="table table-bordered table-striped table table-bordered">
+          <table class="table table-bordered table-striped">
             <thead class="table-light">
               <tr>
                 <th>ID</th>
@@ -158,7 +159,6 @@
                 <td>Low</td>
                 <td>John Doe</td>
                 <td>
-                  <!-- Button to open ticket modal with data attributes -->
                   <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
                     data-id="223" data-title="Email not sending" data-priority="Low" data-status="Pending"
                     data-description="The user is having trouble sending an email (Probably a Crim Student)."
@@ -174,7 +174,6 @@
                 <td>High</td>
                 <td>Bob Joe</td>
                 <td>
-                  <!-- Button to open ticket modal with data attributes -->
                   <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
                     data-id="224" data-title="System crash on save" data-priority="High" data-status="Escalated"
                     data-description="When saving the user's code the system crashes." data-submitted-by="Bob Joe"
@@ -190,7 +189,6 @@
                 <td>High</td>
                 <td>Marie Cruz</td>
                 <td>
-                  <!-- Button to open ticket modal with data attributes -->
                   <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
                     data-id="301" data-title="Email not syncing" data-priority="High" data-status="Pending"
                     data-description="The user's Outlook is not syncing emails from the server. Tried restarting the app, but the issue persists."
@@ -206,7 +204,6 @@
                 <td>Medium</td>
                 <td>Carlos Diaz</td>
                 <td>
-                  <!-- Button to open ticket modal with data attributes -->
                   <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#ticketModal"
                     data-id="302" data-title="VPN not connecting" data-priority="Medium" data-status="In Progress"
                     data-description="The user's device is unable to connect to a VPN." data-submitted-by="Carlos Diaz"
@@ -219,46 +216,51 @@
           </table>
         </section>
 
-        <!-- Open Tickets section (hidden by default) -->
+        <!-- Open Tickets section -->
         <section id="open" class="content-section d-none">
           <h2>Open Tickets</h2>
-          <table class="table table-hover table table-bordered">
+          <table class="table table-hover table-bordered">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Issue</th>
-                <th>Submitted</th>
+                <th>Submitted By</th>
+                <th>Submitted On</th>
                 <th>Status</th>
-                <th>Assigned</th>
+                <th>Priority</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>#310</td>
                 <td>Software installation issue</td>
+                <td>Alex Johnson</td>
                 <td>2025-04-15</td>
                 <td><span class="badge bg-danger">Escalated</span></td>
-                <td>Unassigned</td>
+                <td>High</td>
               </tr>
               <tr>
                 <td>#311</td>
                 <td>Login loop on portal</td>
+                <td>Sarah Williams</td>
                 <td>2025-04-16</td>
                 <td><span class="badge bg-warning">Pending</span></td>
-                <td>Unassigned</td>
+                <td>Medium</td>
               </tr>
             </tbody>
           </table>
         </section>
 
-        <!-- Resolved Tickets section (hidden by default) -->
+        <!-- Resolved Tickets section -->
         <section id="resolved" class="content-section d-none">
           <h2>Resolved Tickets</h2>
-          <table class="table table-success table-striped table table-bordered">
+          <table class="table table-success table-striped table-bordered">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Issue</th>
+                <th>Submitted By</th>
+                <th>Submitted On</th>
                 <th>Resolved On</th>
                 <th>Resolution</th>
               </tr>
@@ -267,12 +269,16 @@
               <tr>
                 <td>#290</td>
                 <td>Password reset not working</td>
+                <td>John Smith</td>
+                <td>2025-04-10</td>
                 <td>2025-04-12</td>
                 <td>Reset credentials manually</td>
               </tr>
               <tr>
                 <td>#291</td>
                 <td>Account locked out</td>
+                <td>Jane Doe</td>
+                <td>2025-04-11</td>
                 <td>2025-04-13</td>
                 <td>Unlocked from admin panel</td>
               </tr>
@@ -280,7 +286,7 @@
           </table>
         </section>
 
-        <!-- Settings section (hidden by default) -->
+        <!-- Settings section -->
         <section id="settings" class="content-section d-none">
           <h2>Settings</h2>
           <p>Update profile settings, password, etc.</p>
@@ -290,7 +296,6 @@
             <label class="form-check-label" for="darkModeToggle">Enable Dark Mode</label>
           </div>
         </section>
-        
 
       </div>
     </div>
@@ -300,12 +305,10 @@
   <div class="modal fade" id="ticketModal" tabindex="-1" aria-labelledby="ticketModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-
         <div class="modal-header">
           <h5 class="modal-title" id="ticketModalLabel">Ticket Details</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-
         <div class="modal-body">
           <div class="mb-3">
             <strong>Submitted by:</strong> <span id="modalSubmittedBy"></span><br>
@@ -313,24 +316,38 @@
             <strong>Priority:</strong> <span id="modalPriority"></span><br>
             <strong>Status:</strong> <span id="modalStatus" class="badge"></span>
           </div>
-
           <div class="mb-3">
             <strong>Description:</strong>
             <p id="modalDescription"></p>
           </div>
-
           <div class="mb-3">
             <label for="agentResponse" class="form-label">Agent Response</label>
-            <textarea id="agentResponse" class="form-control" rows="4"
-              placeholder="Write your response here..."></textarea>
+            <textarea id="agentResponse" class="form-control" rows="4" placeholder="Write your response here..."></textarea>
           </div>
         </div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success">Submit Response</button>
+          <button type="button" class="btn btn-success" id="submitResponse">Submit Response</button>
         </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- SUCCESS MODAL -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="successModalLabel">Success!</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center py-4">
+          <i class="bi bi-check-circle text-success" style="font-size: 3rem;"></i>
+          <p class="mt-3 mb-0">Ticket has been successfully resolved and moved to Resolved Tickets.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
@@ -357,38 +374,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="SCRIPT/agentd.js"></script>
-  <script>
-    const ctx = document.getElementById('agentChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['New Tickets', 'Resolved', 'Pending', 'Escalated'],
-        datasets: [{
-          label: 'Tickets',
-          data: [23, 89, 14, 5],
-          backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#dc3545'],
-          borderRadius: 10
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: context => `${context.dataset.label}: ${context.parsed.y}`
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: { precision: 0 }
-          }
-        }
-      }
-    });
-  </script>
 </body>
 
 </html>
