@@ -269,7 +269,7 @@ nav a:not(.login-btn):hover::after {
     width: 60%;
 }
 
-/* Footer */
+/* Footer and Contact Section */
 footer {
     background-color: #550011;
     color: var(--light-text);
@@ -284,9 +284,35 @@ footer h3 {
     margin-bottom: 1rem;
 }
 
-footer p {
-    font-size: 1.1rem;
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.contact-person {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    min-width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.contact-person:hover {
+    transform: translateY(-5px);
+}
+
+.contact-person h4 {
+    color: var(--light-text);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-person p {
     margin: 0.5rem 0;
+    font-size: 0.9rem;
 }
 
 /* Mobile Navigation Bar */
@@ -468,65 +494,18 @@ footer p {
         margin-bottom: 2rem;
     }
 
-    .cta-btn {
+    .contact-info {
+        gap: 1.5rem;
+    }
+
+    .contact-person {
         width: 100%;
-        text-align: center;
-        padding: 1rem;
-        font-size: 1.1rem;
-    }
-
-    .features {
-        padding: 2rem 1rem;
-    }
-
-    .feature-card {
-        margin-bottom: 2rem;
-        padding: 1.5rem;
-        gap: 2rem;
-    }
-
-    .feature-card img {
-        width: 100%;
-        max-width: 250px;
-        margin: 0 auto;
-    }
-
-    .text-content {
-        text-align: center;
-    }
-
-    .text-content h3 {
-        font-size: 1.5rem;
-    }
-
-    .text-content p {
-        font-size: 1rem;
-    }
-
-    #about {
-        padding: 3rem 1rem;
-    }
-
-    #about h2 {
-        font-size: 2rem;
-    }
-
-    #about p {
-        font-size: 1rem;
-        text-align: left;
+        min-width: unset;
     }
 
     footer {
         padding: 2rem 1rem;
         margin-bottom: 60px;
-    }
-
-    footer h3 {
-        font-size: 1.5rem;
-    }
-
-    footer p {
-        font-size: 1rem;
     }
 
     .mobile-nav-bar {
